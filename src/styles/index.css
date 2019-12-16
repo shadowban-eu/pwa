@@ -1,0 +1,6 @@
+@tailwind base;
+@tailwind components;
+
+/* add customizations before importing tailwind's utilities! */
+
+@tailwind utilities;
