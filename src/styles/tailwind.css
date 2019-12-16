@@ -629,6 +629,31 @@ video {
 
 /* add customizations before importing tailwind's utilities! */
 
+button {
+  background-color: #fff;
+  color: rgb(20, 129, 195);
+  border-color: rgb(20, 129, 195);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-width: 1px;
+  border-radius: 9999px;
+  -webkit-transition: box-shadow 0.3s;
+  transition: box-shadow 0.3s;
+}
+
+button:hover {
+  color: rgb(175, 52, 175);
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,.14),
+              0 1px 7px 0 rgba(0,0,0,.12),
+              0 3px 1px -1px rgba(0,0,0,.2);
+}
+
+button:active, button:focus {
+  outline: 0;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
