@@ -654,6 +654,75 @@ button:active, button:focus {
   outline: 0;
 }
 
+/* Disable WebKit's colors for auto-filled values */
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+select:-webkit-autofill,
+select:-webkit-autofill:hover {
+  border-bottom-width: 2px !important;
+  border-color: #cbd5e0 !important;
+  color: rgb(175, 52, 175) !important;
+  font-weight: 500 !important;
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  /* This should always have the value of text-accent-purple (see @apply, abbove) */
+  -webkit-text-fill-color: rgb(175, 52, 175);
+}
+
+input {
+  border-bottom-width: 2px;
+  border-color: #cbd5e0;
+  color: rgb(175, 52, 175);
+  font-weight: 500;
+}
+
+input:focus,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill:focus {
+  outline: 0;
+  border-color: rgb(20, 129, 195);
+}
+
+.prefix-label-input {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  font-weight: 500;
+}
+
+.prefix-label-input>label {
+  position: absolute;
+  top: 0;
+  left: 55px;
+  font-size: 1rem;
+  cursor: text;
+  -webkit-transition: color .2s ease-out,-webkit-transform .2s ease-out;
+  transition: color .2s ease-out,-webkit-transform .2s ease-out;
+  transition: transform .2s ease-out,color .2s ease-out;
+  transition: transform .2s ease-out,color .2s ease-out,-webkit-transform .2s ease-out;
+  -webkit-transform-origin: 0 100%;
+          transform-origin: 0 100%;
+  text-align: initial;
+  -webkit-transform: translateY(12px);
+          transform: translateY(12px);
+}
+
+.prefix-label-input>input {
+  width: calc(100% - 3rem)
+}
+
+.prefix-label-input input:focus ~ label,
+.prefix-label-input > label.active {
+  -webkit-transform: translateY(-14px) scale(.8);
+          transform: translateY(-14px) scale(.8);
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;

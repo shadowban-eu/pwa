@@ -1,0 +1,1 @@
+export const SET_SCREEN_NAME = 'SET_SCREEN_NAME';

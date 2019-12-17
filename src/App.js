@@ -5,12 +5,10 @@ import Tester from './routes/Tester';
 
 function App() {
   return (
-    <div className="flex h-screen w-screen bg-shadowblue">
-      <Router>
-        <Tester path="/" default/>
-        <Tester path="/:screenName" />
-      </Router>
-    </div>
+    <Router>
+      <Tester path="/" default/>
+      <Tester path="/:screenName" />
+    </Router>
   );
 }
 

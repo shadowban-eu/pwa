@@ -18,4 +18,53 @@ button:active, button:focus {
   @apply outline-none;
 }
 
+/* Disable WebKit's colors for auto-filled values */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+select:-webkit-autofill,
+select:-webkit-autofill:hover {
+  @apply border-b-2 border-gray-400 text-accent-purple font-medium !important;
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  /* This should always have the value of text-accent-purple (see @apply, abbove) */
+  -webkit-text-fill-color: rgb(175, 52, 175);
+}
+
+input {
+  @apply border-b-2 border-gray-400 text-accent-purple font-medium;
+}
+
+input:focus,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill:focus {
+  @apply outline-none border-twitterblue;
+}
+
+.prefix-label-input {
+  @apply flex justify-center font-medium;
+}
+.prefix-label-input>label {
+  position: absolute;
+  top: 0;
+  left: 55px;
+  font-size: 1rem;
+  cursor: text;
+  transition: transform .2s ease-out,color .2s ease-out;
+  transform-origin: 0 100%;
+  text-align: initial;
+  transform: translateY(12px);
+}
+
+.prefix-label-input>input {
+  width: calc(100% - 3rem)
+}
+
+.prefix-label-input input:focus ~ label,
+.prefix-label-input > label.active {
+  transform: translateY(-14px) scale(.8);
+  transform-origin: 0 0;
+}
+
 @tailwind utilities;

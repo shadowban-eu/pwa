@@ -1,7 +1,7 @@
 import React from 'react';
 
-export default () => {
-  return (
-    <button className="uppercase">support us</button>
-  );
-}
+const DonationButton = () => (
+  <button className="uppercase">support us</button>
+);
+
+export default DonationButton;
