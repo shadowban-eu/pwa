@@ -3,30 +3,40 @@ import React from 'react';
 import { TesterContext } from '../../contexts';
 import { SET_SCREEN_NAME } from '../../actions';
 
+const twitterHandleRX = /^[A-Za-z0-9_]{1,15}$/;
+
 const ScreenNameInput = () => {
-
   const { screenName, dispatch } = React.useContext(TesterContext);
+  const [valid, setValid] = React.useState(true);
 
-  const prefixColorClass = screenName ? 'text-accent-purple' : 'text-twitterblue';
-  const prefixClasses = `absolute w-12 left-0 text-3xl text-twitterblue text-center ${prefixColorClass}`;
+  React.useEffect(() => {
+    setValid(screenName === '' || twitterHandleRX.test(screenName));
+  }, [screenName]);
 
-  const labelClasses = screenName ? 'active text-twitterblue' : 'text-twitterblue';
+  // pretty sure this is wrong; feels wrong...
+  const prefixColorClass = screenName
+    ? valid ? 'text-accent-purple' : 'text-accent-error'
+    : 'text-twitterblue';
+
+  const inputColorClasses = valid
+    ? 'border-gray-400 text-accent-purple focus:border-twitterblue'
+    : 'border-accent-error text-accent-error focus:border-accent-error';
+
+  const labelClasses = screenName
+    ? valid ? 'active text-twitterblue' : 'active text-accent-error'
+    : 'text-twitterblue';
 
   return (
     <div className="prefix-label-input relative w-64 mr-12">
-      <span className={prefixClasses}>@</span>
+      <span className={`absolute w-12 left-0 text-3xl text-center ${prefixColorClass}`}>@</span>
       <input
         id="screenName"
         type="text"
-        maxlength={16}
+        maxLength={16}
+        pattern={twitterHandleRX.source}
+        autoComplete="username"
         onKeyUp={(evt) => dispatch({ type: SET_SCREEN_NAME, screenName: evt.target.value })}
-        className="
-          h-12
-          ml-12
-          border-b-2 border-gray-400
-          text-accent-purple font-medium
-          focus:outline-none
-          focus:border-twitterblue"
+        className={`h-12 ml-12 border-b-2 font-medium focus:outline-none ${inputColorClasses}`}
       />
       <label htmlFor="screenName" className={labelClasses}>username</label>
     </div>

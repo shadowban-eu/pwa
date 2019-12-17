@@ -18,6 +18,17 @@ button:active, button:focus {
   @apply outline-none;
 }
 
+input {
+  @apply border-b-2 border-gray-400 text-accent-purple font-medium;
+}
+
+input:focus,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill:focus {
+  @apply outline-none border-twitterblue;
+}
+
 /* Disable WebKit's colors for auto-filled values */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -29,17 +40,6 @@ select:-webkit-autofill:hover {
   -webkit-box-shadow: 0 0 0 30px white inset !important;
   /* This should always have the value of text-accent-purple (see @apply, abbove) */
   -webkit-text-fill-color: rgb(175, 52, 175);
-}
-
-input {
-  @apply border-b-2 border-gray-400 text-accent-purple font-medium;
-}
-
-input:focus,
-input:-webkit-autofill:focus,
-textarea:-webkit-autofill:focus,
-select:-webkit-autofill:focus {
-  @apply outline-none border-twitterblue;
 }
 
 .prefix-label-input {

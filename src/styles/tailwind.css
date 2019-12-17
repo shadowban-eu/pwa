@@ -654,6 +654,28 @@ button:active, button:focus {
   outline: 0;
 }
 
+input {
+  border-bottom-width: 2px;
+  border-color: #cbd5e0;
+  color: rgb(175, 52, 175);
+  font-weight: 500;
+}
+
+input:not(:empty):invalid,
+input:invalid ~ label,
+input:invalid ~ span {
+  color: rgb(197, 61, 61);
+  border-color: rgb(197, 61, 61);
+}
+
+input:focus,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill:focus {
+  outline: 0;
+  border-color: rgb(20, 129, 195);
+}
+
 /* Disable WebKit's colors for auto-filled values */
 
 input:-webkit-autofill,
@@ -669,21 +691,6 @@ select:-webkit-autofill:hover {
   -webkit-box-shadow: 0 0 0 30px white inset !important;
   /* This should always have the value of text-accent-purple (see @apply, abbove) */
   -webkit-text-fill-color: rgb(175, 52, 175);
-}
-
-input {
-  border-bottom-width: 2px;
-  border-color: #cbd5e0;
-  color: rgb(175, 52, 175);
-  font-weight: 500;
-}
-
-input:focus,
-input:-webkit-autofill:focus,
-textarea:-webkit-autofill:focus,
-select:-webkit-autofill:focus {
-  outline: 0;
-  border-color: rgb(20, 129, 195);
 }
 
 .prefix-label-input {
