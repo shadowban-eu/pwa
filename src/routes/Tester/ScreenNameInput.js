@@ -28,6 +28,10 @@ const ScreenNameInput = () => {
       dispatch({ type: VALIDATE_SCREEN_NAME, screenName: inputElement.current.value });
     }
 
+  React.useEffect(() => {
+    inputElement.current.value = screenName;
+  }, [inputElement, screenName]);
+
   return (
     <div className="prefix-label-input relative w-64 mr-12">
       <span className={`absolute w-12 left-0 text-3xl text-center ${prefixColorClass}`}>@</span>
