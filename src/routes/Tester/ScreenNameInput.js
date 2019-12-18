@@ -1,17 +1,13 @@
 import React from 'react';
+import { useStore } from 'react-hookstore';
 
-import { TesterContext } from '../../contexts';
-import { SET_SCREEN_NAME } from '../../actions';
+import { SET_SCREEN_NAME, VALIDATE_SCREEN_NAME } from '../../actions';
 
 const twitterHandleRX = /^[A-Za-z0-9_]{1,15}$/;
 
 const ScreenNameInput = () => {
-  const { screenName, dispatch } = React.useContext(TesterContext);
-  const [valid, setValid] = React.useState(true);
-
-  React.useEffect(() => {
-    setValid(screenName === '' || twitterHandleRX.test(screenName));
-  }, [screenName]);
+  const [{ screenName, valid }, dispatch] = useStore('tester');
+  const inputElement = React.useRef(null);
 
   // pretty sure this is wrong; feels wrong...
   const prefixColorClass = screenName
@@ -26,16 +22,23 @@ const ScreenNameInput = () => {
     ? valid ? 'active text-twitterblue' : 'active text-accent-error'
     : 'text-twitterblue';
 
+    const handleKeyUp = (evt) => {
+      evt.preventDefault();
+      dispatch({ type: SET_SCREEN_NAME, screenName: inputElement.current.value });
+      dispatch({ type: VALIDATE_SCREEN_NAME, screenName: inputElement.current.value });
+    }
+
   return (
     <div className="prefix-label-input relative w-64 mr-12">
       <span className={`absolute w-12 left-0 text-3xl text-center ${prefixColorClass}`}>@</span>
       <input
         id="screenName"
         type="text"
-        maxLength={16}
+        ref={inputElement}
+        maxLength={15}
         pattern={twitterHandleRX.source}
         autoComplete="username"
-        onKeyUp={(evt) => dispatch({ type: SET_SCREEN_NAME, screenName: evt.target.value })}
+        onKeyUp={handleKeyUp}
         className={`h-12 ml-12 border-b-2 font-medium focus:outline-none ${inputColorClasses}`}
       />
       <label htmlFor="screenName" className={labelClasses}>username</label>

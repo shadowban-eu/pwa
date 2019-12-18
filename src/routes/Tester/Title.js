@@ -1,9 +1,8 @@
 import React from 'react';
-
-import { TesterContext } from '../../contexts';
+import { useStore } from 'react-hookstore';
 
 const Title = () => {
-  const { screenName } = React.useContext(TesterContext);
+  const [{ screenName, valid }] = useStore('tester');
 
   return (
     <h2 className="
@@ -14,7 +13,7 @@ const Title = () => {
       text-title
       text-twitterblue
     ">
-      Is <span className="text-accent-purple">@{screenName || 'username'}</span><br />
+      Is <span className="text-accent-purple">@{(valid &&screenName) || 'username'}</span><br />
       shadowbanned on Twitter?
     </h2>
   );

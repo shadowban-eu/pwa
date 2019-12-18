@@ -661,13 +661,6 @@ input {
   font-weight: 500;
 }
 
-input:not(:empty):invalid,
-input:invalid ~ label,
-input:invalid ~ span {
-  color: rgb(197, 61, 61);
-  border-color: rgb(197, 61, 61);
-}
-
 input:focus,
 input:-webkit-autofill:focus,
 textarea:-webkit-autofill:focus,
