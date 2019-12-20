@@ -6,7 +6,6 @@ const Title = () => {
 
   return (
     <h2 className="
-      w-screen
       mt-10 mb-6
       font-lobster
       leading-title

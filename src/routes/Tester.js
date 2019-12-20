@@ -23,7 +23,7 @@ const Tester = (props) => {
 
 
   return (
-    <div className="flex flex-col w-screen bg-shadowblue">
+    <div className="flex flex-col bg-shadowblue">
       <div className="text-center">
         <Title />
         <DonationButton />
