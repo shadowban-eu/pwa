@@ -5,9 +5,10 @@ import ScreenNameInput from './ScreenNameInput';
 const Controls = () => {
   return (
     <div className="
+      offset-m1 m10 offset-l2 l8
       flex
       justify-center
-      sm:w-full md:w-4/5
+      sm:w-full md:w-10/12 lg:w-8/12
       mt-10 mb-5
       ml-auto mr-auto
       p-5
@@ -16,7 +17,7 @@ const Controls = () => {
       rounded
     ">
       <ScreenNameInput />
-      <button className="uppercase">Check</button>
+      <button className="uppercase self-center">Check</button>
     </div>
   );
 };

@@ -33,8 +33,12 @@ const ScreenNameInput = () => {
   }, [inputElement, screenName]);
 
   return (
-    <div className="prefix-label-input relative w-64 mr-12">
-      <span className={`absolute w-12 left-0 text-3xl text-center ${prefixColorClass}`}>@</span>
+    <div className="prefix-label-input relative w-64 mr-12 my-4">
+      <span className={
+        `absolute w-12 left-0 text-3xl text-center font-lobster ${prefixColorClass}`
+      }>
+        @
+      </span>
       <input
         id="screenName"
         type="text"
