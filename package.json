@@ -16,6 +16,7 @@
     "start": "./bin/dev.js",
     "build": "npm run build:tailwind && react-scripts build",
     "build:tailwind": "tailwind build src/styles/index.css -o src/styles/tailwind.css -c ./tailwind.config.js",
+    "deploy:dev": "ansible-playbook ansible/deploy_naughty.yml",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
