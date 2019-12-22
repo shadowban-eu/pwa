@@ -8,11 +8,11 @@ import ScreenNameInput from './ScreenNameInput';
 const Controls = () => {
   const [{ screenName }, dispatch] = useStore('tester');
 
-  const runTest = async () => {
+  const runTest = async (submitEvent) => {
+    submitEvent.preventDefault();
     dispatch({ type: RUN_TEST });
-    const res = await fetch(`http://localhost:4000/.api/${screenName}`);
+    const res = await fetch(`${process.env.REACT_APP_TEST_URL}/${screenName}`);
     const result = await res.json();
-    console.log(result);
     dispatch({ type: SET_CURRENT_RESULTS, result });
   };
 
@@ -24,8 +24,10 @@ const Controls = () => {
       mt-10 mb-5
       ml-auto mr-auto
     ">
-      <ScreenNameInput />
-      <button className="uppercase self-center" onClick={runTest}>Check</button>
+      <form className="flex justify-center" onSubmit={runTest}>
+        <ScreenNameInput />
+        <button className="uppercase self-center" type="submit">Check</button>
+      </form>
     </div>
   );
 };
