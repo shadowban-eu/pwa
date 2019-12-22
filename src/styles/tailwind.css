@@ -759,13 +759,12 @@ select:-webkit-autofill:hover {
 .tab input:checked + label{
   padding: 1.25rem;
   border-left-width: 2px;
-  border-color: #667eea;
-  background-color: #f7fafc
+  border-color: rgb(20, 129, 195)
 }
 
 /* Icon */
 
-.tab:not(.title-only) label::after {
+.tab label::after {
   float:right;
   right: 0;
   top: 0;
@@ -775,21 +774,13 @@ select:-webkit-autofill:hover {
   line-height: 1.5;
   font-size: 1.25rem;
   text-align: center;
-  -webkit-transition: all .7s;
-  transition: all .7s;
+  -webkit-transition: all .3s;
+  transition: all .3s;
 }
 
 /* Icon formatting - closed */
 
 .tab input[type=checkbox] + label::after {
-  font-weight: 700;
-  border-width: 1px;
-  border-radius: 9999px;
-  border-color: #cbd5e0;
-  content: "+";
-}
-
-.tab input[type=radio] + label::after {
   font-weight: 700;
   border-width: 1px;
   border-radius: 9999px;
@@ -800,15 +791,8 @@ select:-webkit-autofill:hover {
 /* Icon formatting - open */
 
 .tab input[type=checkbox]:checked + label::after {
-  color: #edf2f7;
-  background-color: #7f9cf5;
-  -webkit-transform: rotate(315deg);
-          transform: rotate(315deg);
-}
-
-.tab input[type=radio]:checked + label::after {
-  color: #edf2f7;
-  background-color: #7f9cf5;
+  background-color: #1a202c;
+  color: #fff;
   -webkit-transform: rotateX(180deg);
           transform: rotateX(180deg);
 }

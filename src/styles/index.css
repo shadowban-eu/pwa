@@ -91,10 +91,10 @@ select:-webkit-autofill:hover {
 }
 /* Label formatting when open */
 .tab input:checked + label{
-  @apply p-5 border-l-2 border-indigo-500 bg-gray-100
+  @apply p-5 border-l-2 border-twitterblue
 }
 /* Icon */
-.tab:not(.title-only) label::after {
+.tab label::after {
   float:right;
   right: 0;
   top: 0;
@@ -104,26 +104,18 @@ select:-webkit-autofill:hover {
   line-height: 1.5;
   font-size: 1.25rem;
   text-align: center;
-  -webkit-transition: all .7s;
-  -o-transition: all .7s;
-  transition: all .7s;
+  -webkit-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s;
 }
 /* Icon formatting - closed */
 .tab input[type=checkbox] + label::after {
-  @apply font-bold border rounded-full border-gray-400;
-  content: "+";
-}
-.tab input[type=radio] + label::after {
   @apply font-bold border rounded-full border-gray-400;
   content: "\25BE";
 }
 /* Icon formatting - open */
 .tab input[type=checkbox]:checked + label::after {
-  @apply text-gray-200 bg-indigo-400;
-  transform: rotate(315deg);
-}
-.tab input[type=radio]:checked + label::after {
-  @apply text-gray-200 bg-indigo-400;
+  @apply bg-gray-900 text-white;
   transform: rotateX(180deg);
 }
 

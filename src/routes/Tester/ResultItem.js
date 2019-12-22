@@ -14,7 +14,6 @@ const svgFileNames = {
   none: 'help.svg'
 };
 
-
 const ResultItem = ({ data, result, type = 'none' }) => {
   const { id, description } = data;
 
@@ -24,7 +23,7 @@ const ResultItem = ({ data, result, type = 'none' }) => {
     : data.title;
 
   return (
-    <div className="tab w-full overflow-hidden">
+    <div className="tab w-full overflow-hidden border-t border-gray-400">
        <input className="absolute opacity-0 " id={`result-${id}`} type="checkbox" name={`result-${id}`} />
        <label className={`block p-5 leading-normal cursor-pointer ${resultColors[type]}`} htmlFor={`result-${id}`}>
         <SVG className="inline mr-4 fill-current" src={`/icons/${svgFileNames[type]}`} />
