@@ -1,0 +1,22 @@
+{
+  "profile": {
+    "exists": true,
+    "has_tweets": true,
+    "protected": false,
+    "screen_name": "humptydumpty"
+  },
+  "tests": {
+    "ghost": {
+      "error": "EUNKNOWN"
+    },
+    "replyDeboosting": {
+      "error": "EUNKNOWN"
+    },
+    "search": {
+      "error": "EUNKNOWN"
+    },
+    "searchSuggestion": {
+      "error": "EUNKNOWN"
+    }
+  }
+}

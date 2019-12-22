@@ -629,6 +629,14 @@ video {
 
 /* add customizations before importing tailwind's utilities! */
 
+a {
+  color: rgb(20, 129, 195);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 button {
   background-color: #fff;
   color: rgb(20, 129, 195);
@@ -721,6 +729,88 @@ select:-webkit-autofill:hover {
           transform: translateY(-14px) scale(.8);
   -webkit-transform-origin: 0 0;
           transform-origin: 0 0;
+}
+
+.card {
+  padding: 1.25rem;
+  display: -webkit-box;
+  display: flex;
+  background-color: #fff;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border-radius: 0.25rem;
+}
+
+/* Tab content - closed */
+
+.tab-content {
+  max-height: 0;
+  -webkit-transition: max-height .35s;
+  transition: max-height .35s;
+}
+
+/* :checked - resize to full height */
+
+.tab input:checked ~ .tab-content {
+  max-height: 100vh;
+}
+
+/* Label formatting when open */
+
+.tab input:checked + label{
+  padding: 1.25rem;
+  border-left-width: 2px;
+  border-color: #667eea;
+  background-color: #f7fafc
+}
+
+/* Icon */
+
+.tab:not(.title-only) label::after {
+  float:right;
+  right: 0;
+  top: 0;
+  display: block;
+  width: 1.5em;
+  height: 1.5em;
+  line-height: 1.5;
+  font-size: 1.25rem;
+  text-align: center;
+  -webkit-transition: all .7s;
+  transition: all .7s;
+}
+
+/* Icon formatting - closed */
+
+.tab input[type=checkbox] + label::after {
+  font-weight: 700;
+  border-width: 1px;
+  border-radius: 9999px;
+  border-color: #cbd5e0;
+  content: "+";
+}
+
+.tab input[type=radio] + label::after {
+  font-weight: 700;
+  border-width: 1px;
+  border-radius: 9999px;
+  border-color: #cbd5e0;
+  content: "\25BE";
+}
+
+/* Icon formatting - open */
+
+.tab input[type=checkbox]:checked + label::after {
+  color: #edf2f7;
+  background-color: #7f9cf5;
+  -webkit-transform: rotate(315deg);
+          transform: rotate(315deg);
+}
+
+.tab input[type=radio]:checked + label::after {
+  color: #edf2f7;
+  background-color: #7f9cf5;
+  -webkit-transform: rotateX(180deg);
+          transform: rotateX(180deg);
 }
 
 .sr-only {

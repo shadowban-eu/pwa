@@ -7,6 +7,7 @@ import { SET_SCREEN_NAME, VALIDATE_SCREEN_NAME } from '../actions';
 import Title from './Tester/Title';
 import DonationButton from './Tester/DonationButton';
 import Controls from './Tester/Controls';
+import Results from './Tester/Results';
 
 createStore('tester', initialState, reducer);
 
@@ -29,6 +30,7 @@ const Tester = (props) => {
         <DonationButton />
       </div>
       <Controls />
+      <Results />
     </div>
   );
 };

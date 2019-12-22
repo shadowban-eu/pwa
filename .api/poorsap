@@ -1,0 +1,24 @@
+{
+  "profile": {
+    "exists": true,
+    "protected": false,
+    "screen_name": "poorsap",
+    "has_tweets": true
+  },
+  "tests": {
+    "ghost": {
+      "ban": true
+    },
+    "replyDeboosting": {
+      "ban": true,
+      "in_reply_to": "1161665852820852736",
+      "tweet": "1161666623843065856"
+    },
+    "search": {
+      "ban": true
+    },
+    "searchSuggestion": {
+      "ban": true
+    }
+  }
+}
