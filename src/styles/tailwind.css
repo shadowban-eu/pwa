@@ -744,8 +744,8 @@ select:-webkit-autofill:hover {
 
 .tab-content {
   max-height: 0;
-  -webkit-transition: max-height .35s;
-  transition: max-height .35s;
+  -webkit-transition: all .3s;
+  transition: all .3s;
 }
 
 /* :checked - resize to full height */
@@ -754,18 +754,27 @@ select:-webkit-autofill:hover {
   max-height: 100vh;
 }
 
+/* Label formatting when closed */
+
+.tab label {
+  border-left-width: 0;
+  transition: border .3s;
+  -webkit-transition: border .3s;
+  -o-transition: border .3s;
+}
+
 /* Label formatting when open */
 
-.tab input:checked + label{
+.tab input:checked + label {
   padding: 1.25rem;
   border-left-width: 2px;
-  border-color: rgb(20, 129, 195)
+  border-color: rgb(20, 129, 195);
 }
 
 /* Icon */
 
 .tab label::after {
-  float:right;
+  float: right;
   right: 0;
   top: 0;
   display: block;
@@ -782,17 +791,12 @@ select:-webkit-autofill:hover {
 
 .tab input[type=checkbox] + label::after {
   font-weight: 700;
-  border-width: 1px;
-  border-radius: 9999px;
-  border-color: #cbd5e0;
   content: "\25BE";
 }
 
 /* Icon formatting - open */
 
 .tab input[type=checkbox]:checked + label::after {
-  background-color: #1a202c;
-  color: #fff;
   -webkit-transform: rotateX(180deg);
           transform: rotateX(180deg);
 }

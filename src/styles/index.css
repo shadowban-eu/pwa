@@ -81,21 +81,28 @@ select:-webkit-autofill:hover {
 /* Tab content - closed */
 .tab-content {
   max-height: 0;
-  -webkit-transition: max-height .35s;
-  -o-transition: max-height .35s;
-  transition: max-height .35s;
+  -webkit-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s;
 }
 /* :checked - resize to full height */
 .tab input:checked ~ .tab-content {
   max-height: 100vh;
 }
+/* Label formatting when closed */
+.tab label {
+  @apply border-l-0;
+  transition: border .3s;
+  -webkit-transition: border .3s;
+  -o-transition: border .3s;
+}
 /* Label formatting when open */
-.tab input:checked + label{
-  @apply p-5 border-l-2 border-twitterblue
+.tab input:checked + label {
+  @apply p-5 border-l-2 border-twitterblue;
 }
 /* Icon */
 .tab label::after {
-  float:right;
+  float: right;
   right: 0;
   top: 0;
   display: block;
@@ -110,12 +117,11 @@ select:-webkit-autofill:hover {
 }
 /* Icon formatting - closed */
 .tab input[type=checkbox] + label::after {
-  @apply font-bold border rounded-full border-gray-400;
+  @apply font-bold;
   content: "\25BE";
 }
 /* Icon formatting - open */
 .tab input[type=checkbox]:checked + label::after {
-  @apply bg-gray-900 text-white;
   transform: rotateX(180deg);
 }
 

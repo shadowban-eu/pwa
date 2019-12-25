@@ -20,7 +20,7 @@ const Tester = (props) => {
       dispatch({ type: SET_SCREEN_NAME, screenName });
       dispatch({ type: VALIDATE_SCREEN_NAME, screenName });
     }
-  }, [screenName, dispatch])
+  }, [screenName, dispatch]);
 
 
   return (

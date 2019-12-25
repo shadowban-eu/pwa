@@ -80,7 +80,7 @@ const Results = () => {
   return (
     <div className="
       card
-      flex flex-row flex-wrap justify-around
+      flex flex-col
       self-center
       sm:w-full md:w-10/12 lg:w-8/12
       mt-10 mb-5
