@@ -1,5 +1,6 @@
 import React from 'react';
 import SVG from 'react-inlinesvg';
+import { useTranslation } from 'react-i18next';
 
 const resultColors = {
   ban: 'text-accent-error',
@@ -14,31 +15,48 @@ const svgFileNames = {
   none: 'help.svg'
 };
 
-const ResultItem = ({ data, result, type = 'none' }) => {
-  const { key, description } = data;
+const determineResultType = (result) => {
+  if (!result) {
+    return 'none';
+  }
+  if (result.ban === true) {
+    return 'ban';
+  }
+  if (result.ban === false) {
+    return 'ok';
+  }
+  return 'error';
+};
 
-  const titlePrefix = result && result.ban === false ? 'No ' : '';
+const ResultItem = ({ test, result }) => {
+  const { key } = test;
+  const { t } = useTranslation(['tasks']);
+  const type = determineResultType(result)
+  const idName = `result-${key}`;
+
   const title = type === 'error'
     ? 'We were unable to test for technical reasons.'
-    : data.title;
+    : t(`${key}.message`);
+
+  const description = t(`${key}.description`);
 
   return (
     <div className="tab w-full overflow-hidden border-t border-gray-400">
       <input
         className="absolute opacity-0 "
-        id={`result-${key}`}
+        id={idName}
         type="checkbox"
-        name={`result-${key}`}
+        name={idName}
       />
       <label
         className={`block p-5 leading-normal cursor-pointer ${resultColors[type]}`}
-        htmlFor={`result-${key}`}
+        htmlFor={idName}
       >
         <SVG
           className="inline mr-4 fill-current"
           src={`/icons/${svgFileNames[type]}`}
         />
-        <span className="inline">{titlePrefix} {title}</span>
+        <span className="inline">{result && result.ban === false && 'No '}{title}</span>
       </label>
       {
         description &&

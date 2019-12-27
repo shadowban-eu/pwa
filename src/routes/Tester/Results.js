@@ -24,19 +24,6 @@ const tests = [{
   description: 'RooFoo'
 }];
 
-const determineResultType = (result) => {
-  if (!result) {
-    return 'none';
-  }
-  if (result.ban === true) {
-    return 'ban';
-  }
-  if (result.ban === false) {
-    return 'ok';
-  }
-  return 'error';
-}
-
 const Results = () => {
   const [{ screenName, loading, currentResult }] = useStore('tester');
   const { profile } = currentResult;
@@ -68,10 +55,9 @@ const Results = () => {
           const result = currentResult.tests ? currentResult.tests[test.key] : null;
           return (
             <ResultItem
-              data={test}
-              key={test.key}
+              test={test}
               result={result}
-              type={determineResultType(result)}
+              key={test.key}
             />
           );
         })
