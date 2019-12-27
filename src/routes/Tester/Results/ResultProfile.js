@@ -6,7 +6,7 @@ import ProfileLink from '../ProfileLink';
 const ResultProfile = ({ profile }) => {
   let profileTitle;
   let resultColor;
-  let svgFileName;
+  let svgFileName = 'gears.svg';
 
   if (!profile) {
     profileTitle = 'Test Results';
