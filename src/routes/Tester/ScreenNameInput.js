@@ -3,7 +3,7 @@ import { useStore } from 'react-hookstore';
 
 import { SET_SCREEN_NAME, VALIDATE_SCREEN_NAME } from '../../actions';
 
-const twitterHandleRX = /^[A-Za-z0-9_]{1,15}$/;
+import { twitterHandleRX } from '../../utils';
 
 const ScreenNameInput = () => {
   const [{ screenName, valid }, dispatch] = useStore('tester');
