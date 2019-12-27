@@ -4,6 +4,10 @@ import { Router } from '@reach/router';
 import Tester from './routes/Tester';
 import Footer from './Footer';
 
+import I18N from './i18n';
+
+I18N.init();
+
 function App() {
   return (
     <div>
