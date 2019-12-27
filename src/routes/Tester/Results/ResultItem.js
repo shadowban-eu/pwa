@@ -8,9 +8,9 @@ const resultColors = {
   none: ''
 };
 const svgFileNames = {
-  ban: 'error.svg',
+  ban: 'ban.svg',
   ok: 'check.svg',
-  error: 'help.svg',
+  error: 'error.svg',
   none: 'help.svg'
 };
 
