@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { createStore, useStore } from 'react-hookstore';
 import useSWR from 'swr';
 
@@ -14,6 +14,7 @@ import Title from './Tester/Title';
 import DonationButton from './Tester/DonationButton';
 import Controls from './Tester/Controls';
 import Results from './Tester/Results';
+import Loading from '../Loading';
 
 createStore('tester', initialState, reducer);
 
@@ -47,14 +48,16 @@ const Tester = (props) => {
   }, [screenName, dispatch]);
 
   return (
-    <div className="flex flex-col bg-shadowblue">
-      <div className="text-center">
-        <Title />
-        <DonationButton />
+    <Suspense fallback={<Loading />}>
+      <div className="flex flex-col bg-shadowblue">
+        <div className="text-center">
+          <Title />
+          <DonationButton />
+        </div>
+        <Controls />
+        <Results />
       </div>
-      <Controls />
-      <Results />
-    </div>
+    </Suspense>
   );
 };
 

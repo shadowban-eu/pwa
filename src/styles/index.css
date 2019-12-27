@@ -125,5 +125,17 @@ select:-webkit-autofill:hover {
   transform: rotateX(180deg);
 }
 
+.loading-animation {
+  animation: loadingBlurAnimation 2s ease-out infinite;
+}
+
+@keyframes loadingBlurAnimation {
+  0% {
+    filter: blur(5px);
+  }
+  100% {
+    filter: blur(0px);
+  }
+}
 
 @tailwind utilities;
