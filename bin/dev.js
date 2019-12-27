@@ -14,7 +14,7 @@ spawn(
 );
 
 spawn(
-  'react-scripts',
-  ['start'],
+  'node',
+  ['scripts/start.js'],
   options
 );
