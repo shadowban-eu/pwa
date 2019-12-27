@@ -1,23 +1,25 @@
 import React from 'react';
-import SVG from 'react-inlinesvg';
 import { useStore } from 'react-hookstore';
 
-import ResultItem from './ResultItem';
+import ProfileLink from './ProfileLink';
+import ResultItem from './Results/ResultItem';
+import ResultsLoading from './Results/ResultsLoading';
+import ResultProfile from './Results/ResultProfile';
 
 const tests = [{
-  id: 'searchSuggestion',
+  key: 'searchSuggestion',
   title: 'Search Suggestion Ban',
   description: 'Foo'
 }, {
-  id: 'search',
+  key: 'search',
   title: 'Search Ban',
   description: 'Bar'
 }, {
-  id: 'ghost',
+  key: 'ghost',
   title: 'Ghost Ban',
   description: 'Baz'
 }, {
-  id: 'replyDeboosting',
+  key: 'replyDeboosting',
   title: 'Reply Deboosting',
   description: 'RooFoo'
 }];
@@ -35,47 +37,9 @@ const determineResultType = (result) => {
   return 'error';
 }
 
-const ProfileLink = ({ screenName }) =>
-  <a href={`https://twitter.com/${screenName}`}>{screenName}</a>;
-
 const Results = () => {
   const [{ screenName, loading, currentResult }] = useStore('tester');
   const { profile } = currentResult;
-
-  let profileTitle;
-  let profileLink;
-  let profileOk = true;
-  let resultColor;
-  let svgFileName = 'gears.svg';
-
-  if (!profile) {
-    profileTitle = 'Test Results';
-  } else if (loading) {
-    profileTitle = `Running test for ${screenName}`;
-  } else if (!profile.exists) {
-    profileTitle = 'does not exist';
-    profileLink = <ProfileLink screenName={profile.screen_name} />;
-    profileOk = false;
-    svgFileName = 'help.svg';
-    resultColor = 'text-accent-warn';
-  } else if (profile.protected) {
-    profileTitle = 'is protected';
-    profileLink = <ProfileLink screenName={profile.screen_name} />;
-    profileOk = false;
-    svgFileName = 'help.svg';
-    resultColor = 'text-accent-warn';
-  } else if (!profile.has_tweets) {
-    profileTitle = 'has no tweets';
-    profileLink = <ProfileLink screenName={profile.screen_name} />;
-    profileOk = false;
-    svgFileName = 'help.svg';
-    resultColor = 'text-accent-warn';
-  } else {
-    profileTitle = 'exists';
-    profileLink = <ProfileLink screenName={profile.screen_name} />;
-    svgFileName = 'check.svg';
-    resultColor = 'text-accent-success';
-  }
 
   return (
     <div className="
@@ -88,21 +52,27 @@ const Results = () => {
       p-0
     ">
     <div className="tab w-full overflow-hidden">
-      <label className={`block p-5 leading-normal ${resultColor}`}>
-        <SVG
-          src={`/icons/${svgFileName}`}
-          width={24} height={24}
-          className={`inline mr-4 fill-current ${loading || profile ? '' : 'invisible'}`}
-        />
-        <span className="inline">{profileLink} {profileTitle}</span>
-      </label>
+      {
+        loading ?
+          <ResultsLoading>
+            Running tests for <ProfileLink screenName={screenName} />
+          </ResultsLoading>
+        :
+          <ResultProfile profile={profile}>
+
+          </ResultProfile>
+      }
     </div>
       {
         tests.map(test => {
-          const result = currentResult.tests ? currentResult.tests[test.id] : null;
-          const type = determineResultType(result);
+          const result = currentResult.tests ? currentResult.tests[test.key] : null;
           return (
-            <ResultItem data={test} key={test.id} result={result} type={type} />
+            <ResultItem
+              data={test}
+              key={test.key}
+              result={result}
+              type={determineResultType(result)}
+            />
           );
         })
       }

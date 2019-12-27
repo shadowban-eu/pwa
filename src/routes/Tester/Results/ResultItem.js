@@ -15,7 +15,7 @@ const svgFileNames = {
 };
 
 const ResultItem = ({ data, result, type = 'none' }) => {
-  const { id, description } = data;
+  const { key, description } = data;
 
   const titlePrefix = result && result.ban === false ? 'No ' : '';
   const title = type === 'error'
@@ -24,17 +24,28 @@ const ResultItem = ({ data, result, type = 'none' }) => {
 
   return (
     <div className="tab w-full overflow-hidden border-t border-gray-400">
-       <input className="absolute opacity-0 " id={`result-${id}`} type="checkbox" name={`result-${id}`} />
-       <label className={`block p-5 leading-normal cursor-pointer ${resultColors[type]}`} htmlFor={`result-${id}`}>
-        <SVG className="inline mr-4 fill-current" src={`/icons/${svgFileNames[type]}`} />
+      <input
+        className="absolute opacity-0 "
+        id={`result-${key}`}
+        type="checkbox"
+        name={`result-${key}`}
+      />
+      <label
+        className={`block p-5 leading-normal cursor-pointer ${resultColors[type]}`}
+        htmlFor={`result-${key}`}
+      >
+        <SVG
+          className="inline mr-4 fill-current"
+          src={`/icons/${svgFileNames[type]}`}
+        />
         <span className="inline">{titlePrefix} {title}</span>
-       </label>
-       {
+      </label>
+      {
         description &&
-           <div className="tab-content overflow-hidden border-l-2 bg-gray-100 border-indigo-500 leading-normal">
-              <p className="p-5">{description}</p>
-           </div>
-       }
+          <div className="tab-content overflow-hidden border-l-2 bg-gray-100 border-indigo-500 leading-normal">
+            <p className="p-5">{description}</p>
+          </div>
+      }
     </div>
   );
 };
