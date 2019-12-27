@@ -1,11 +1,13 @@
 import React from 'react';
 import { navigate } from '@reach/router';
 import { useStore } from 'react-hookstore';
+import { useTranslation } from 'react-i18next';
 
 import ScreenNameInput from './ScreenNameInput';
 
 const Controls = () => {
   const [{ screenName }] = useStore('tester');
+  const { t } = useTranslation('common');
 
   const runTest = async (submitEvent) => {
     submitEvent.preventDefault();
@@ -22,7 +24,7 @@ const Controls = () => {
     ">
       <form className="flex justify-center" onSubmit={runTest}>
         <ScreenNameInput />
-        <button className="uppercase self-center" type="submit">Check</button>
+        <button className="uppercase self-center" type="submit">{t('buttons.check')}</button>
       </form>
     </div>
   );

@@ -1,12 +1,13 @@
 import React from 'react';
 import { useStore } from 'react-hookstore';
+import { useTranslation } from 'react-i18next';
 
 import { SET_SCREEN_NAME, VALIDATE_SCREEN_NAME } from '../../actions';
-
 import { twitterHandleRX } from '../../utils';
 
 const ScreenNameInput = () => {
   const [{ screenName, valid }, dispatch] = useStore('tester');
+  const { t } = useTranslation('common');
   const inputElement = React.useRef(null);
 
   // pretty sure this is wrong; feels wrong...
@@ -49,7 +50,7 @@ const ScreenNameInput = () => {
         onKeyUp={handleKeyUp}
         className={`h-12 ml-12 border-b-2 font-medium focus:outline-none ${inputColorClasses}`}
       />
-      <label htmlFor="screenName" className={labelClasses}>username</label>
+      <label htmlFor="screenName" className={labelClasses}>{t('screenNameDefault')}</label>
     </div>
   );
 };

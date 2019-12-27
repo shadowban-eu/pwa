@@ -1,8 +1,10 @@
 import React from 'react';
 import { useStore } from 'react-hookstore';
+import { useTranslation } from 'react-i18next';
 
 const Title = () => {
   const [{ screenName, valid }] = useStore('tester');
+  const { t } = useTranslation('common');
 
   return (
     <h2 className="
@@ -12,7 +14,7 @@ const Title = () => {
       text-title
       text-twitterblue
     ">
-      Is <span className="text-accent-purple">@{(valid &&screenName) || 'username'}</span><br />
+      Is <span className="text-accent-purple">@{(valid && screenName) || t('screenNameDefault')}</span><br />
       shadowbanned on Twitter?
     </h2>
   );
