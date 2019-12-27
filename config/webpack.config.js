@@ -563,7 +563,7 @@ module.exports = function(webpackEnv) {
       // during a production build.
       // Otherwise React will be compiled in the very slow development mode.
       new I18nextVersioningPlugin({
-        langsRoot: './src/i18n',
+        langsRoot: './public/i18n',
         hashFileName: './i18nVersionHashes.json'
       }),
       new webpack.DefinePlugin(env.stringified),

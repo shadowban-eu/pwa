@@ -6,7 +6,7 @@ import Footer from './Footer';
 
 import I18N from './i18n';
 
-I18N.init();
+I18N();
 
 function App() {
   return (
