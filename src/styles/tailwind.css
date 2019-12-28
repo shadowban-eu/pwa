@@ -765,7 +765,7 @@ select:-webkit-autofill:hover {
 
 /* Icon */
 
-.tab label::after,
+.tab label:not(.result-profile)::after,
 .result-details-close::before {
   float: right;
   right: 0;
@@ -778,7 +778,7 @@ select:-webkit-autofill:hover {
   text-align: center;
 }
 
-.tab label::after {
+.tab label:not(.result-profile)::after {
   -webkit-transform: rotate(-90deg);
           transform: rotate(-90deg);
 }
@@ -788,9 +788,7 @@ select:-webkit-autofill:hover {
           transform: rotate(90deg);
 }
 
-/* Icon formatting - closed */
-
-.tab label::after,
+.tab label:not(.result-profile)::after,
 .result-details-close::before {
   font-weight: 700;
   content: "\25BE";

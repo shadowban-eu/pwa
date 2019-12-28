@@ -29,7 +29,7 @@ const ResultProfile = ({ profile }) => {
   }
 
   return (
-    <label className={`block p-5 leading-normal ${resultColor}`}>
+    <label className={`block p-5 leading-normal result-profile ${resultColor}`}>
       <SVG
         src={`/icons/${svgFileName}`}
         width={24} height={24}

@@ -97,7 +97,7 @@ select:-webkit-autofill:hover {
   -o-transition: border .3s;
 }
 /* Icon */
-.tab label::after,
+.tab label:not(.result-profile)::after,
 .result-details-close::before {
   float: right;
   right: 0;
@@ -109,14 +109,13 @@ select:-webkit-autofill:hover {
   font-size: 1.25rem;
   text-align: center;
 }
-.tab label::after {
+.tab label:not(.result-profile)::after {
   transform: rotate(-90deg);
 }
 .result-details-close::before {
   transform: rotate(90deg);
 }
-/* Icon formatting - closed */
-.tab label::after,
+.tab label:not(.result-profile)::after,
 .result-details-close::before {
   @apply font-bold;
   content: "\25BE";
