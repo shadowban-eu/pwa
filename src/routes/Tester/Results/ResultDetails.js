@@ -4,15 +4,15 @@ import { useTranslation } from 'react-i18next';
 const ResultDetails = ({ testKey, ...props }) => {
   const { t } = useTranslation('tasks');
 
-  return (
-    <div className="
+/*    <div className="
       card
       self-center
       min-h-results
       sm:w-full md:w-10/12 lg:w-8/12
       mt-10 mb-5 ml-auto mr-auto
-    ">
-      <div className="flex flex-row">
+    ">*/
+  return (
+      <div className="flex flex-row p-5">
         <div
           className="
             result-details-close
@@ -33,7 +33,6 @@ const ResultDetails = ({ testKey, ...props }) => {
           </div>
         </div>
       </div>
-    </div>
   );
 }
 

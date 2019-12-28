@@ -6,10 +6,21 @@ import ResultsCard from './Results/ResultsCard';
 
 const Results = () => {
   return (
-    <Router>
-      <ResultsCard default />
-      <ResultDetails path="/details/:testKey" />
-    </Router>
+    <div className="
+      card
+      self-center
+      min-h-results
+      w-full sm:w-full md:w-10/12 lg:w-8/12
+      mt-10 mb-5
+      ml-auto mr-auto
+      overflow-hidden
+      p-0
+    ">
+      <Router className="flex w-full">
+        <ResultsCard default />
+        <ResultDetails path="/details/:testKey" />
+      </Router>
+    </div>
   );
 };
 

@@ -9,20 +9,16 @@ import ResultProfile from './ResultProfile';
 
 const tests = [{
   key: 'searchSuggestion',
-  title: 'Search Suggestion Ban',
-  description: 'Foo'
+  title: 'Search Suggestion Ban'
 }, {
   key: 'search',
-  title: 'Search Ban',
-  description: 'Bar'
+  title: 'Search Ban'
 }, {
   key: 'ghost',
-  title: 'Ghost Ban',
-  description: 'Baz'
+  title: 'Ghost Ban'
 }, {
   key: 'replyDeboosting',
-  title: 'Reply Deboosting',
-  description: 'RooFoo'
+  title: 'Reply Deboosting'
 }];
 
 const ResultCard = ({ navigateToDetails }) => {
@@ -31,27 +27,21 @@ const ResultCard = ({ navigateToDetails }) => {
 
   return (
     <div className="
-      card
       flex flex-col
-      self-center
-      min-h-results
-      w-full sm:w-full md:w-10/12 lg:w-8/12
-      mt-10 mb-5
-      ml-auto mr-auto
-      p-0
+      w-full
     ">
-    <div className="tab w-full overflow-hidden">
-      {
-        loading ?
-          <ResultsLoading>
-            Running tests for <ProfileLink screenName={screenName} />
-          </ResultsLoading>
-        :
-          <ResultProfile profile={profile}>
+      <div className="tab w-full overflow-hidden">
+        {
+          loading ?
+            <ResultsLoading>
+              Running tests for <ProfileLink screenName={screenName} />
+            </ResultsLoading>
+          :
+            <ResultProfile profile={profile}>
 
-          </ResultProfile>
-      }
-    </div>
+            </ResultProfile>
+        }
+      </div>
       {
         tests.map(test => {
           const result = currentResult.tests ? currentResult.tests[test.key] : null;
