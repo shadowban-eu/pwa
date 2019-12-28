@@ -28,9 +28,9 @@ const determineResultType = (result) => {
   return 'error';
 };
 
-const ResultItem = ({ test, result }) => {
+const ResultItem = ({ test, result, showDetails }) => {
   const { key } = test;
-  const { t } = useTranslation(['tasks']);
+  const { t } = useTranslation('tasks');
   const type = determineResultType(result)
   const idName = `result-${key}`;
 
@@ -38,15 +38,14 @@ const ResultItem = ({ test, result }) => {
     ? 'We were unable to test for technical reasons.'
     : t(`${key}.message`);
 
-  const description = t(`${key}.description`);
-
   return (
-    <div className="tab w-full overflow-hidden border-t border-gray-400">
+    <div className="tab w-full overflow-hidden">
       <input
         className="absolute opacity-0 "
         id={idName}
         type="checkbox"
         name={idName}
+        onChange={showDetails}
       />
       <label
         className={`block p-5 leading-normal cursor-pointer ${resultColors[type]}`}
@@ -58,12 +57,6 @@ const ResultItem = ({ test, result }) => {
         />
         <span className="inline">{result && result.ban === false && 'No '}{title}</span>
       </label>
-      {
-        description &&
-          <div className="tab-content overflow-hidden border-l-2 bg-gray-100 border-indigo-500 leading-normal">
-            <p className="p-5">{description}</p>
-          </div>
-      }
     </div>
   );
 };

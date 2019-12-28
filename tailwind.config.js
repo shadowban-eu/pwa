@@ -20,6 +20,9 @@ module.exports = {
       },
       lineHeight: {
         title: '110%'
+      },
+      minHeight: {
+        results: '328px'
       }
     }
   },

@@ -1,0 +1,43 @@
+import React from 'react';
+import { navigate } from '@reach/router';
+import { useStore } from 'react-hookstore';
+import { useTranslation } from 'react-i18next';
+
+const ResultDetails = ({ testKey, ...props }) => {
+  const [{ screenName }] = useStore('tester');
+  const { t } = useTranslation('tasks');
+
+  return (
+    <div className="
+      card
+      self-center
+      min-h-results
+      sm:w-full md:w-10/12 lg:w-8/12
+      mt-10 mb-5 ml-auto mr-auto
+    ">
+      <div className="flex flex-row">
+        <div
+          className="
+            result-details-close
+            flex-1 h-full
+            w-full sm:w-full md:w-10/12 lg:w-8/12
+            self-center
+            mx-2
+            border-r-2 border-gray-400
+            cursor-pointer"
+          onClick={() => navigate(`/${screenName}`)}
+          ></div>
+        <div className="flex flex-col">
+          <div className="mb-2 text-2xl">
+            {t(`${testKey}.message`)}
+          </div>
+          <div>
+            {t(`${testKey}.description`)}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default ResultDetails;

@@ -96,12 +96,9 @@ select:-webkit-autofill:hover {
   -webkit-transition: border .3s;
   -o-transition: border .3s;
 }
-/* Label formatting when open */
-.tab input:checked + label {
-  @apply p-5 border-l-2 border-twitterblue;
-}
 /* Icon */
-.tab label::after {
+.tab label::after,
+.result-details-close::before {
   float: right;
   right: 0;
   top: 0;
@@ -111,18 +108,18 @@ select:-webkit-autofill:hover {
   line-height: 1.5;
   font-size: 1.25rem;
   text-align: center;
-  -webkit-transition: all .3s;
-  -o-transition: all .3s;
-  transition: all .3s;
+}
+.tab label::after {
+  transform: rotate(-90deg);
+}
+.result-details-close::before {
+  transform: rotate(90deg);
 }
 /* Icon formatting - closed */
-.tab input[type=checkbox] + label::after {
+.tab label::after,
+.result-details-close::before {
   @apply font-bold;
   content: "\25BE";
-}
-/* Icon formatting - open */
-.tab input[type=checkbox]:checked + label::after {
-  transform: rotateX(180deg);
 }
 
 .loading-animation {

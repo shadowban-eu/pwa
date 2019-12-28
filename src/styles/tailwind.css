@@ -763,17 +763,10 @@ select:-webkit-autofill:hover {
   -o-transition: border .3s;
 }
 
-/* Label formatting when open */
-
-.tab input:checked + label {
-  padding: 1.25rem;
-  border-left-width: 2px;
-  border-color: rgb(20, 129, 195);
-}
-
 /* Icon */
 
-.tab label::after {
+.tab label::after,
+.result-details-close::before {
   float: right;
   right: 0;
   top: 0;
@@ -783,22 +776,24 @@ select:-webkit-autofill:hover {
   line-height: 1.5;
   font-size: 1.25rem;
   text-align: center;
-  -webkit-transition: all .3s;
-  transition: all .3s;
+}
+
+.tab label::after {
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+}
+
+.result-details-close::before {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
 }
 
 /* Icon formatting - closed */
 
-.tab input[type=checkbox] + label::after {
+.tab label::after,
+.result-details-close::before {
   font-weight: 700;
   content: "\25BE";
-}
-
-/* Icon formatting - open */
-
-.tab input[type=checkbox]:checked + label::after {
-  -webkit-transform: rotateX(180deg);
-          transform: rotateX(180deg);
 }
 
 .loading-animation {
@@ -5478,6 +5473,10 @@ select:-webkit-autofill:hover {
 
 .min-h-screen {
   min-height: 100vh;
+}
+
+.min-h-results {
+  min-height: 328px;
 }
 
 .min-w-0 {
@@ -16783,6 +16782,10 @@ select:-webkit-autofill:hover {
 
   .sm\:min-h-screen {
     min-height: 100vh;
+  }
+
+  .sm\:min-h-results {
+    min-height: 328px;
   }
 
   .sm\:min-w-0 {
@@ -28091,6 +28094,10 @@ select:-webkit-autofill:hover {
     min-height: 100vh;
   }
 
+  .md\:min-h-results {
+    min-height: 328px;
+  }
+
   .md\:min-w-0 {
     min-width: 0;
   }
@@ -39397,6 +39404,10 @@ select:-webkit-autofill:hover {
     min-height: 100vh;
   }
 
+  .lg\:min-h-results {
+    min-height: 328px;
+  }
+
   .lg\:min-w-0 {
     min-width: 0;
   }
@@ -50701,6 +50712,10 @@ select:-webkit-autofill:hover {
 
   .xl\:min-h-screen {
     min-height: 100vh;
+  }
+
+  .xl\:min-h-results {
+    min-height: 328px;
   }
 
   .xl\:min-w-0 {
