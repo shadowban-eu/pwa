@@ -1,10 +1,7 @@
 import React from 'react';
-import { navigate } from '@reach/router';
-import { useStore } from 'react-hookstore';
 import { useTranslation } from 'react-i18next';
 
 const ResultDetails = ({ testKey, ...props }) => {
-  const [{ screenName }] = useStore('tester');
   const { t } = useTranslation('tasks');
 
   return (
@@ -25,7 +22,7 @@ const ResultDetails = ({ testKey, ...props }) => {
             mx-2
             border-r-2 border-gray-400
             cursor-pointer"
-          onClick={() => navigate(`/${screenName}`)}
+          onClick={() => window.history.back()}
           ></div>
         <div className="flex flex-col">
           <div className="mb-2 text-2xl">
