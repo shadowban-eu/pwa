@@ -8,7 +8,7 @@ import {
   VALIDATE_SCREEN_NAME,
   RUN_TEST,
   SET_CURRENT_RESULTS
-} from '../actions';
+} from '../actions/tester';
 
 import Title from './Tester/Title';
 import DonationButton from './Tester/DonationButton';

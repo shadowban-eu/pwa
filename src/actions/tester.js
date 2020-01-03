@@ -1,4 +1,4 @@
-import { twitterHandleRX } from './utils';
+import { twitterHandleRX } from '../utils';
 
 export const SET_SCREEN_NAME = Symbol('SET_SCREEN_NAME');
 export const VALIDATE_SCREEN_NAME = Symbol('VALIDATE_SCREEN_NAME');
@@ -30,6 +30,6 @@ export const actions = {
     loading: false,
     currentResult: action.result
   })
-}
+};
 
 export default { symbols, actions };

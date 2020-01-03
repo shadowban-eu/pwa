@@ -1,5 +1,4 @@
-import { actions } from '../actions';
-
+import { actions } from '../actions/tester';
 
 export const initialState = {
   screenName: '',

@@ -2,7 +2,7 @@ import React from 'react';
 import { useStore } from 'react-hookstore';
 import { useTranslation } from 'react-i18next';
 
-import { SET_SCREEN_NAME, VALIDATE_SCREEN_NAME } from '../../actions';
+import { SET_SCREEN_NAME, VALIDATE_SCREEN_NAME } from '../../actions/tester';
 import { twitterHandleRX } from '../../utils';
 
 const ScreenNameInput = () => {
