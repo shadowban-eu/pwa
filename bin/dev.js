@@ -8,6 +8,7 @@ spawn(
   'nodemon',
   [
     '--watch', 'src/styles/index.css',
+    '--watch', 'tailwind.config.js',
     '--exec', 'npm run build:tailwind'
   ],
   options
