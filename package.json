@@ -60,6 +60,7 @@
     "react-hookstore": "^1.4.2",
     "react-i18next": "^11.2.7",
     "react-inlinesvg": "^1.2.0",
+    "react-spring": "^8.0.27",
     "resolve": "1.12.2",
     "resolve-url-loader": "3.1.1",
     "sass-loader": "8.0.0",
