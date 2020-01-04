@@ -21,6 +21,9 @@ module.exports = {
       lineHeight: {
         title: '110%'
       },
+      height: {
+        modal: '90%'
+      },
       minHeight: {
         results: '328px'
       }

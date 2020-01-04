@@ -49,6 +49,10 @@ select:-webkit-autofill:hover {
   -webkit-text-fill-color: rgb(175, 52, 175);
 }
 
+body {
+  overflow-x: hidden;
+}
+
 .prefix-label-input {
   @apply flex justify-center font-medium;
 }

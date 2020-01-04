@@ -11,9 +11,9 @@ import {
 } from '../actions/tester';
 
 import Title from './Tester/Title';
-import DonationButton from './Tester/DonationButton';
 import Controls from './Tester/Controls';
 import Results from './Tester/Results';
+import DonateModal from '../DonateModal';
 import Loading from '../Loading';
 
 createStore('tester', initialState, reducer);
@@ -52,7 +52,7 @@ const Tester = (props) => {
       <div className="flex flex-col bg-shadowblue">
         <div className="text-center">
           <Title />
-          <DonationButton />
+          <DonateModal />
         </div>
         <Controls />
         <Results />

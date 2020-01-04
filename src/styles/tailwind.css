@@ -694,6 +694,10 @@ select:-webkit-autofill:hover {
   -webkit-text-fill-color: rgb(175, 52, 175);
 }
 
+body {
+  overflow-x: hidden;
+}
+
 .prefix-label-input {
   display: -webkit-box;
   display: flex;
@@ -4219,6 +4223,10 @@ select:-webkit-autofill:hover {
 
 .h-screen {
   height: 100vh;
+}
+
+.h-modal {
+  height: 90%;
 }
 
 .leading-none {
@@ -15528,6 +15536,10 @@ select:-webkit-autofill:hover {
 
   .sm\:h-screen {
     height: 100vh;
+  }
+
+  .sm\:h-modal {
+    height: 90%;
   }
 
   .sm\:leading-none {
@@ -26840,6 +26852,10 @@ select:-webkit-autofill:hover {
     height: 100vh;
   }
 
+  .md\:h-modal {
+    height: 90%;
+  }
+
   .md\:leading-none {
     line-height: 1;
   }
@@ -38150,6 +38166,10 @@ select:-webkit-autofill:hover {
     height: 100vh;
   }
 
+  .lg\:h-modal {
+    height: 90%;
+  }
+
   .lg\:leading-none {
     line-height: 1;
   }
@@ -49458,6 +49478,10 @@ select:-webkit-autofill:hover {
 
   .xl\:h-screen {
     height: 100vh;
+  }
+
+  .xl\:h-modal {
+    height: 90%;
   }
 
   .xl\:leading-none {
