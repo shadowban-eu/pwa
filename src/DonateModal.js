@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import useModal from 'use-react-modal';
 import { useTransition, animated } from 'react-spring';
@@ -6,6 +6,7 @@ import { useTransition, animated } from 'react-spring';
 import BBText from './BBText';
 
 const DonateModal = () => {
+  const [donateClicked, setDonateClicked] = useState(false);
   const { t } = useTranslation('common');
   const { isOpen, openModal, closeModal, Modal } = useModal({
     background: 'rgba(0, 0, 0, 0.5)'
@@ -20,18 +21,26 @@ const DonateModal = () => {
     leave: {
       transform: 'scale(0)'
     }
-  })
+  });
 
   const handleDonateClick = (evt) => {
     window.open('https://www.paypal.me/shadowban');
+    setDonateClicked(true);
     closeModal(evt);
   };
 
   return (
     <>
-      <button className="uppercase" onClick={openModal}>
-        support us
-      </button>
+      {
+        donateClicked ?
+          <div className="font-lobster text-accent-purple text-3xl">
+            Thank you for your support!
+          </div>
+        :
+          <button className="uppercase" onClick={openModal}>
+            support us
+          </button>
+      }
       {
         isOpen ? <Modal className="
           sm:w-11/12 md:w-2/3
