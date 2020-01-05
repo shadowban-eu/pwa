@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import useModal from 'use-react-modal';
 import { useTransition, animated } from 'react-spring';
+import SVG from 'react-inlinesvg';
 
 import BBText from './BBText';
 
@@ -33,8 +34,18 @@ const DonateModal = () => {
     <>
       {
         donateClicked ?
-          <div className="font-lobster text-accent-purple text-3xl">
-            Thank you for your support!
+          <div className="flex justify-center">
+            <SVG
+              className="w-8 mr-2"
+              src="https://twemoji.maxcdn.com/svg/2764.svg"
+            />
+            <div className="font-lobster text-accent-purple text-3xl">
+              Thank you for your support!
+            </div>
+            <SVG
+              className="w-8 ml-2"
+              src="https://twemoji.maxcdn.com/svg/2764.svg"
+            />
           </div>
         :
           <button className="uppercase" onClick={openModal}>
