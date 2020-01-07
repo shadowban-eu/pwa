@@ -11,7 +11,12 @@ const Controls = () => {
 
   const runTest = async (submitEvent) => {
     submitEvent.preventDefault();
-    navigate(`/${screenName}`);
+    const testPath = `/${screenName}`;
+    const replace = window.location.pathname === testPath;
+    if (replace) {
+      await navigate('/', { replace });
+    }
+    navigate(testPath, { replace });
   };
 
   return (
