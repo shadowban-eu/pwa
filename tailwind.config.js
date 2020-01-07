@@ -16,7 +16,8 @@ module.exports = {
         lobster: ['Lobster', 'cursive']
       },
       fontSize: {
-        title: '3.56rem'
+        title: '3.56rem',
+        base: '.875rem'
       },
       lineHeight: {
         title: '110%'

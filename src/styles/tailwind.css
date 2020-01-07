@@ -695,6 +695,7 @@ select:-webkit-autofill:hover {
 }
 
 body {
+  font-size: .875rem;
   overflow-x: hidden;
 }
 
@@ -11681,7 +11682,7 @@ body {
 }
 
 .text-base {
-  font-size: 1rem;
+  font-size: .875rem;
 }
 
 .text-lg {
@@ -22994,7 +22995,7 @@ body {
   }
 
   .sm\:text-base {
-    font-size: 1rem;
+    font-size: .875rem;
   }
 
   .sm\:text-lg {
@@ -34308,7 +34309,7 @@ body {
   }
 
   .md\:text-base {
-    font-size: 1rem;
+    font-size: .875rem;
   }
 
   .md\:text-lg {
@@ -45622,7 +45623,7 @@ body {
   }
 
   .lg\:text-base {
-    font-size: 1rem;
+    font-size: .875rem;
   }
 
   .lg\:text-lg {
@@ -56936,7 +56937,7 @@ body {
   }
 
   .xl\:text-base {
-    font-size: 1rem;
+    font-size: .875rem;
   }
 
   .xl\:text-lg {
