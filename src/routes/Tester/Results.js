@@ -23,7 +23,7 @@ const tests = [{
 
 const Results = () => {
   const [{ screenName, loading, currentResult }] = useStore('tester');
-  const { profile } = currentResult;
+  const { profile, errorMessage } = currentResult;
 
   return (
     <div className="
@@ -45,9 +45,7 @@ const Results = () => {
               Running tests for <ProfileLink screenName={screenName} />
             </ResultsLoading>
           :
-            <ResultProfile profile={profile}>
-
-            </ResultProfile>
+            <ResultProfile profile={profile} errorMessage={errorMessage} />
         }
       </div>
       {

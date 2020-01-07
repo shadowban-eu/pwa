@@ -7,7 +7,8 @@ import {
   SET_SCREEN_NAME,
   VALIDATE_SCREEN_NAME,
   RUN_TEST,
-  SET_CURRENT_RESULTS
+  SET_CURRENT_RESULTS,
+  SET_FETCH_ERROR
 } from '../actions/tester';
 
 import Title from './Tester/Title';
@@ -18,11 +19,6 @@ import Loading from '../Loading';
 
 createStore('tester', initialState, reducer);
 
-// const fetchAndDispatchResults = async (...args) => {
-//   const res = await fetch(...args);
-//   const results
-// };
-
 const Tester = (props) => {
   const { screenName } = props;
   const [{ valid }, dispatch] = useStore('tester');
@@ -31,9 +27,19 @@ const Tester = (props) => {
     {
       fetcher: async (...args) => {
         dispatch({ type: RUN_TEST });
-        const res = await fetch(...args);
-        const result = await res.json();
-        dispatch({ type: SET_CURRENT_RESULTS, result });
+        let res;
+        try {
+          res = await fetch(...args);
+          const result = await res.json();
+          dispatch({ type: SET_CURRENT_RESULTS, result });
+        } catch (err) {
+          dispatch({
+            type: SET_FETCH_ERROR,
+            errorMessage: err.message === 'Failed to fetch'
+              ? 'Backend is offline! Please try again later'
+              : err.message
+          });
+        }
       },
       revalidateOnFocus: false,
       shouldRetryOnError: false

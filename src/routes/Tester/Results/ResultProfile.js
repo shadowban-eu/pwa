@@ -3,12 +3,16 @@ import SVG from 'react-inlinesvg';
 
 import ProfileLink from '../ProfileLink';
 
-const ResultProfile = ({ profile }) => {
+const ResultProfile = ({ profile, errorMessage }) => {
   let profileTitle;
   let resultColor;
   let svgFileName = 'gears.svg';
 
-  if (!profile) {
+  if (errorMessage) {
+    profileTitle = errorMessage;
+    svgFileName = 'error.svg';
+    resultColor = 'text-accent-warn';
+  } else if (!profile) {
     profileTitle = 'Test Results';
   } else if (!profile.exists) {
     profileTitle = ' does not exist';
