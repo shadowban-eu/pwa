@@ -11,7 +11,7 @@ const ResultProfile = ({ profile, errorMessage }) => {
   if (errorMessage) {
     profileTitle = errorMessage;
     svgFileName = 'error.svg';
-    resultColor = 'text-accent-warn';
+    resultColor = 'text-accent-error';
   } else if (!profile) {
     profileTitle = 'Test Results';
   } else if (!profile.exists) {
@@ -37,7 +37,7 @@ const ResultProfile = ({ profile, errorMessage }) => {
       <SVG
         src={`/icons/${svgFileName}`}
         width={24} height={24}
-        className={`inline mr-4 fill-current ${profile ? '' : 'invisible'}`}
+        className={`inline mr-4 fill-current ${profile || errorMessage ? '' : 'invisible'}`}
       />
       <span className="inline">
         {
