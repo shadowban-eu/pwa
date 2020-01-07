@@ -1,13 +1,35 @@
 import React from 'react';
-import { Router } from '@reach/router';
+import { useStore } from 'react-hookstore';
+import { navigate } from '@reach/router';
 
-import ResultDetails from './Results/ResultDetails';
-import ResultsCard from './Results/ResultsCard';
+import ProfileLink from './ProfileLink';
+import ResultItem from './Results/ResultItem';
+import ResultsLoading from './Results/ResultsLoading';
+import ResultProfile from './Results/ResultProfile';
+
+const tests = [{
+  key: 'searchSuggestion',
+  title: 'Search Suggestion Ban'
+}, {
+  key: 'search',
+  title: 'Search Ban'
+}, {
+  key: 'ghost',
+  title: 'Ghost Ban'
+}, {
+  key: 'replyDeboosting',
+  title: 'Reply Deboosting'
+}];
 
 const Results = () => {
+  const [{ screenName, loading, currentResult }] = useStore('tester');
+  const { profile } = currentResult;
+
   return (
     <div className="
       card
+      flex flex-col
+      w-full
       self-center
       min-h-results
       w-full sm:w-full md:w-10/12 lg:w-8/12
@@ -16,10 +38,31 @@ const Results = () => {
       overflow-hidden
       p-0
     ">
-      <Router className="flex w-full">
-        <ResultsCard default />
-        <ResultDetails path="/details/:testKey" />
-      </Router>
+      <div className="tab w-full overflow-hidden">
+        {
+          loading ?
+            <ResultsLoading>
+              Running tests for <ProfileLink screenName={screenName} />
+            </ResultsLoading>
+          :
+            <ResultProfile profile={profile}>
+
+            </ResultProfile>
+        }
+      </div>
+      {
+        tests.map(test => {
+          const result = currentResult.tests ? currentResult.tests[test.key] : null;
+          return (
+            <ResultItem
+              test={test}
+              result={result}
+              key={test.key}
+              showDetails={() => navigate(`/details/${test.key}`)}
+            />
+          );
+        })
+      }
     </div>
   );
 };

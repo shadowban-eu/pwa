@@ -1,6 +1,9 @@
-import React from 'react';
-import SVG from 'react-inlinesvg';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useSpring, animated } from 'react-spring';
+
+import SVG from 'react-inlinesvg';
+import ResultDetails from './ResultDetails';
 
 const resultColors = {
   ban: 'text-accent-error',
@@ -28,11 +31,18 @@ const determineResultType = (result) => {
   return 'error';
 };
 
-const ResultItem = ({ test, result, showDetails }) => {
+const ResultItem = ({ test, result }) => {
   const { key } = test;
+  const [detailsShowing, showDetails] = useState(false);
   const { t } = useTranslation('tasks');
   const type = determineResultType(result)
   const idName = `result-${key}`;
+
+  const detailsProps = useSpring({
+    to: {
+      maxHeight: detailsShowing ? '100vh' : '0vh'
+    }
+  });
 
   const title = type === 'error'
     ? 'We were unable to test for technical reasons.'
@@ -45,10 +55,12 @@ const ResultItem = ({ test, result, showDetails }) => {
         id={idName}
         type="checkbox"
         name={idName}
-        onChange={showDetails}
+        onChange={() => showDetails(!detailsShowing)}
       />
       <label
-        className={`block p-5 leading-normal cursor-pointer ${resultColors[type]}`}
+        className={
+          `block p-5 leading-normal cursor-pointer ${resultColors[type]} ${detailsShowing ? '' : 'border-b'}`
+        }
         htmlFor={idName}
       >
         <SVG
@@ -57,6 +69,9 @@ const ResultItem = ({ test, result, showDetails }) => {
         />
         <span className="inline">{result && result.ban === false && 'No '}{title}</span>
       </label>
+      <animated.div style={detailsProps}>
+        <ResultDetails testKey={key} />
+      </animated.div>
     </div>
   );
 };

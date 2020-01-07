@@ -82,17 +82,6 @@ body {
   @apply p-5 flex bg-white shadow-md rounded;
 }
 
-/* Tab content - closed */
-.tab-content {
-  max-height: 0;
-  -webkit-transition: all .3s;
-  -o-transition: all .3s;
-  transition: all .3s;
-}
-/* :checked - resize to full height */
-.tab input:checked ~ .tab-content {
-  max-height: 100vh;
-}
 /* Label formatting when closed */
 .tab label {
   @apply border-l-0;
@@ -101,8 +90,7 @@ body {
   -o-transition: border .3s;
 }
 /* Icon */
-.tab label:not(.result-profile)::after,
-.result-details-close::before {
+.tab label:not(.result-profile)::after {
   float: right;
   right: 0;
   top: 0;
@@ -114,13 +102,15 @@ body {
   text-align: center;
 }
 .tab label:not(.result-profile)::after {
-  transform: rotate(-90deg);
+  transition: transform .3s;
+  transform: rotateX(0);
 }
-.result-details-close::before {
-  transform: rotate(90deg);
+/* :checked - resize to full height */
+.tab input:checked ~ label::after {
+  transform: rotateX(-180deg);
 }
-.tab label:not(.result-profile)::after,
-.result-details-close::before {
+
+.tab label:not(.result-profile)::after {
   @apply font-bold;
   content: "\25BE";
 }

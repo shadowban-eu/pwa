@@ -744,20 +744,6 @@ body {
   border-radius: 0.25rem;
 }
 
-/* Tab content - closed */
-
-.tab-content {
-  max-height: 0;
-  -webkit-transition: all .3s;
-  transition: all .3s;
-}
-
-/* :checked - resize to full height */
-
-.tab input:checked ~ .tab-content {
-  max-height: 100vh;
-}
-
 /* Label formatting when closed */
 
 .tab label {
@@ -769,8 +755,7 @@ body {
 
 /* Icon */
 
-.tab label:not(.result-profile)::after,
-.result-details-close::before {
+.tab label:not(.result-profile)::after {
   float: right;
   right: 0;
   top: 0;
@@ -783,17 +768,22 @@ body {
 }
 
 .tab label:not(.result-profile)::after {
-  -webkit-transform: rotate(-90deg);
-          transform: rotate(-90deg);
+  -webkit-transition: -webkit-transform .3s;
+  transition: -webkit-transform .3s;
+  transition: transform .3s;
+  transition: transform .3s, -webkit-transform .3s;
+  -webkit-transform: rotateX(0);
+          transform: rotateX(0);
 }
 
-.result-details-close::before {
-  -webkit-transform: rotate(90deg);
-          transform: rotate(90deg);
+/* :checked - resize to full height */
+
+.tab input:checked ~ label::after {
+  -webkit-transform: rotateX(-180deg);
+          transform: rotateX(-180deg);
 }
 
-.tab label:not(.result-profile)::after,
-.result-details-close::before {
+.tab label:not(.result-profile)::after {
   font-weight: 700;
   content: "\25BE";
 }
