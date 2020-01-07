@@ -11717,6 +11717,10 @@ body {
   font-size: 3.56rem;
 }
 
+.text-smtitle {
+  font-size: 2.56rem;
+}
+
 .italic {
   font-style: italic;
 }
@@ -23028,6 +23032,10 @@ body {
 
   .sm\:text-title {
     font-size: 3.56rem;
+  }
+
+  .sm\:text-smtitle {
+    font-size: 2.56rem;
   }
 
   .sm\:italic {
@@ -34344,6 +34352,10 @@ body {
     font-size: 3.56rem;
   }
 
+  .md\:text-smtitle {
+    font-size: 2.56rem;
+  }
+
   .md\:italic {
     font-style: italic;
   }
@@ -45658,6 +45670,10 @@ body {
     font-size: 3.56rem;
   }
 
+  .lg\:text-smtitle {
+    font-size: 2.56rem;
+  }
+
   .lg\:italic {
     font-style: italic;
   }
@@ -56970,6 +56986,10 @@ body {
 
   .xl\:text-title {
     font-size: 3.56rem;
+  }
+
+  .xl\:text-smtitle {
+    font-size: 2.56rem;
   }
 
   .xl\:italic {

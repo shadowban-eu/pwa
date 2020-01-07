@@ -23,11 +23,11 @@ const Controls = () => {
     <div className="
       card
       justify-center
-      sm:w-full md:w-10/12 lg:w-8/12
+      w-full sm:w-full md:w-10/12 lg:w-8/12
       mt-10 mb-5
       ml-auto mr-auto
     ">
-      <form className="flex justify-center" onSubmit={runTest}>
+      <form className="flex justify-center w-full" onSubmit={runTest}>
         <ScreenNameInput />
         <button className="uppercase self-center" type="submit">{t('buttons.check')}</button>
       </form>

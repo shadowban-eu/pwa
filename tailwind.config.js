@@ -17,6 +17,7 @@ module.exports = {
       },
       fontSize: {
         title: '3.56rem',
+        smtitle: '2.56rem',
         base: '.875rem'
       },
       lineHeight: {
@@ -30,6 +31,8 @@ module.exports = {
       }
     }
   },
-  variants: {},
+  variants: {
+    fontSize: ['responsive']
+  },
   plugins: []
 }

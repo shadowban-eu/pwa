@@ -61,6 +61,7 @@ const DonateModal = () => {
         !isGone ? <Modal className="
           sm:w-11/12 md:w-2/3
           h-modal
+          w-full
           overflow-auto
         ">
           <animated.div style={props} className="
@@ -70,7 +71,7 @@ const DonateModal = () => {
             <BBText>
               { t('donateModal.content') }
             </BBText>
-            <div className="flex flex-row justify-end">
+            <div className="flex flex-row justify-end mt-6">
               <button className="mr-4" onClick={handleDonateClick}>
                 { t('donateModal.donateButton')}
               </button>
