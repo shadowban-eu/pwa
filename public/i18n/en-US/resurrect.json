@@ -1,0 +1,11 @@
+{
+  "title": {
+    "default": "unavailable?",
+    "fetching": "being resurrected...",
+    "terminated": "terminated!",
+    "protected": "from a protected account.",
+    "suspended": "from a suspended account.",
+    "deleted": "deleted.",
+    "ok": "fine."
+  }
+}
