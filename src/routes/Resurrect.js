@@ -5,6 +5,7 @@ import { createStore, useStore } from 'react-hookstore';
 
 import { initialState, reducer } from '../reducers/resurrect';
 import {
+  SET_PROBE_ID,
   RUN_TEST,
   SET_RESULT,
   SET_FETCH_ERROR
@@ -40,6 +41,12 @@ const Resurrect = ({ probeId }) => {
       shouldRetryOnError: false
     }
   );
+
+  React.useEffect(() => {
+    if (probeId) {
+      dispatch({ type: SET_PROBE_ID, probeId });
+    }
+  }, [probeId, dispatch]);
 
   return (
     <Suspense fallback={<Loading />}>
