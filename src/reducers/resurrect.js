@@ -3,7 +3,7 @@ import { actions } from '../actions/resurrect';
 export const initialState = {
   probeId: '',
   result: null,
-  title: 'default',
+  title: 'title.default',
   fetching: false,
   fetchError: null
 };
