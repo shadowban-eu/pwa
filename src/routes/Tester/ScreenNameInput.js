@@ -23,11 +23,11 @@ const ScreenNameInput = () => {
     ? valid ? 'active text-twitterblue' : 'active text-accent-error'
     : 'text-twitterblue';
 
-    const handleKeyUp = (evt) => {
-      evt.preventDefault();
-      dispatch({ type: SET_SCREEN_NAME, screenName: inputElement.current.value });
-      dispatch({ type: VALIDATE_SCREEN_NAME, screenName: inputElement.current.value });
-    }
+  const handleKeyUp = (evt) => {
+    evt.preventDefault();
+    dispatch({ type: SET_SCREEN_NAME, screenName: inputElement.current.value });
+    dispatch({ type: VALIDATE_SCREEN_NAME, screenName: inputElement.current.value });
+  };
 
   React.useEffect(() => {
     inputElement.current.value = screenName;
