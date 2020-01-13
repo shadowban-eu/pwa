@@ -2,7 +2,6 @@ import React, { Suspense } from 'react';
 import useSWR from 'swr';
 import { createStore, useStore } from 'react-hookstore';
 
-
 import { initialState, reducer } from '../reducers/resurrect';
 import {
   SET_PROBE_ID,
@@ -13,6 +12,7 @@ import {
 
 import Loading from '../Loading';
 import Title from './Resurrect/Title';
+import Controls from './Resurrect/Controls';
 
 createStore('resurrect', initialState, reducer);
 
@@ -53,6 +53,7 @@ const Resurrect = ({ probeId }) => {
       <div className="flex flex-col bg-shadowblue">
         <div className="text-center">
           <Title />
+          <Controls />
         </div>
       </div>
     </Suspense>
