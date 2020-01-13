@@ -50,11 +50,9 @@ const Resurrect = ({ probeId }) => {
 
   return (
     <Suspense fallback={<Loading />}>
-      <div className="flex flex-col bg-shadowblue">
-        <div className="text-center">
-          <Title />
-          <Controls />
-        </div>
+      <div className="flex flex-col h-full bg-shadowblue">
+        <Title />
+        <Controls />
       </div>
     </Suspense>
   );

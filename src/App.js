@@ -11,14 +11,14 @@ I18N();
 
 function App() {
   return (
-    <div>
-      <Router>
+    <div className="flex flex-col h-screen">
+      <Router className="flex-1">
         <Tester path="/" default/>
         <Tester path="/:screenName" />
         <Resurrect path="/resurrect/" />
         <Resurrect path="/resurrect/:probeId" />
       </Router>
-      <Footer />
+      <Footer className="h-20" />
     </div>
   );
 }

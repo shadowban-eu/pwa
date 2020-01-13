@@ -55,7 +55,7 @@ const Tester = (props) => {
 
   return (
     <Suspense fallback={<Loading />}>
-      <div className="flex flex-col bg-shadowblue">
+      <div className="flex flex-col h-full bg-shadowblue">
         <div className="text-center">
           <Title />
           <DonateModal />

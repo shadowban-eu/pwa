@@ -11,6 +11,7 @@ const Title = () => {
       w-full
       mt-10 mb-6
       font-lobster
+      text-center
       leading-title
       text-smtitle sm:text-smtitle md:text-title
       text-twitterblue
