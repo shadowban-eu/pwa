@@ -37,6 +37,7 @@ const Title = () => {
           : 'This tweet'
       }
       { ' is ' }
+      <br className="xl:hidden" />
       <span className="text-accent-purple">
       {
         fetching
