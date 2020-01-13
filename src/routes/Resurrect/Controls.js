@@ -43,13 +43,13 @@ const Controls = () => {
     : 'text-twitterblue';
 
   const handleChange = () => {
+    let probeId = inputElement.current.value;
     try {
-      const probeId = inputElement.current.value.match(tweetUrlOrIdRX)[2];
-      dispatch({ type: SET_PROBE_ID, probeId });
-      dispatch({ type: VALIDATE_PROBE_ID, probeId });
-    } catch (err) { // eslint-disable-line
-      dispatch({ type: VALIDATE_PROBE_ID, probeId });
-    }
+      probeId = inputElement.current.value.match(tweetUrlOrIdRX)[2];
+    } catch (err) {} // eslint-disable-line
+
+    dispatch({ type: SET_PROBE_ID, probeId });
+    dispatch({ type: VALIDATE_PROBE_ID, probeId });
   };
 
   React.useEffect(() => {
