@@ -13,7 +13,7 @@ const Title = () => {
   if (result) {
     const { parentId } = result.tweets.testedWith;
     const { parentAuthorScreenName } = result.tweets.testedWith;
-    subjectTweetLink = `https://twitter.com/shadowban_eu/status/${parentId}`;
+    subjectTweetLink = `https://twitter.com/${parentAuthorScreenName}/status/${parentId}`;
 
     if (result.protected || result.suspended) {
       subjectAuthorLink = `https://twitter.com/${parentAuthorScreenName}`;
