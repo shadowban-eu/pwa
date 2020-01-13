@@ -1,10 +1,14 @@
+import { tweetUrlOrIdRX } from '../utils';
+
 export const SET_PROBE_ID = Symbol('SET_PROBE_ID');
+export const VALIDATE_PROBE_ID = Symbol('VALIDATE_PROBE_ID');
 export const RUN_TEST = Symbol('RUN_TEST');
 export const SET_RESULT = Symbol('SET_RESULT');
 export const SET_FETCH_ERROR = Symbol('SET_FETCH_ERROR');
 
 export const symbols = {
   SET_PROBE_ID,
+  VALIDATE_PROBE_ID,
   RUN_TEST,
   SET_RESULT,
   SET_FETCH_ERROR
@@ -15,6 +19,10 @@ export const actions = {
     ...state,
     fetchError: null,
     probeId: action.probeId
+  }),
+  [VALIDATE_PROBE_ID]: (state, action) => ({
+    ...state,
+    valid: action.probeId === '' || tweetUrlOrIdRX.test(action.probeId)
   }),
   [RUN_TEST]: (state, action) => ({
     ...state,

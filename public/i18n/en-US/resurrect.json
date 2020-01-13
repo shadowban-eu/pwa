@@ -10,5 +10,6 @@
   },
   "errors": {
     "ENOTAREPLY": "Please use a reply to the missing tweet you want to test!"
-  }
+  },
+  "probeIdDefault": "Tweet URL or ID"
 }

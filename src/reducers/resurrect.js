@@ -2,6 +2,7 @@ import { actions } from '../actions/resurrect';
 
 export const initialState = {
   probeId: '',
+  valid: true,
   result: null,
   title: 'title.default',
   fetching: false,

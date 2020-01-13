@@ -699,7 +699,8 @@ body {
   overflow-x: hidden;
 }
 
-.prefix-label-input {
+.prefix-label-input,
+.label-input {
   display: -webkit-box;
   display: flex;
   -webkit-box-pack: center;
@@ -707,7 +708,8 @@ body {
   font-weight: 500;
 }
 
-.prefix-label-input>label {
+.prefix-label-input>label,
+.label-input>label {
   position: absolute;
   top: 0;
   left: 55px;
@@ -724,12 +726,15 @@ body {
           transform: translateY(12px);
 }
 
-.prefix-label-input>input {
+.prefix-label-input>input,
+.label-input>input {
   width: calc(100% - 3rem)
 }
 
 .prefix-label-input input:focus ~ label,
-.prefix-label-input > label.active {
+.prefix-label-input > label.active,
+.label-input input:focus ~ label,
+.label-input > label.active {
   -webkit-transform: translateY(-14px) scale(.8);
           transform: translateY(-14px) scale(.8);
   -webkit-transform-origin: 0 0;

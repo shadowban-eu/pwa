@@ -1,7 +1,8 @@
 {
   "buttons": {
     "check": "Check",
-    "support": "Support Us"
+    "support": "Support Us",
+    "resurrect": "Resurrect"
   },
   "screenNameDefault": "username",
   "qfSettingToast": "PLEASE NOTE: We can only detect the presence of specific bans or deboosting methods, not their absence. There may be others which we do not know or cannot easily test for.",
