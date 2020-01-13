@@ -48,7 +48,7 @@ const Controls = () => {
       dispatch({ type: SET_PROBE_ID, probeId });
       dispatch({ type: VALIDATE_PROBE_ID, probeId });
     } catch (err) { // eslint-disable-line
-      dispatch({ type: VALIDATE_PROBE_ID, probeId: false });
+      dispatch({ type: VALIDATE_PROBE_ID, probeId });
     }
   };
 
