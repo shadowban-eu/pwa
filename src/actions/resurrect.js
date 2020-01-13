@@ -19,7 +19,9 @@ export const actions = {
   [RUN_TEST]: (state, action) => ({
     ...state,
     fetchError: null,
-    fetching: true
+    fetching: true,
+    result: null,
+    title: 'title.fetching'
   }),
   [SET_RESULT]: (state, action) => {
     const title = (action.result.terminated && 'terminated')
