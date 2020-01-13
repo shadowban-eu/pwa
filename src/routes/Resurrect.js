@@ -27,13 +27,15 @@ const Resurrect = ({ probeId }) => {
         try {
           res = await fetch(...args);
           const result = await res.json();
+          if (!res.ok) {
+            throw result;
+          }
           dispatch({ type: SET_RESULT, result });
         } catch (err) {
+          console.log('fetch error dispatch')
           dispatch({
             type: SET_FETCH_ERROR,
-            errorMessage: err.message === 'Failed to fetch'
-              ? 'Backend is offline! Please try again later'
-              : err.message
+            error: err.errors[0]
           });
         }
       },

@@ -7,5 +7,8 @@
     "suspended": "from a suspended account.",
     "deleted": "deleted.",
     "ok": "fine."
+  },
+  "errors": {
+    "ENOTAREPLY": "Please use a reply to the missing tweet you want to test!"
   }
 }

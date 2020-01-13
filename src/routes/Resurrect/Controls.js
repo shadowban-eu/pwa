@@ -9,12 +9,13 @@ const samples = {
   suspended: '1209194776656072704',
   deleted: '1214957370431942656',
   ok: '1214936962349576192',
+  notAReplyError: '1183908355372273665',
   default: ''
 };
 
 const Controls = () => {
-  const [{ probeId }] = useStore('tester');
-  const { t } = useTranslation('common');
+  const [{ fetchError }] = useStore('resurrect');
+  const { t } = useTranslation('resurrect');
   const selectionRef = useRef();
 
   const runTest = async (submitEvent) => {
@@ -29,6 +30,7 @@ const Controls = () => {
 
   return (
     <div className="
+      flex flex-col
       card
       justify-center
       w-full sm:w-full md:w-10/12 lg:w-8/12
@@ -42,10 +44,16 @@ const Controls = () => {
           <option value="suspended">Suspended Account</option>
           <option value="deleted">Deleted Tweet</option>
           <option value="ok">Tweet is ok</option>
+          <option value="notAReplyError">NotAReplyError</option>
           <option value="default">Reset to default</option>
         </select>
         {/*<button className="uppercase self-center" type="submit">{t('buttons.check')}</button>*/}
       </form>
+      {
+        fetchError
+          ? <div className="text-accent-error text-center my-4">{t(`errors.${fetchError.code}`)}</div>
+          : null
+      }
     </div>
   );
 };

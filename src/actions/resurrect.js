@@ -32,6 +32,7 @@ export const actions = {
     return {
       ...state,
       fetching: false,
+      fetchError: null,
       result: action.result,
       title: `title.${title}`
     };

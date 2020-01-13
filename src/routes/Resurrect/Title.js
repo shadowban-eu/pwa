@@ -5,12 +5,12 @@ import { useTranslation } from 'react-i18next';
 import SafeLink from '../../SafeLink';
 
 const Title = () => {
-  const [{ result, title, fetching }] = useStore('resurrect');
+  const [{ result, title, fetching, fetchError }] = useStore('resurrect');
   const { t } = useTranslation('resurrect');
 
   let subjectTweetLink;
   let subjectAuthorLink;
-  if (result) {
+  if (result && !fetchError) {
     const { parentId } = result.tweets.testedWith;
     const { parentAuthorScreenName } = result.tweets.testedWith;
     subjectTweetLink = `https://twitter.com/${parentAuthorScreenName}/status/${parentId}`;
