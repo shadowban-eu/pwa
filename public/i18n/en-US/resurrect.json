@@ -1,0 +1,16 @@
+{
+  "title": {
+    "default": "unavailable?",
+    "fetching": "being resurrected...",
+    "terminated": "terminated!",
+    "protected": "from a protected account.",
+    "suspended": "from a suspended account.",
+    "deleted": "deleted.",
+    "ok": "fine."
+  },
+  "errors": {
+    "ENOTAREPLY": "Please use a reply to the missing tweet you want to test!",
+    "ENOTEXIST": "No tweet with that ID exists."
+  },
+  "probeIdDefault": "Tweet URL or ID"
+}

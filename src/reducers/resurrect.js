@@ -1,13 +1,12 @@
-import { actions } from '../actions/tester';
+import { actions } from '../actions/resurrect';
 
 export const initialState = {
-  screenName: '',
+  probeId: '',
   valid: true,
-  loading: false,
-  currentResult: {
-    profile: null,
-    tests: null
-  }
+  result: null,
+  title: 'title.default',
+  fetching: false,
+  fetchError: null
 };
 
 export const reducer = (state, action) => {

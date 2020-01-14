@@ -16,13 +16,23 @@ module.exports = {
         lobster: ['Lobster', 'cursive']
       },
       fontSize: {
-        title: '3.56rem'
+        title: '3.56rem',
+        smtitle: '2.56rem',
+        base: '.875rem'
       },
       lineHeight: {
         title: '110%'
+      },
+      height: {
+        modal: '90%'
+      },
+      minHeight: {
+        results: '328px'
       }
     }
   },
-  variants: {},
+  variants: {
+    fontSize: ['responsive']
+  },
   plugins: []
 }

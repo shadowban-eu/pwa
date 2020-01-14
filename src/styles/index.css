@@ -2,6 +2,13 @@
 @tailwind components;
 
 /* add customizations before importing tailwind's utilities! */
+a {
+  @apply text-twitterblue;
+}
+a:hover {
+  @apply underline;
+}
+
 button {
   @apply bg-white text-twitterblue border-twitterblue py-2 px-4 border rounded-full;
   transition: box-shadow 0.3s;
@@ -42,10 +49,17 @@ select:-webkit-autofill:hover {
   -webkit-text-fill-color: rgb(175, 52, 175);
 }
 
-.prefix-label-input {
+body {
+  @apply text-base;
+  overflow-x: hidden;
+}
+
+.prefix-label-input,
+.label-input {
   @apply flex justify-center font-medium;
 }
-.prefix-label-input>label {
+.prefix-label-input>label,
+.label-input>label {
   position: absolute;
   top: 0;
   left: 55px;
@@ -57,14 +71,67 @@ select:-webkit-autofill:hover {
   transform: translateY(12px);
 }
 
-.prefix-label-input>input {
+.prefix-label-input>input,
+.label-input>input {
   width: calc(100% - 3rem)
 }
 
 .prefix-label-input input:focus ~ label,
-.prefix-label-input > label.active {
+.prefix-label-input > label.active,
+.label-input input:focus ~ label,
+.label-input > label.active {
   transform: translateY(-14px) scale(.8);
   transform-origin: 0 0;
+}
+
+.card {
+  @apply p-5 flex bg-white shadow-md rounded;
+}
+
+/* Label formatting when closed */
+.tab label {
+  @apply border-l-0;
+  transition: border .3s;
+  -webkit-transition: border .3s;
+  -o-transition: border .3s;
+}
+/* Icon */
+.tab label:not(.result-profile)::after {
+  float: right;
+  right: 0;
+  top: 0;
+  display: block;
+  width: 1.5em;
+  height: 1.5em;
+  line-height: 1.5;
+  font-size: 1.25rem;
+  text-align: center;
+}
+.tab label:not(.result-profile)::after {
+  transition: transform .3s;
+  transform: rotateX(0);
+}
+/* :checked - resize to full height */
+.tab input:checked ~ label::after {
+  transform: rotateX(-180deg);
+}
+
+.tab label:not(.result-profile)::after {
+  @apply font-bold;
+  content: "\25BE";
+}
+
+.loading-animation {
+  animation: loadingBlurAnimation 2s ease-out infinite;
+}
+
+@keyframes loadingBlurAnimation {
+  0% {
+    filter: blur(5px);
+  }
+  100% {
+    filter: blur(0px);
+  }
 }
 
 @tailwind utilities;

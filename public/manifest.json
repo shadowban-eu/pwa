@@ -3,17 +3,22 @@
   "name": "Twitter Shadowban Test",
   "icons": [
     {
-      "src": "favicon.png",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "src": "/favicon/favicon_32.png",
+      "sizes": "32x32 24x24 16x16",
       "type": "image/png"
     },
     {
-      "src": "favicon192.png",
+      "src": "/favicon/favicon_64.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon/favicon_192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "favicon512.png",
+      "src": "/favicon/favicon_512.png",
       "type": "image/png",
       "sizes": "512x512"
     }

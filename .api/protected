@@ -1,0 +1,25 @@
+{
+  "profile": {
+    "exists": true,
+    "protected": true,
+    "screen_name": "protected",
+    "has_tweets": true
+  },
+  "tests": {
+    "ghost": {
+      "ban": false
+    },
+    "replyDeboosting": {
+      "ban": true,
+      "in_reply_to": "1161665852820852736",
+      "tweet": "1161666623843065856"
+    },
+    "search": {
+      "ban": false,
+      "found": "1161666623843065856"
+    },
+    "searchSuggestion": {
+      "ban": true
+    }
+  }
+}

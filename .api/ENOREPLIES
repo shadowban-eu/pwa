@@ -1,0 +1,24 @@
+{
+  "timestamp": 1575732782.355011,
+  "profile": {
+    "screen_name": "yollagelsin67",
+    "protected": false,
+    "exists": true,
+    "has_tweets": true
+  },
+  "tests": {
+    "search": {
+      "ban": false,
+      "found": "1203031995607080960"
+    },
+    "searchSuggestion": {
+      "ban": true
+    },
+    "ghost": {
+      "ban": false
+    },
+    "replyDeboosting": {
+      "error": "ENOREPLIES"
+    }
+  }
+}

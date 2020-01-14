@@ -1,12 +1,13 @@
 import React from 'react';
 import { useStore } from 'react-hookstore';
+import { useTranslation } from 'react-i18next';
 
-import { SET_SCREEN_NAME, VALIDATE_SCREEN_NAME } from '../../actions';
-
-const twitterHandleRX = /^[A-Za-z0-9_]{1,15}$/;
+import { SET_SCREEN_NAME, VALIDATE_SCREEN_NAME } from '../../actions/tester';
+import { twitterHandleRX } from '../../utils';
 
 const ScreenNameInput = () => {
   const [{ screenName, valid }, dispatch] = useStore('tester');
+  const { t } = useTranslation('common');
   const inputElement = React.useRef(null);
 
   // pretty sure this is wrong; feels wrong...
@@ -22,19 +23,23 @@ const ScreenNameInput = () => {
     ? valid ? 'active text-twitterblue' : 'active text-accent-error'
     : 'text-twitterblue';
 
-    const handleKeyUp = (evt) => {
-      evt.preventDefault();
-      dispatch({ type: SET_SCREEN_NAME, screenName: inputElement.current.value });
-      dispatch({ type: VALIDATE_SCREEN_NAME, screenName: inputElement.current.value });
-    }
+  const handleKeyUp = (evt) => {
+    evt.preventDefault();
+    dispatch({ type: SET_SCREEN_NAME, screenName: inputElement.current.value });
+    dispatch({ type: VALIDATE_SCREEN_NAME, screenName: inputElement.current.value });
+  };
 
   React.useEffect(() => {
     inputElement.current.value = screenName;
   }, [inputElement, screenName]);
 
   return (
-    <div className="prefix-label-input relative w-64 mr-12">
-      <span className={`absolute w-12 left-0 text-3xl text-center ${prefixColorClass}`}>@</span>
+    <div className="prefix-label-input relative sm:w-64 w-2/3 my-4 mr-0 sm:mr-4">
+      <span className={
+        `absolute w-12 left-0 text-3xl text-center font-lobster ${prefixColorClass}`
+      }>
+        @
+      </span>
       <input
         id="screenName"
         type="text"
@@ -45,7 +50,7 @@ const ScreenNameInput = () => {
         onKeyUp={handleKeyUp}
         className={`h-12 ml-12 border-b-2 font-medium focus:outline-none ${inputColorClasses}`}
       />
-      <label htmlFor="screenName" className={labelClasses}>username</label>
+      <label htmlFor="screenName" className={labelClasses}>{t('screenNameDefault')}</label>
     </div>
   );
 };

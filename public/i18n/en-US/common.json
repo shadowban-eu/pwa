@@ -1,0 +1,14 @@
+{
+  "buttons": {
+    "check": "Check",
+    "support": "Support Us",
+    "resurrect": "Resurrect"
+  },
+  "screenNameDefault": "username",
+  "qfSettingToast": "PLEASE NOTE: We can only detect the presence of specific bans or deboosting methods, not their absence. There may be others which we do not know or cannot easily test for.",
+  "donateModal": {
+    "content": "[h4 className=\"text-accent-purple\"]Support Us[/h4][p]For over a year now (since 04/2018), shadowban.eu has given Twitter users all around the world an easy way to test their accounts. We have exposed and defeated the #QFD and our test results have been used as evidence in several law suits. Just recently, we have furthermore identified a new shadowbanning method: [url=\"https://twitter.com/search?q=%23TimelineTerminationBan&src=typed_query\"]#TimelineTerminationBan[/url]. We have outlined it in our [url=https://blog.shadowban.eu/#2019-10-16-here-we-go-again]blog[/url] and a new test is in development.[/p][p]If you feel that shadowban.eu brings you any value, please consider making a donation to our PayPal![br]Every bit helps keeping the site running and continuing our research.[/p][h6]Thank You! :)[/h6]",
+    "donateButton": "Donate via PayPal",
+    "dismissButton": "No, thanks"
+  }
+}
