@@ -9,7 +9,8 @@
     "ok": "fine."
   },
   "errors": {
-    "ENOTAREPLY": "Please use a reply to the missing tweet you want to test!"
+    "ENOTAREPLY": "Please use a reply to the missing tweet you want to test!",
+    "ENOTEXIST": "No tweet with that ID exists."
   },
   "probeIdDefault": "Tweet URL or ID"
 }
