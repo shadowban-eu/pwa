@@ -23,3 +23,6 @@ yarn-debug.log*
 yarn-error.log*
 
 ansible/
+
+# tailwind build result
+src/styles/tailwind.css
