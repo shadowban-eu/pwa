@@ -49,6 +49,7 @@ export const actions = {
     ...state,
     fetching: false,
     result: null,
+    title: 'title.default',
     fetchError: action.error
   })
 };
