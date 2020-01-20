@@ -37,10 +37,15 @@ const preset = reactPreset.extend(tags => ({
     content: node.content
   }),
   br: () => ({ tag: 'br' }),
-  url: (...args) => ({
-    ...tags.url(...args),
-    tag: SafeLink
-  }),
+  url: (node, ctx) => {
+    const isInternal = !!node.attrs.internal;
+    delete node.attrs.internal;
+    const presetResult = tags.url(node, ctx);
+    return ({
+      ...presetResult,
+      tag: isInternal ? 'a' : SafeLink
+    });
+  },
   purple: node => ({
     tag: 'span',
     attrs: {
