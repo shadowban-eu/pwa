@@ -1,6 +1,7 @@
 import React from 'react';
 import { Router } from '@reach/router';
 
+import HeaderMenu from './HeaderMenu';
 import Tester from './routes/Tester';
 import Resurrect from './routes/Resurrect';
 import Footer from './Footer';
@@ -12,6 +13,7 @@ I18N();
 function App() {
   return (
     <div className="flex flex-col h-screen">
+      <HeaderMenu />
       <Router className="flex-1">
         <Tester path="/" default/>
         <Tester path="/:screenName" />

@@ -24,7 +24,7 @@ const Title = () => {
     <h2 className="
       h-20
       w-full
-      mt-10 mb-6
+      mt-6 mb-6
       font-lobster
       text-center
       leading-title
