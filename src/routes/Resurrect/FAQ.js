@@ -19,7 +19,7 @@ const FAQ = () => {
         <BBText>{ t('timelineTermination.q') }</BBText>
       </div>
       <div className="text-faq-a">
-        <BBText>{ t('timelineTermination.a') }</BBText>
+        <BBText>{ t('timelineTermination.a', { PUBLIC_URL: process.env.PUBLIC_URL }) }</BBText>
       </div>
     </div>
   );
