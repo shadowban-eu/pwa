@@ -2,7 +2,9 @@ import React from 'react';
 import BBCode from '@bbob/react/es/Component'
 import reactPreset from '@bbob/preset-react/es'
 
+import SpringyImage from './SpringyImage';
 import SafeLink from './SafeLink';
+import Streamable from './Streamable';
 
 const getClassName = (attrs) => attrs && attrs.className ? attrs.className : '';
 
@@ -74,6 +76,26 @@ const preset = reactPreset.extend(tags => ({
   li: node => ({
     tag: 'li',
     content: node.content
+  }),
+  img: (...args) => {
+    const presetResult = tags.img(...args);
+    return ({
+      ...presetResult,
+      tag: args[0].attrs.inline ? 'img' : SpringyImage,
+      attrs: {
+        ...presetResult.attrs,
+        className: `h-full mx-auto shadow-md ${getClassName(args[0].attrs)} ${args[0].attrs.inline ? 'inline' : ''}`,
+        alt: args[0].attrs.alt || '',
+        width: args[0].attrs.width,
+        height: args[0].attrs.height
+      }
+    });;
+  },
+  streamable: node => ({
+    tag: Streamable,
+    attrs: {
+      src: node.attrs.src
+    }
   })
 }));
 
