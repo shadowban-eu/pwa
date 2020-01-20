@@ -1,19 +1,12 @@
 import React from 'react';
 
-const Streamable = (props) => {
-  console.log(props);
-  const { src } = props;
+const Streamable = ({ src, className }) => {
   const splitSrc = src.split('/');
   const embedId = splitSrc.pop();
   const videoId = splitSrc.pop();
 
   return (
-    <div style={{
-      width: '100%',
-      height: 0,
-      position: 'relative',
-      paddingBottom: '67.059%'
-    }}>
+    <div className={className}>
       <iframe
         src={src}
         title={`streamable-${videoId}/${embedId}`}
@@ -21,14 +14,9 @@ const Streamable = (props) => {
         width="100%"
         height="100%"
         allowFullScreen
-        style={{
-          width: '100%',
-          height: '100%',
-          position: 'absolute',
-          left: 0,
-          top: 0,
-          overflow: 'hidden',
-        }}></iframe></div>
+        className="w-full h-full absolute left-0 top-o overflow-hidden"
+      ></iframe>
+    </div>
   );
 
 };

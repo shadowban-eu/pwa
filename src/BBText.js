@@ -27,14 +27,14 @@ const preset = reactPreset.extend(tags => ({
   h4: node => ({
     tag: 'div',
     attrs: {
-      className: `text-4xl ${node.attrs.className}`
+      className: `text-4xl ${getClassName(node.attrs)}`
     },
     content: node.content
   }),
   h6: node => ({
     tag: 'div',
     attrs: {
-      className: `text-2xl ${node.attrs.className}`
+      className: `text-2xl ${getClassName(node.attrs)}`
     },
     content: node.content
   }),
@@ -57,11 +57,12 @@ const preset = reactPreset.extend(tags => ({
   }),
   flex: node => {
     const wrap = node.attrs.wrap ? 'flex-wrap' : '';
+    const direction = node.attrs.col ? 'flex-column' : 'flex-row';
     const justify = node.attrs.justify ? `justify-${node.attrs.justify}` : '';
     return ({
       tag: 'div',
       attrs: {
-        className: `flex flex-row ${wrap} ${justify}`.trim()
+        className: `flex ${direction} ${wrap} ${justify}`.trim()
       },
       content: node.content
     });
@@ -94,7 +95,8 @@ const preset = reactPreset.extend(tags => ({
   streamable: node => ({
     tag: Streamable,
     attrs: {
-      src: node.attrs.src
+      src: node.attrs.src,
+      className: getClassName(node.attrs) || 'relative w-2/3 mx-auto h-streamable shadow-md'
     }
   })
 }));

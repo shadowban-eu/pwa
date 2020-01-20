@@ -13,6 +13,7 @@ import {
 import Loading from '../Loading';
 import Title from './Resurrect/Title';
 import Controls from './Resurrect/Controls';
+import FAQ from './Resurrect/FAQ';
 
 createStore('resurrect', initialState, reducer);
 
@@ -55,6 +56,7 @@ const Resurrect = ({ probeId }) => {
       <div className="flex flex-col h-full bg-shadowblue">
         <Title />
         <Controls />
+        <FAQ />
       </div>
     </Suspense>
   );
