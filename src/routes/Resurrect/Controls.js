@@ -21,7 +21,7 @@ import {
 
 const Controls = () => {
   const [{ fetchError, probeId, valid }, dispatch] = useStore('resurrect');
-  const { t } = useTranslation(['resurrect', 'common']);
+  const { t } = useTranslation(['resurrect', 'common', 'errors']);
   const inputElement = useRef();
 
   const runTest = async (submitEvent) => {
@@ -82,7 +82,7 @@ const Controls = () => {
       </form>
       {
         fetchError
-          ? <div className="text-accent-error text-center my-4">{t(`errors.${fetchError.code}`)}</div>
+          ? <div className="text-accent-error text-center my-4">{t(`errors:${fetchError.code}`)}</div>
           : null
       }
     </div>
