@@ -1,4 +1,4 @@
-import { twitterHandleRX } from '../utils';
+import { twitterHandleRX, convertLegacyAPIResponse } from '../utils';
 
 export const SET_SCREEN_NAME = Symbol('SET_SCREEN_NAME');
 export const VALIDATE_SCREEN_NAME = Symbol('VALIDATE_SCREEN_NAME');
@@ -30,10 +30,9 @@ export const actions = {
   [SET_CURRENT_RESULTS]: (state, action) => ({
     ...state,
     loading: false,
-    currentResult: action.result
+    currentResult: convertLegacyAPIResponse(action.result)
   }),
   [SET_FETCH_ERROR]: (state, action) => {
-    console.log(action)
     return ({
       ...state,
       loading: false,
