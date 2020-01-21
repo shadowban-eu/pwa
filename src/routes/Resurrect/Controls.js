@@ -19,7 +19,7 @@ import {
 //   default: ''
 // };
 
-const Controls = () => {
+const Controls = ({ fetcher }) => {
   const [{ fetchError, probeId, valid }, dispatch] = useStore('resurrect');
   const { t } = useTranslation(['resurrect', 'common', 'errors']);
   const inputElement = useRef();
@@ -27,11 +27,11 @@ const Controls = () => {
   const runTest = async (submitEvent) => {
     submitEvent.preventDefault();
     const testPath = `/resurrect/${probeId}`;
-    const replace = window.location.pathname === testPath;
-    if (replace) {
-      await navigate('/resurrect/', { replace });
+    if (window.location.pathname === testPath) {
+      fetcher(`${process.env.REACT_APP_RESURRECT_URL}/${probeId}`);
+    } else {
+      navigate(testPath);
     }
-    navigate(testPath, { replace });
   };
 
   const inputColorClasses = valid

@@ -47,7 +47,10 @@ export const actions = {
       title: `title.${title}`
     };
   },
-  [RESET_RESULT]: (state, action, initialState) => ({ ...initialState }),
+  [RESET_RESULT]: (state, action, initialState) => ({
+    ...initialState,
+    probeId: state.probeId
+  }),
   [SET_FETCH_ERROR]: (state, action) => ({
     ...state,
     fetching: false,
