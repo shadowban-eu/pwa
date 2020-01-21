@@ -11,9 +11,21 @@ const HeaderMenuLink = (props) => {
   return (
     <Link
       {...props}
-      getProps={({ isCurrent }) => ({
-        className: isCurrent ? activeClassName : defaultClassName
-      })}
+      getProps={(locationMatch) => {
+        let isCurrent;
+        const actualHref = locationMatch.location.pathname;
+
+        if (locationMatch.href === '/resurrect') {
+          isCurrent = actualHref.startsWith('/resurrect') && locationMatch.isPartiallyCurrent;
+        } else {
+          isCurrent = !actualHref.startsWith('/resurrect') && locationMatch.isPartiallyCurrent;
+        }
+
+        return ({
+          className: isCurrent ? activeClassName : defaultClassName
+        });
+      }
+    }
     />
   );
 };
