@@ -27,7 +27,8 @@ export const actions = {
   }),
   [RUN_TEST]: (state, action) => ({
     ...state,
-    loading: true
+    loading: true,
+    fetchError: null
   }),
   [SET_CURRENT_RESULTS]: (state, action) => ({
     ...state,
@@ -37,17 +38,14 @@ export const actions = {
   [RESET_CURRENT_RESULTS]: (state, action, initialState) => ({
     ...state,
     loading: false,
-    currentResult: initialState.currentResult
+    currentResult: initialState.currentResult,
+    fetchError: null
   }),
-  [SET_FETCH_ERROR]: (state, action) => {
-    return ({
-      ...state,
-      loading: false,
-      currentResult: {
-        errorMessage: action.errorMessage
-      }
-    })
-  }
+  [SET_FETCH_ERROR]: (state, action) => ({
+    ...state,
+    loading: false,
+    fetchError: action.fetchError
+  })
 };
 
 export default { symbols, actions };

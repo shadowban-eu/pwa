@@ -37,9 +37,7 @@ const Tester = (props) => {
         } catch (err) {
           dispatch({
             type: SET_FETCH_ERROR,
-            errorMessage: err.message === 'Failed to fetch'
-              ? 'Backend is offline! Please try again later'
-              : err.message
+            fetchError: { code: 'EFETCHFAILED' }
           });
         }
       },
