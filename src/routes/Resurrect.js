@@ -31,14 +31,20 @@ const Resurrect = ({ probeId }) => {
           res = await fetch(...args);
           const result = await res.json();
           if (!res.ok) {
+            console.log('Throwing not ok response')
             throw result;
           }
           dispatch({ type: SET_RESULT, result });
         } catch (err) {
-          console.log('fetch error dispatch')
+          if (!err.errors) {
+            return dispatch({
+              type: SET_FETCH_ERROR,
+              fetchError: { code: 'EFETCHFAILED' }
+            });
+          }
           dispatch({
             type: SET_FETCH_ERROR,
-            error: err.errors[0]
+            fetchError: err.errors[0]
           });
         }
       },

@@ -7,7 +7,8 @@ export const initialState = {
   currentResult: {
     profile: null,
     tests: null
-  }
+  },
+  fetchError: null
 };
 
 export const reducer = (state, action) => {

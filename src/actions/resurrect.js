@@ -53,7 +53,7 @@ export const actions = {
     fetching: false,
     result: null,
     title: 'title.default',
-    fetchError: action.error
+    fetchError: action.fetchError
   })
 };
 
