@@ -5,18 +5,18 @@ import { useTranslation } from 'react-i18next';
 
 import ScreenNameInput from './ScreenNameInput';
 
-const Controls = () => {
+const Controls = ({ fetcher }) => {
   const [{ screenName }] = useStore('tester');
   const { t } = useTranslation('common');
 
   const runTest = async (submitEvent) => {
     submitEvent.preventDefault();
     const testPath = `/${screenName}`;
-    const replace = window.location.pathname === testPath;
-    if (replace) {
-      await navigate('/', { replace });
+    if (window.location.pathname === testPath) {
+      fetcher(`${process.env.REACT_APP_TEST_URL}/${screenName}`);
+    } else {
+      navigate(testPath);
     }
-    navigate(testPath, { replace });
   };
 
   return (

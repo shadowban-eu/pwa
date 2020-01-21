@@ -20,27 +20,31 @@ import Loading from '../Loading';
 
 createStore('tester', initialState, reducer);
 
+const fetchTestResults = async (dispatch, ...args) => {
+  dispatch({ type: RESET_CURRENT_RESULTS })
+  dispatch({ type: RUN_TEST });
+  let res;
+  try {
+    res = await fetch(...args);
+    const result = await res.json();
+    dispatch({ type: SET_CURRENT_RESULTS, result });
+  } catch (err) {
+    dispatch({
+      type: SET_FETCH_ERROR,
+      fetchError: { code: 'EFETCHFAILED' }
+    });
+  }
+};
+
 const Tester = (props) => {
   const { screenName } = props;
   const [{ valid }, dispatch] = useStore('tester');
+  const fetcher = fetchTestResults.bind(null, dispatch);
+
   useSWR(
     screenName && valid ? `${process.env.REACT_APP_TEST_URL}/${screenName}` : null,
     {
-      fetcher: async (...args) => {
-        dispatch({ type: RESET_CURRENT_RESULTS })
-        dispatch({ type: RUN_TEST });
-        let res;
-        try {
-          res = await fetch(...args);
-          const result = await res.json();
-          dispatch({ type: SET_CURRENT_RESULTS, result });
-        } catch (err) {
-          dispatch({
-            type: SET_FETCH_ERROR,
-            fetchError: { code: 'EFETCHFAILED' }
-          });
-        }
-      },
+      fetcher,
       revalidateOnFocus: false,
       shouldRetryOnError: false
     }
@@ -60,7 +64,7 @@ const Tester = (props) => {
           <Title />
           <DonateModal />
         </div>
-        <Controls />
+        <Controls fetcher={fetcher} />
         <Results />
       </div>
     </Suspense>
