@@ -7,6 +7,7 @@ import {
   SET_PROBE_ID,
   RUN_TEST,
   SET_RESULT,
+  RESET_RESULT,
   SET_FETCH_ERROR
 } from '../actions/resurrect';
 
@@ -23,6 +24,7 @@ const Resurrect = ({ probeId }) => {
     probeId ? `${process.env.REACT_APP_RESURRECT_URL}/${probeId}` : null,
     {
       fetcher: async (...args) => {
+        dispatch({ type: RESET_RESULT });
         dispatch({ type: RUN_TEST });
         let res;
         try {

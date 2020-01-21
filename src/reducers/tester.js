@@ -12,7 +12,7 @@ export const initialState = {
 
 export const reducer = (state, action) => {
   if (actions[action.type]) {
-    return actions[action.type](state, action);
+    return actions[action.type](state, action, initialState);
   }
   return initialState;
 };

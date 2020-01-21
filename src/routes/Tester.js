@@ -8,6 +8,7 @@ import {
   VALIDATE_SCREEN_NAME,
   RUN_TEST,
   SET_CURRENT_RESULTS,
+  RESET_CURRENT_RESULTS,
   SET_FETCH_ERROR
 } from '../actions/tester';
 
@@ -26,6 +27,7 @@ const Tester = (props) => {
     screenName && valid ? `${process.env.REACT_APP_TEST_URL}/${screenName}` : null,
     {
       fetcher: async (...args) => {
+        dispatch({ type: RESET_CURRENT_RESULTS })
         dispatch({ type: RUN_TEST });
         let res;
         try {

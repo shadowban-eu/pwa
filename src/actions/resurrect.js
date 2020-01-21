@@ -4,6 +4,7 @@ export const SET_PROBE_ID = Symbol('SET_PROBE_ID');
 export const VALIDATE_PROBE_ID = Symbol('VALIDATE_PROBE_ID');
 export const RUN_TEST = Symbol('RUN_TEST');
 export const SET_RESULT = Symbol('SET_RESULT');
+export const RESET_RESULT = Symbol('RESET_RESULT');
 export const SET_FETCH_ERROR = Symbol('SET_FETCH_ERROR');
 
 export const symbols = {
@@ -11,6 +12,7 @@ export const symbols = {
   VALIDATE_PROBE_ID,
   RUN_TEST,
   SET_RESULT,
+  RESET_RESULT,
   SET_FETCH_ERROR
 };
 
@@ -45,6 +47,7 @@ export const actions = {
       title: `title.${title}`
     };
   },
+  [RESET_RESULT]: (state, action, initialState) => ({ ...initialState }),
   [SET_FETCH_ERROR]: (state, action) => ({
     ...state,
     fetching: false,

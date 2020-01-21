@@ -4,6 +4,7 @@ export const SET_SCREEN_NAME = Symbol('SET_SCREEN_NAME');
 export const VALIDATE_SCREEN_NAME = Symbol('VALIDATE_SCREEN_NAME');
 export const RUN_TEST = Symbol('RUN_TEST');
 export const SET_CURRENT_RESULTS = Symbol('SET_CURRENT_RESULTS');
+export const RESET_CURRENT_RESULTS = Symbol('RESET_CURRENT_RESULTS');
 export const SET_FETCH_ERROR = Symbol('SET_FETCH_ERROR');
 
 export const symbols = {
@@ -11,6 +12,7 @@ export const symbols = {
   VALIDATE_SCREEN_NAME,
   RUN_TEST,
   SET_CURRENT_RESULTS,
+  RESET_CURRENT_RESULTS,
   SET_FETCH_ERROR
 };
 
@@ -31,6 +33,11 @@ export const actions = {
     ...state,
     loading: false,
     currentResult: convertLegacyAPIResponse(action.result)
+  }),
+  [RESET_CURRENT_RESULTS]: (state, action, initialState) => ({
+    ...state,
+    loading: false,
+    currentResult: initialState.currentResult
   }),
   [SET_FETCH_ERROR]: (state, action) => {
     return ({
