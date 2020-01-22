@@ -12,6 +12,7 @@ import {
 } from '../actions/resurrect';
 
 import Loading from '../Loading';
+import DonateModal from '../DonateModal';
 import Title from './Resurrect/Title';
 import Controls from './Resurrect/Controls';
 import FAQ from './Resurrect/FAQ';
@@ -66,7 +67,10 @@ const Resurrect = ({ probeId }) => {
   return (
     <Suspense fallback={<Loading />}>
       <div className="flex flex-col h-full bg-shadowblue">
-        <Title />
+        <div className="text-center">
+          <Title />
+          <DonateModal />
+        </div>
         <Controls fetcher={fetcher} />
         <FAQ />
       </div>
