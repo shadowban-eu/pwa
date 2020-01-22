@@ -22,7 +22,6 @@ const Title = () => {
 
   return (
     <h2 className="
-      h-20
       w-full
       mt-6 mb-6
       font-lobster
