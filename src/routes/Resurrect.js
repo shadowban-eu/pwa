@@ -60,7 +60,12 @@ const Resurrect = ({ probeId }) => {
 
   React.useEffect(() => {
     if (probeId) {
+      document.title = `Twitter Shadowban Resurrect ~ ${probeId}`;
       dispatch({ type: SET_PROBE_ID, probeId });
+    } else {
+      document.title = 'Twitter Shadowban Resurrect';
+      dispatch({ type: SET_PROBE_ID, probeId: '' });
+      dispatch({ type: RESET_RESULT });
     }
   }, [probeId, dispatch]);
 

@@ -52,8 +52,13 @@ const Tester = (props) => {
 
   React.useEffect(() => {
     if (screenName) {
+      document.title = `Twitter Shadowban Test ~ ${screenName}`;
       dispatch({ type: SET_SCREEN_NAME, screenName });
       dispatch({ type: VALIDATE_SCREEN_NAME, screenName });
+    } else {
+      document.title = 'Twitter Shadowban Test';
+      dispatch({ type: SET_SCREEN_NAME, screenName: '' });
+      dispatch({ type: RESET_CURRENT_RESULTS });
     }
   }, [screenName, dispatch]);
 
