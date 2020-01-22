@@ -5,6 +5,7 @@
     "terminated": "terminated!",
     "protected": "from a protected account.",
     "suspended": "from a suspended account.",
+    "authorDeleted": "from a deleted account.",
     "deleted": "deleted.",
     "ok": "fine."
   },

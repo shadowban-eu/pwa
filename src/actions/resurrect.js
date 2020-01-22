@@ -38,6 +38,7 @@ export const actions = {
       || (action.result.protected && 'protected')
       || (action.result.suspended && 'suspended')
       || (action.result.deleted && 'deleted')
+      || (action.result.authorDeleted && 'authorDeleted')
       || 'ok';
     return {
       ...state,

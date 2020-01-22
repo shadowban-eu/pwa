@@ -15,7 +15,7 @@ const Title = () => {
     const { parentAuthorScreenName } = result.tweets.testedWith;
     subjectTweetLink = `https://twitter.com/${parentAuthorScreenName}/status/${parentId}`;
 
-    if (result.protected || result.suspended) {
+    if (result.protected || result.suspended || result.authorDeleted) {
       subjectAuthorLink = `https://twitter.com/${parentAuthorScreenName}`;
     }
   }
