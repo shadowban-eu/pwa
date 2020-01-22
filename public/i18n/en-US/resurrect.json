@@ -5,12 +5,13 @@
     "terminated": "terminated!",
     "protected": "from a protected account.",
     "suspended": "from a suspended account.",
+    "authorDeleted": "from a deleted account.",
     "deleted": "deleted.",
     "ok": "fine."
   },
-  "errors": {
-    "ENOTAREPLY": "Please use a reply to the missing tweet you want to test!",
-    "ENOTEXIST": "No tweet with that ID exists."
-  },
-  "probeIdDefault": "Tweet URL or ID"
+  "probeIdDefault": "Tweet URL or ID",
+  "timelineTermination": {
+    "q": "What is #TimelineTermination?",
+    "a": "[p]There are several [url=\"https://help.twitter.com/en/rules-and-policies/notices-on-twitter\"]official reasons[/url] why you can't see a tweet on Twitter. [/p][p]Then, sometimes this happens:[/p][streamable src=\"https://streamable.com/s/kd7gn/wulivr\"][p]For unknown reasons, some tweets are hidden in threads. They appear to be deleted, but aren't. shadowban.eu resurrect lets you take the URL or ID of a reply tweet and resurrect its parent, i.e. find out what happened to the \"not available\" tweet the reply was made to.[br][b][url={{PUBLIC_URL}}/resurrect/1183909147072520193 internal]Try the sample from the video![/url][/b][/p]"
+  }
 }

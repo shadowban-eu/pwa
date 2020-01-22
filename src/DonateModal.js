@@ -45,7 +45,7 @@ const DonateModal = () => {
               src="https://twemoji.maxcdn.com/svg/2764.svg"
             />
             <div className="font-lobster text-accent-purple text-3xl">
-              Thank you for your support!
+              { t('donateModal.thankYou') }
             </div>
             <SVG
               className="w-8 ml-2"

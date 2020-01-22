@@ -2,9 +2,9 @@ import React from 'react';
 import SVG from 'react-inlinesvg';
 
 const Loading = () => (
-  <div className="w-full h-screen loadable-container">
+  <div className="w-full h-screen bg-shadowblue">
     <SVG
-      className="mx-auto w-full"
+      className="mx-auto w-1/3"
       src="/favicon/favicon.svg"
       alt="Loading..."
     />

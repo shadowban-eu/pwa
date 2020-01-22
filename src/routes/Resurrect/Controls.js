@@ -13,25 +13,26 @@ import {
 //   terminated: '1183909147072520193',
 //   isProtected: '1215987140351479809',
 //   suspended: '1209194776656072704',
+//   authorDeleted: '1219658203148976128',
 //   deleted: '1214957370431942656',
 //   ok: '1214936962349576192',
 //   notAReplyError: '1183908355372273665',
 //   default: ''
 // };
 
-const Controls = () => {
+const Controls = ({ fetcher }) => {
   const [{ fetchError, probeId, valid }, dispatch] = useStore('resurrect');
-  const { t } = useTranslation(['resurrect', 'common']);
+  const { t } = useTranslation(['resurrect', 'common', 'errors']);
   const inputElement = useRef();
 
   const runTest = async (submitEvent) => {
     submitEvent.preventDefault();
     const testPath = `/resurrect/${probeId}`;
-    const replace = window.location.pathname === testPath;
-    if (replace) {
-      await navigate('/resurrect/', { replace });
+    if (window.location.pathname === testPath) {
+      fetcher(`${process.env.REACT_APP_RESURRECT_URL}/${probeId}`);
+    } else {
+      navigate(testPath);
     }
-    navigate(testPath, { replace });
   };
 
   const inputColorClasses = valid
@@ -82,7 +83,7 @@ const Controls = () => {
       </form>
       {
         fetchError
-          ? <div className="text-accent-error text-center my-4">{t(`errors.${fetchError.code}`)}</div>
+          ? <div className="text-accent-error text-center my-4">{t(`errors:${fetchError.code}`)}</div>
           : null
       }
     </div>

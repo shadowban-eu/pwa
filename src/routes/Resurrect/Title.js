@@ -15,16 +15,15 @@ const Title = () => {
     const { parentAuthorScreenName } = result.tweets.testedWith;
     subjectTweetLink = `https://twitter.com/${parentAuthorScreenName}/status/${parentId}`;
 
-    if (result.protected || result.suspended) {
+    if (result.protected || result.suspended || result.authorDeleted) {
       subjectAuthorLink = `https://twitter.com/${parentAuthorScreenName}`;
     }
   }
 
   return (
     <h2 className="
-      h-20
       w-full
-      mt-10 mb-6
+      mt-6 mb-6
       font-lobster
       text-center
       leading-title

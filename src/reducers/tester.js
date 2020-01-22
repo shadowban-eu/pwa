@@ -7,12 +7,13 @@ export const initialState = {
   currentResult: {
     profile: null,
     tests: null
-  }
+  },
+  fetchError: null
 };
 
 export const reducer = (state, action) => {
   if (actions[action.type]) {
-    return actions[action.type](state, action);
+    return actions[action.type](state, action, initialState);
   }
   return initialState;
 };

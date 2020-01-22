@@ -2,7 +2,9 @@ import React from 'react';
 import BBCode from '@bbob/react/es/Component'
 import reactPreset from '@bbob/preset-react/es'
 
+import SpringyImage from './SpringyImage';
 import SafeLink from './SafeLink';
+import Streamable from './Streamable';
 
 const getClassName = (attrs) => attrs && attrs.className ? attrs.className : '';
 
@@ -25,22 +27,27 @@ const preset = reactPreset.extend(tags => ({
   h4: node => ({
     tag: 'div',
     attrs: {
-      className: `text-4xl ${node.attrs.className}`
+      className: `text-4xl ${getClassName(node.attrs)}`
     },
     content: node.content
   }),
   h6: node => ({
     tag: 'div',
     attrs: {
-      className: `text-2xl ${node.attrs.className}`
+      className: `text-2xl ${getClassName(node.attrs)}`
     },
     content: node.content
   }),
   br: () => ({ tag: 'br' }),
-  url: (...args) => ({
-    ...tags.url(...args),
-    tag: SafeLink
-  }),
+  url: (node, ctx) => {
+    const isInternal = !!node.attrs.internal;
+    delete node.attrs.internal;
+    const presetResult = tags.url(node, ctx);
+    return ({
+      ...presetResult,
+      tag: isInternal ? 'a' : SafeLink
+    });
+  },
   purple: node => ({
     tag: 'span',
     attrs: {
@@ -50,11 +57,12 @@ const preset = reactPreset.extend(tags => ({
   }),
   flex: node => {
     const wrap = node.attrs.wrap ? 'flex-wrap' : '';
+    const direction = node.attrs.col ? 'flex-column' : 'flex-row';
     const justify = node.attrs.justify ? `justify-${node.attrs.justify}` : '';
     return ({
       tag: 'div',
       attrs: {
-        className: `flex flex-row ${wrap} ${justify}`.trim()
+        className: `flex ${direction} ${wrap} ${justify}`.trim()
       },
       content: node.content
     });
@@ -69,6 +77,27 @@ const preset = reactPreset.extend(tags => ({
   li: node => ({
     tag: 'li',
     content: node.content
+  }),
+  img: (...args) => {
+    const presetResult = tags.img(...args);
+    return ({
+      ...presetResult,
+      tag: args[0].attrs.inline ? 'img' : SpringyImage,
+      attrs: {
+        ...presetResult.attrs,
+        className: `h-full mx-auto shadow-md ${getClassName(args[0].attrs)} ${args[0].attrs.inline ? 'inline' : ''}`,
+        alt: args[0].attrs.alt || '',
+        width: args[0].attrs.width,
+        height: args[0].attrs.height
+      }
+    });;
+  },
+  streamable: node => ({
+    tag: Streamable,
+    attrs: {
+      src: node.attrs.src,
+      className: getClassName(node.attrs) || 'relative w-2/3 mx-auto h-streamable shadow-md'
+    }
   })
 }));
 

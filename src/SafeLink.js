@@ -1,7 +1,7 @@
 import React from 'react';
 import SVG from 'react-inlinesvg';
 
-const SafeLink = ({ href, children, icon, ...props }) => (
+const SafeLink = ({ href, children, icon, iconClassName, ...props }) => (
   <a
     href={href || 'https://shadowban.eu'}
     target="_blank"
@@ -13,7 +13,7 @@ const SafeLink = ({ href, children, icon, ...props }) => (
       icon
         ? <SVG
             src="/icons/external-link.svg"
-            className="inline w-4 h-4 ml-1 align-top stroke-current"
+            className={iconClassName || 'inline w-4 h-4 ml-1 align-top stroke-current'}
           />
         : null
     }

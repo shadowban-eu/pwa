@@ -134,4 +134,12 @@ body {
   }
 }
 
+/* Resurrect FAQ */
+.text-faq-q { /* Question */
+  @apply mb-4 text-xl;
+}
+.text-faq-a { /* Answer */
+
+}
+
 @tailwind utilities;

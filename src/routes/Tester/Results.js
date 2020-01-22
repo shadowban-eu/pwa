@@ -1,6 +1,7 @@
 import React from 'react';
 import { useStore } from 'react-hookstore';
 import { navigate } from '@reach/router';
+import { useTranslation } from 'react-i18next';
 
 import ProfileLink from './ProfileLink';
 import ResultItem from './Results/ResultItem';
@@ -22,8 +23,11 @@ const tests = [{
 }];
 
 const Results = () => {
-  const [{ screenName, loading, currentResult }] = useStore('tester');
-  const { profile, errorMessage } = currentResult;
+  const [{ screenName, loading, currentResult, fetchError }] = useStore('tester');
+  const { t } = useTranslation('errors');
+
+  const { profile } = currentResult;
+  const errorMessage = fetchError ? t(fetchError.code) : null;
 
   return (
     <div className="
