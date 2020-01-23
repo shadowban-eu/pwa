@@ -5,7 +5,7 @@ import SafeLink from './SafeLink';
 
 const HeaderMenuLink = (props) => {
   const { className } = props;
-  const defaultClassName = `${className ? className : ''} pl-2 text-black`;
+  const defaultClassName = `${className ? className : ''} pl-2 text-black font-normal`;
   const activeClassName = `${defaultClassName} underline`;
 
   return (
@@ -55,7 +55,7 @@ const HeaderMenu = () => {
             href="https://blog.shadowban.eu/"
             icon
             iconClassName="inline w-2 h-2 ml-1 align-top stroke-current"
-            className="pl-2 text-black"
+            className="pl-2 text-black font-normal"
           >Blog</SafeLink>
         </ul>
       </div>
