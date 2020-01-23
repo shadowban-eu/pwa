@@ -81,6 +81,8 @@
     "start": "./bin/dev.js",
     "build": "npm run build:tailwind && node scripts/build.js",
     "build:tailwind": "tailwind build src/styles/index.css -o src/styles/tailwind.css -c ./tailwind.config.js",
+    "deploy:production": "ansible-playbook ansible/deploy_production.yml",
+    "build:dev": "npm run build:tailwind && BUILD_ENV=development node scripts/build.js",
     "deploy:dev": "ansible-playbook ansible/deploy_naughty.yml",
     "test": "node scripts/test.js"
   },
