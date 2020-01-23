@@ -75,7 +75,7 @@ const Controls = ({ fetcher }) => {
             pattern={tweetUrlOrIdRX.source}
             autoComplete="url"
             onChange={handleChange}
-            className={`h-12 ml-12 border-b-2 font-medium focus:outline-none ${inputColorClasses}`}
+            className={`h-12 sm:ml-12 border-b-2 font-medium focus:outline-none ${inputColorClasses}`}
           />
           <label htmlFor="probeId" className={labelClasses}>{t('probeIdDefault')}</label>
         </div>
