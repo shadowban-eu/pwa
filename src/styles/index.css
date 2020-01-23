@@ -50,7 +50,7 @@ select:-webkit-autofill:hover {
 }
 
 body {
-  @apply text-base;
+  @apply text-base font-medium;
   overflow-x: hidden;
 }
 
