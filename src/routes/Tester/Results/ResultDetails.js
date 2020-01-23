@@ -6,7 +6,7 @@ import BBText from '../../../BBText';
 const ResultDetails = ({ testKey }) => {
   const { t } = useTranslation('tasks');
   return (
-    <div className="px-8 pb-6 border-b">
+    <div className="px-16 pb-6 border-b">
       <BBText>
         {t(`${testKey}.description`)}
       </BBText>
