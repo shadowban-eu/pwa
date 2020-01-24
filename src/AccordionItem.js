@@ -37,7 +37,7 @@ const AccordionItem = ({ children, id = `accordion-${Math.round(Math.random() * 
         </div>
       </label>
       {
-        <animated.div style={contentProps} className="overflow-auto">
+        <animated.div style={contentProps} className="overflow-auto relative">
           {Content || Content.props.children}
         </animated.div>
       }
