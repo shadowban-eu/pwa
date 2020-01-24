@@ -92,7 +92,7 @@ const preset = reactPreset.extend(presetTags => {
       tag: Streamable,
       attrs: {
         src: node.attrs.src,
-        className: getClassName(node.attrs) || 'relative w-2/3 mx-auto h-streamable shadow-md'
+        className: getClassName(node.attrs) || 'relative mx-auto h-streamable shadow-md'
       }
     })
   });
