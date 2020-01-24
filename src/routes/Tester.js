@@ -15,6 +15,7 @@ import {
 import Title from './Tester/Title';
 import Controls from './Tester/Controls';
 import Results from './Tester/Results';
+// import Functionality from './Tester/Functionality'
 import DonateModal from '../DonateModal';
 import Loading from '../Loading';
 
@@ -71,6 +72,7 @@ const Tester = (props) => {
         </div>
         <Controls fetcher={fetcher} />
         <Results />
+        {/*<Functionality />*/}
       </div>
     </Suspense>
   );

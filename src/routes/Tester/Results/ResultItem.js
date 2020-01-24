@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSpring, animated } from 'react-spring';
-
 import SVG from 'react-inlinesvg';
+
 import ResultDetails from './ResultDetails';
+import AccordionItem from '../../../AccordionItem';
 
 const resultColors = {
   ban: 'text-accent-error',
@@ -33,46 +33,26 @@ const determineResultType = (result) => {
 
 const ResultItem = ({ test, result }) => {
   const { key } = test;
-  const [detailsShowing, showDetails] = useState(false);
   const { t } = useTranslation('tasks');
   const type = determineResultType(result)
   const idName = `result-${key}`;
 
-  const detailsProps = useSpring({
-    to: {
-      maxHeight: detailsShowing ? '100vh' : '0vh'
-    }
-  });
 
   const title = type === 'error'
     ? 'We were unable to test for technical reasons.'
     : t(`${key}.message`);
 
   return (
-    <div className="tab w-full overflow-hidden">
-      <input
-        className="absolute opacity-0 "
-        id={idName}
-        type="checkbox"
-        name={idName}
-        onChange={() => showDetails(!detailsShowing)}
-      />
-      <label
-        className={
-          `block p-5 leading-normal cursor-pointer ${resultColors[type]} ${detailsShowing ? '' : 'border-b'}`
-        }
-        htmlFor={idName}
-      >
+    <AccordionItem id={idName}>
+      <div className={resultColors[type]}>
         <SVG
           className="inline mr-4 fill-current"
           src={`/icons/${svgFileNames[type]}`}
         />
         <span className="inline">{result && result.ban === false && 'No '}{title}</span>
-      </label>
-      <animated.div style={detailsProps}>
-        <ResultDetails testKey={key} />
-      </animated.div>
-    </div>
+      </div>
+      <ResultDetails testKey={key} />
+    </AccordionItem>
   );
 };
 
