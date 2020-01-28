@@ -1,7 +1,7 @@
 {
   "limitVisibility": {
     "title": "Twitter reserves the right to limit distribution or visibility of content",
-    "text": "[p]The updated [url=\"https://twitter.com/en/tos\"]Terms of Service[/url] went into effect on January 1, 2020.[/p][img alt=\"Updated Twitter TOS\"]/img/updated-tos.png[/img]"
+    "text": "[p]As of January 1, 2020, Twitter's [url=\"https://twitter.com/en/tos\"]Terms of Service[/url] state that they:[/p][quote cite=\"https://twitter.com/en/tos\"](...) may also remove or refuse to distribute any Content on the Services, limit distribution or visibility of any Content on the service (...)[/quote]"
   },
   "noShadowbanClaim": {
     "title": "But Twitter claims that they do not shadowban",

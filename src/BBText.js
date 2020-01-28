@@ -81,7 +81,13 @@ const preset = reactPreset.extend(presetTags => {
         tag: args[0].attrs.inline ? 'img' : SpringyImage,
         attrs: {
           ...presetResult.attrs,
-          className: `h-full mx-auto shadow-md ${getClassName(args[0].attrs)} ${args[0].attrs.inline ? 'inline' : ''}`,
+          className: `h-full shadow-md ${
+            getClassName(args[0].attrs)
+          } ${
+            args[0].attrs.inline ? 'inline' : ''
+          } ${
+            args[0].attrs.center ? '' : 'mx-auto'
+          }`,
           alt: args[0].attrs.alt || '',
           width: args[0].attrs.width,
           height: args[0].attrs.height
@@ -94,8 +100,17 @@ const preset = reactPreset.extend(presetTags => {
         src: node.attrs.src,
         className: getClassName(node.attrs) || 'relative mx-auto h-streamable shadow-md'
       }
+    }),
+    quote: node => ({
+      tag: 'blockquote',
+      attrs: {
+        cite: node.attrs.cite || '',
+        className: 'bg-gray-300 mx-10 my-3 p-3'
+      },
+      content: node.content
     })
   });
+
   Object.keys(hClasses).forEach((hClassKey) => {
     tags[hClassKey] = node => ({
       tag: hClassKey,
@@ -105,6 +120,7 @@ const preset = reactPreset.extend(presetTags => {
       content: node.content
     });
   });
+
   return tags;
 });
 
