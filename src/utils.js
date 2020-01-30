@@ -10,6 +10,13 @@ export const convertLegacyAPIResponse = (result) => {
     return result;
   }
 
+  // HOTFIX 0.3.1
+  if (tests.ghost === null) {
+    tests.ghost = {
+      error: 'EUNKNOWN'
+    };
+  }
+
   return {
     timestamp,
     profile,
@@ -24,7 +31,8 @@ export const convertLegacyAPIResponse = (result) => {
       },
       searchSuggestion: {
         ban: !tests.typeahead
-      }
+      },
+
     }
   };
 };
