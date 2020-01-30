@@ -1,24 +1,19 @@
 {
-  "timestamp": 1575732782.355011,
   "profile": {
-    "screen_name": "yollagelsin67",
-    "protected": false,
+    "has_tweets": true,
     "exists": true,
-    "has_tweets": true
+    "screen_name": "ENOREPLIES",
+    "protected": false
   },
   "tests": {
-    "search": {
-      "ban": false,
-      "found": "1203031995607080960"
-    },
-    "searchSuggestion": {
-      "ban": true
-    },
+    "typeahead": true,
     "ghost": {
       "ban": false
     },
-    "replyDeboosting": {
+    "search": "1222211378980773888",
+    "more_replies": {
       "error": "ENOREPLIES"
     }
-  }
+  },
+  "timestamp": 1580391789.384892
 }
