@@ -47,9 +47,9 @@ const ResultItem = ({ test, result }) => {
           className="inline mr-4 fill-current"
           src={`/icons/${svgFileNames[type]}`}
         />
-        <span className="inline">{result && result.ban === false && 'No '}{title}</span>
+        <span className="inline">{type === 'ok' && 'No '}{title}</span>
       </div>
-      <ResultDetails testKey={key} />
+      <ResultDetails testKey={key} resultType={type} />
     </AccordionItem>
   );
 };

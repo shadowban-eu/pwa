@@ -4,7 +4,7 @@ import { useStore } from 'react-hookstore';
 
 import BBText from '../../../BBText';
 
-const ResultDetails = ({ testKey }) => {
+const ResultDetails = ({ testKey, resultType }) => {
   const { t } = useTranslation('tasks');
   const [{ currentResult }] = useStore('tester');
 
@@ -25,7 +25,7 @@ const ResultDetails = ({ testKey }) => {
   return (
     <div className="px-16 pb-6 border-b">
       {
-        details
+        details && resultType !== 'error'
           ? <BBText>
               {
                 details.ban
