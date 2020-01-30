@@ -12,14 +12,23 @@
   },
   "searchSuggestion": {
     "message": "Search Suggestion Ban",
-    "description": "This type of ban causes an account to not populate search suggestions and people search results when it is searched for while being logged out. Twitter seems to take [url=https://en.wikipedia.org/wiki/Social_network_analysis#Metrics]tie strength[/url] or a similar metric into account. While an account may be suggested to users you are strongly tied to, it may not be shown to others."
+    "description": "This type of ban causes an account to not populate search suggestions and people search results when it is searched for while being logged out. Twitter seems to take [url=https://en.wikipedia.org/wiki/Social_network_analysis#Metrics]tie strength[/url] or a similar metric into account. While an account may be suggested to users you are strongly tied to, it may not be shown to others.",
+    "details": { "ban": "", "noBan": "" }
   },
   "search": {
     "message": "Search Ban",
-    "description": "This type of ban causes your tweets to be hidden from the search results entirely, no matter whether the quality filter is turned on or off. This behavior includes hashtags as well. This type of ban seems to be temporally limited for active accounts."
+    "description": "This type of ban causes your tweets to be hidden from the search results entirely, no matter whether the quality filter is turned on or off. This behavior includes hashtags as well. This type of ban seems to be temporally limited for active accounts.",
+    "details": {
+      "ban": "[p]We did not find a tweet by searching for [url=\"https://twitter.com/search?f=tweets&src=typd&vertical=default&lang=en&q=from%3A%40{{screenName}}&qf=off\"]from:@{{screenName}}[/url].[/p]",
+      "noBan": "[p]We found a [url=https://twitter.com/{{screenName}}/status/{{found}}]tweet[/url] by searching for [url=\"https://twitter.com/search?f=tweets&src=typd&vertical=default&lang=en&q=from%3A%40{{screenName}}&qf=off\"]from:@{{screenName}}[/url].[/p]"
+    }
   },
   "ghost": {
     "message": "Ghost Ban",
-    "description": "This is what is referred to as conventional shadowban or thread banning as well. It comprises a search ban while threads are completely ripped apart by hiding reply tweets of the affected user to others. Everything will look perfectly normal to the affected user but many others will not be able to see reply tweets of the affected user at all. Reasons for this ban include behavior like excessive tweeting or following. Again, this type of ban seems to be temporally limited for active accounts."
+    "description": "This is what is referred to as conventional shadowban or thread banning as well. It comprises a search ban while threads are completely ripped apart by hiding reply tweets of the affected user to others. Everything will look perfectly normal to the affected user but many others will not be able to see reply tweets of the affected user at all. Reasons for this ban include behavior like excessive tweeting or following. Again, this type of ban seems to be temporally limited for active accounts.",
+    "details": {
+      "ban": "[p]We found a [url=https://twitter.com/{{screenName}}/status/{{tweet}}]tweet with at least one reply[/url] on the user's profile.[br]A [url=https://twitter.com/i/status/{{reply}}]reply tweet[/url] is detached.[/p]",
+      "noBan": ""
+    }
   }
 }
