@@ -22,17 +22,22 @@ const ResultDetails = ({ testKey, resultType }) => {
     details.screenName = screenName;
   }
 
+  let detailsText;
+  if (details && resultType !== 'error') {
+    detailsText = details.ban
+      ? t(`${testKey}.details.ban`, details)
+      : t(`${testKey}.details.noBan`, details)
+  }
+
   return (
     <div className="px-16 pb-6 border-b">
       {
-        details && resultType !== 'error'
-          ? <BBText>
-              {
-                details.ban
-                  ? t(`${testKey}.details.ban`, details)
-                  : t(`${testKey}.details.noBan`, details)
-              }
-            </BBText>
+        detailsText
+          ? <p className="bg-gray-300 border border-gray-600 mb-4 p-2">
+              <BBText>
+                {detailsText}
+              </BBText>
+            </p>
           : null
       }
       <BBText>
