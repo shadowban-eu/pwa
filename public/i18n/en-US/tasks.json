@@ -5,7 +5,10 @@
   "replyDeboosting": {
     "message": "Reply Deboosting",
     "description": "If Twitter's signals determine that an account might engage in harmful behavior, Twitter hides their replies behind a barrier and only loads them when \"Show more replies\" is clicked. This behavior is personalized, i.e. Twitter does not hide the tweets of accounts you follow. We therefore use an unbiased reference account without followings in order to determine whether tweets within a thread can be retrieved without clicking \"Show more replies\" from its view.\nIn some cases, Twitter classifies accounts as offensive. In this case, replies are hidden behind a second barrier within the \"Show more replies\" section.[br] The outcome of this test may depend on the conversation which we found one of your tweets in. For testing, we take your latest reply tweet that is not within a conversation you started. Note that test results are cached for a short period of time.[br] A failure to test is neither a positive nor a negative test result. This test relies on some conditions that are not fulfilled by all accounts. In some cases, we cannot test for purely technical reasons.",
-    "details": "[p]We had to click [i]{{stage}}[/i] to find [url=https://twitter.com/{{screenName}}/status/{{tweet}}]{{screenName}}'s reply[/url] to this [url=https://twitter.com/i/status/{{in_reply_to}}]tweet[/url][/p]"
+    "details": {
+      "ban": "[p]We had to click [i]{{stage}}[/i] to find [url=https://twitter.com/{{screenName}}/status/{{tweet}}]{{screenName}}'s reply[/url] to this [url=https://twitter.com/i/status/{{in_reply_to}}]tweet[/url].[/p]",
+      "noBan": "[p]We found [url=https://twitter.com/{{screenName}}/status/{{tweet}}]{{screenName}}'s reply[/url] to this [url=https://twitter.com/i/status/{{in_reply_to}}]tweet[/url].[/p]"
+    }
   },
   "searchSuggestion": {
     "message": "Search Suggestion Ban",

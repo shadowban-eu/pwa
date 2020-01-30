@@ -25,9 +25,13 @@ const ResultDetails = ({ testKey }) => {
   return (
     <div className="px-16 pb-6 border-b">
       {
-        details && details.ban
+        details
           ? <BBText>
-              { t(`${testKey}.details`, details) }
+              {
+                details.ban
+                  ? t(`${testKey}.details.ban`, details)
+                  : t(`${testKey}.details.noBan`, details)
+              }
             </BBText>
           : null
       }
