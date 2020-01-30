@@ -22,6 +22,10 @@ const ResultProfile = ({ profile, errorMessage }) => {
     profileTitle = ' is protected';
     svgFileName = 'error.svg';
     resultColor = 'text-accent-warn';
+  } else if (profile.suspended) {
+    profileTitle = ' has been suspended';
+    svgFileName = 'error.svg';
+    resultColor = 'text-accent-warn';
   } else if (!profile.has_tweets) {
     profileTitle = ' has no tweets';
     svgFileName = 'error.svg';

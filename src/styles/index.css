@@ -50,7 +50,7 @@ select:-webkit-autofill:hover {
 }
 
 body {
-  @apply text-base;
+  @apply text-base font-medium;
   overflow-x: hidden;
 }
 
@@ -62,7 +62,6 @@ body {
 .label-input>label {
   position: absolute;
   top: 0;
-  left: 55px;
   font-size: 1rem;
   cursor: text;
   transition: transform .2s ease-out,color .2s ease-out;
@@ -70,9 +69,11 @@ body {
   text-align: initial;
   transform: translateY(12px);
 }
+.prefix-label-input>label {
+  left: 55px;
+}
 
-.prefix-label-input>input,
-.label-input>input {
+.prefix-label-input>input {
   width: calc(100% - 3rem)
 }
 

@@ -6,7 +6,7 @@ export const convertLegacyAPIResponse = (result) => {
 
   // 'typeahead' was renamed to 'searchSuggestion';
   // finding 'serachSuggestion' in results indicates a new version response
-  if (tests.hasOwnProperty('searchSuggestion')) {
+  if (!tests || tests.hasOwnProperty('searchSuggestion')) {
     return result;
   }
 

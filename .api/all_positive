@@ -1,0 +1,24 @@
+{
+  "profile": {
+    "has_tweets": true,
+    "exists": true,
+    "screen_name": "jackychan",
+    "protected": false
+  },
+  "tests": {
+    "typeahead": false,
+    "ghost": {
+      "ban": true,
+      "tweet": "28574351",
+      "reply": "481052584161988611"
+    },
+    "search": false,
+    "more_replies": {
+      "ban": true,
+      "tweet": "1222845144744939522",
+      "stage": 0,
+      "in_reply_to": "1222840716818251776"
+    }
+  },
+  "timestamp": 1580391708.3547952
+}

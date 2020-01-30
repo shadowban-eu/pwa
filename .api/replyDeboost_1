@@ -1,0 +1,22 @@
+{
+  "profile": {
+    "has_tweets": true,
+    "exists": true,
+    "screen_name": "replyDeboost-0",
+    "protected": false
+  },
+  "tests": {
+    "typeahead": true,
+    "ghost": {
+      "ban": false
+    },
+    "search": "1222845144744939522",
+    "more_replies": {
+      "in_reply_to": "1222840716818251776",
+      "ban": true,
+      "tweet": "1222845144744939522",
+      "stage": 1
+    }
+  },
+  "timestamp": 1580391332.0725524
+}

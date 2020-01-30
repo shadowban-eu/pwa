@@ -3,6 +3,7 @@ import { useStore } from 'react-hookstore';
 import { navigate } from '@reach/router';
 import { useTranslation } from 'react-i18next';
 
+import Accordion from '../../Accordion';
 import ProfileLink from './ProfileLink';
 import ResultItem from './Results/ResultItem';
 import ResultsLoading from './Results/ResultsLoading';
@@ -30,28 +31,15 @@ const Results = () => {
   const errorMessage = fetchError ? t(fetchError.code) : null;
 
   return (
-    <div className="
-      card
-      flex flex-col
-      w-full
-      self-center
-      min-h-results
-      w-full sm:w-full md:w-10/12 lg:w-8/12
-      mt-10 mb-5
-      ml-auto mr-auto
-      overflow-hidden
-      p-0
-    ">
-      <div className="tab w-full overflow-hidden">
-        {
-          loading ?
-            <ResultsLoading>
-              Running tests for <ProfileLink screenName={screenName} />
-            </ResultsLoading>
-          :
-            <ResultProfile profile={profile} errorMessage={errorMessage} />
-        }
-      </div>
+    <Accordion>
+      {
+        loading ?
+          <ResultsLoading>
+            Running tests for <ProfileLink screenName={screenName} />
+          </ResultsLoading>
+        :
+          <ResultProfile profile={profile} errorMessage={errorMessage} />
+      }
       {
         tests.map(test => {
           const result = currentResult.tests ? currentResult.tests[test.key] : null;
@@ -65,7 +53,7 @@ const Results = () => {
           );
         })
       }
-    </div>
+    </Accordion>
   );
 };
 

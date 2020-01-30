@@ -1,0 +1,21 @@
+{
+  "profile": {
+    "has_tweets": true,
+    "exists": true,
+    "screen_name": "typeahead",
+    "protected": false
+  },
+  "tests": {
+    "typeahead": false,
+    "ghost": {
+      "ban": false,
+      "tweet": "28574351",
+      "reply": "481052584161988611"
+    },
+    "search": true,
+    "more_replies": {
+      "ban": false
+    }
+  },
+  "timestamp": 1580391602.474721
+}

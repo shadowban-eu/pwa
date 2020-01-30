@@ -25,7 +25,7 @@ module.exports = {
       },
       height: {
         modal: '90%',
-        streamable: '300px'
+        streamable: 'calc(100vh / 2)'
       },
       minHeight: {
         results: '328px'
