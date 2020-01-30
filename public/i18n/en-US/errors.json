@@ -1,5 +1,7 @@
 {
   "ENOTAREPLY": "Please use a reply to the missing tweet you want to test!",
   "ENOTEXIST": "No tweet with that ID exists.",
-  "EFETCHFAILED": "Failed to contact the server. Please try again later!"
+  "EFETCHFAILED": "Failed to contact the server. Please try again later!",
+  "ENOREPLIES": "{{screenName}} has not made any reply tweets.",
+  "EUNKNOWN": "Something unexpected went wrong."
 }

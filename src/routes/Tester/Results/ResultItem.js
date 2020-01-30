@@ -33,13 +33,11 @@ const determineResultType = (result) => {
 
 const ResultItem = ({ test, result }) => {
   const { key } = test;
-  const { t } = useTranslation('tasks');
+  const { t } = useTranslation(['tasks', 'errors']);
   const type = determineResultType(result)
   const idName = `result-${key}`;
-
-
   const title = type === 'error'
-    ? 'We were unable to test for technical reasons.'
+    ? t(`errors:${result.error}`, { screenName: result.screenName }) || t('errors:EUNKNOWN')
     : t(`${key}.message`);
 
   return (
