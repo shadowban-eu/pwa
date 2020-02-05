@@ -28,13 +28,14 @@ const AccordionItem = ({ children, id = `accordion-${Math.round(Math.random() * 
       />
       <label
         className={
-          `block p-5 leading-normal cursor-pointer ${open ? '' : 'border-b'}`
+          `flex block p-5 leading-normal cursor-pointer ${open ? '' : 'border-b'}`
         }
         htmlFor={id}
       >
-        <div className={`inline ${Header.props.className || ''}`}>
+        <div className={`inline flex-grow ${Header.props.className || ''}`}>
           {Header.props.children}
         </div>
+        <div className="accordion-indicator flex-shrink-0">&#x25BE;</div>
       </label>
       {
         <animated.div style={contentProps} className="overflow-auto relative">

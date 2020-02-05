@@ -97,29 +97,22 @@ body {
   -o-transition: border .3s;
 }
 /* Icon */
-.tab label:not(.result-profile)::after {
-  float: right;
-  right: 0;
-  top: 0;
-  display: block;
+
+.tab label:not(.result-profile) .accordion-indicator {
+  transition: transform .3s;
+  transform: rotateZ(0);
+}
+.tab input:checked ~ label .accordion-indicator {
+  transform: rotateZ(-180deg);
+}
+
+.tab label:not(.result-profile) .accordion-indicator {
+  @apply font-bold;
   width: 1.5em;
   height: 1.5em;
   line-height: 1.5;
   font-size: 1.25rem;
   text-align: center;
-}
-.tab label:not(.result-profile)::after {
-  transition: transform .3s;
-  transform: rotateX(0);
-}
-/* :checked - resize to full height */
-.tab input:checked ~ label::after {
-  transform: rotateX(-180deg);
-}
-
-.tab label:not(.result-profile)::after {
-  @apply font-bold;
-  content: "\25BE";
 }
 
 .loading-animation {

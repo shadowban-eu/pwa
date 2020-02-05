@@ -42,9 +42,9 @@ const ResultItem = ({ test, result }) => {
 
   return (
     <AccordionItem id={idName}>
-      <div className={resultColors[type]}>
+      <div className={`flex ${resultColors[type]}`}>
         <SVG
-          className="inline mr-4 fill-current"
+          className="inline mr-4 fill-current flex-shrink-0"
           src={`/icons/${svgFileNames[type]}`}
         />
         <span className="inline">{type === 'ok' && 'No '}{title}</span>
