@@ -23,10 +23,14 @@ const ResultDetails = ({ testKey, resultType }) => {
   }
 
   let detailsText;
-  if (details && resultType !== 'error') {
-    detailsText = details.ban
-      ? t(`${testKey}.details.ban`, details)
-      : t(`${testKey}.details.noBan`, details)
+  if (details && resultType !== 'none') {
+    if (resultType !== 'error') {
+      detailsText = details.ban
+        ? t(`${testKey}.details.ban`, details)
+        : t(`${testKey}.details.noBan`, details)
+    } else {
+      detailsText = t(`${testKey}.details.${details.error}`, details);
+    }
   }
 
   return (
@@ -45,6 +49,6 @@ const ResultDetails = ({ testKey, resultType }) => {
       </BBText>
     </div>
   );
-}
+};
 
 export default ResultDetails;

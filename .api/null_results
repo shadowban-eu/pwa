@@ -1,0 +1,15 @@
+{
+  "profile": {
+    "has_tweets": true,
+    "exists": true,
+    "screen_name": "null_results",
+    "protected": false
+  },
+  "tests": {
+    "typeahead": false,
+    "ghost": null,
+    "search": false,
+    "more_replies": null
+  },
+  "timestamp": 1580391708.3547952
+}

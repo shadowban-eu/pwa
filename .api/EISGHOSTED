@@ -1,0 +1,21 @@
+{
+  "timestamp": 1580912457.4267254,
+  "profile": {
+    "screen_name": "EISGHOSTED",
+    "protected": false,
+    "exists": true,
+    "has_tweets": true
+  },
+  "tests": {
+    "search": false,
+    "typeahead": false,
+    "ghost": {
+      "tweet": "1224339039739940865",
+      "reply": "1224345522837823491",
+      "ban": true
+    },
+    "more_replies": {
+      "error": "EISGHOSTED"
+    }
+  }
+}
