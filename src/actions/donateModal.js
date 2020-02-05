@@ -9,10 +9,13 @@ export const symbols = {
 };
 
 export const actions = {
-  [INCREMENT_TESTED]: (state, action) => ({
-    ...state,
-    tested: state.tested + 1
-  }),
+  [INCREMENT_TESTED]: (state) => {
+    localStorage.setItem('tested', state.tested + 1);
+    return ({
+      ...state,
+      tested: state.tested + 1
+    })
+  },
   [SET_DONATE_CLICKED]: (state) => ({
     ...state,
     donateClicked: true

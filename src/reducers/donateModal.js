@@ -2,7 +2,7 @@ import { actions } from '../actions/donateModal';
 
 export const initialState = {
   donateClicked: false,
-  tested: localStorage.getItem('tested') || 0,
+  tested: parseInt(localStorage.getItem('tested')) || 0,
   seenCTA: localStorage.getItem('donate-cta') || false
 };
 

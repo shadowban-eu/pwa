@@ -12,6 +12,8 @@ import {
   SET_FETCH_ERROR
 } from '../actions/tester';
 
+import { INCREMENT_TESTED } from '../actions/donateModal';
+
 import Title from './Tester/Title';
 import Controls from './Tester/Controls';
 import Results from './Tester/Results';
@@ -21,16 +23,17 @@ import Loading from '../Loading';
 
 createStore('tester', initialState, reducer);
 
-const fetchTestResults = async (dispatch, ...args) => {
-  dispatch({ type: RESET_CURRENT_RESULTS })
-  dispatch({ type: RUN_TEST });
+const fetchTestResults = async (testerDispatch, modalDispatch, ...args) => {
+  testerDispatch({ type: RESET_CURRENT_RESULTS })
+  testerDispatch({ type: RUN_TEST });
   let res;
   try {
     res = await fetch(...args);
     const result = await res.json();
-    dispatch({ type: SET_CURRENT_RESULTS, result });
+    testerDispatch({ type: SET_CURRENT_RESULTS, result });
+    modalDispatch({ type: INCREMENT_TESTED });
   } catch (err) {
-    dispatch({
+    testerDispatch({
       type: SET_FETCH_ERROR,
       fetchError: { code: 'EFETCHFAILED' }
     });
@@ -39,8 +42,9 @@ const fetchTestResults = async (dispatch, ...args) => {
 
 const Tester = (props) => {
   const { screenName } = props;
-  const [{ valid }, dispatch] = useStore('tester');
-  const fetcher = fetchTestResults.bind(null, dispatch);
+  const [{ valid }, testerDispatch] = useStore('tester');
+  const [, modalDispatch] = useStore('donateModal');
+  const fetcher = fetchTestResults.bind(null, testerDispatch, modalDispatch);
 
   const sanitizedScreenName = screenName ? screenName.replace('@', '') : '';
 
@@ -56,14 +60,14 @@ const Tester = (props) => {
   React.useEffect(() => {
     if (sanitizedScreenName) {
       document.title = `Twitter Shadowban Test ~ ${sanitizedScreenName}`;
-      dispatch({ type: SET_SCREEN_NAME, screenName: sanitizedScreenName });
-      dispatch({ type: VALIDATE_SCREEN_NAME, screenName: sanitizedScreenName });
+      testerDispatch({ type: SET_SCREEN_NAME, screenName: sanitizedScreenName });
+      testerDispatch({ type: VALIDATE_SCREEN_NAME, screenName: sanitizedScreenName });
     } else {
       document.title = 'Twitter Shadowban Test';
-      dispatch({ type: SET_SCREEN_NAME, screenName: '' });
-      dispatch({ type: RESET_CURRENT_RESULTS });
+      testerDispatch({ type: SET_SCREEN_NAME, screenName: '' });
+      testerDispatch({ type: RESET_CURRENT_RESULTS });
     }
-  }, [sanitizedScreenName, dispatch]);
+  }, [sanitizedScreenName, testerDispatch]);
 
   return (
     <Suspense fallback={<Loading />}>
