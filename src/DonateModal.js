@@ -6,7 +6,7 @@ import SVG from 'react-inlinesvg';
 import { createStore, useStore } from 'react-hookstore';
 
 import { initialState, reducer } from './reducers/donateModal';
-import { SET_DONATE_CLICKED } from './actions/donateModal';
+import { SET_DONATE_CLICKED, SET_SEEN_CTA } from './actions/donateModal';
 import BBText from './BBText';
 
 createStore('donateModal', initialState, reducer);
@@ -35,6 +35,7 @@ const DonateModal = () => {
   };
 
   const handleOpenClick = (evt) => {
+    setDonateModal({ type: SET_SEEN_CTA })
     openModal(evt);
   };
 
