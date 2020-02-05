@@ -1,37 +1,40 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import useModal from 'use-react-modal';
 import { useSpring, animated } from 'react-spring';
 import SVG from 'react-inlinesvg';
+import { createStore, useStore } from 'react-hookstore';
 
+import { initialState, reducer } from './reducers/donateModal';
+import { SET_DONATE_CLICKED } from './actions/donateModal';
 import BBText from './BBText';
 
+createStore('donateModal', initialState, reducer);
+
 const DonateModal = () => {
-  const [donateClicked, setDonateClicked] = useState(false);
-  const [isGone, setGone] = useState(true);
+  const [{ donateClicked }, setDonateModal] = useStore('donateModal');
   const { t } = useTranslation('common');
 
   const { isOpen, openModal, closeModal, Modal } = useModal({
     background: 'rgba(0, 0, 0, 0.5)'
   });
+
   const props = useSpring({
     from: {
       transform: isOpen ? 'scale(0)' : 'scale(1)'
     },
     to: async next => {
       await next({ transform: isOpen ? 'scale(1)' : 'scale(0)' });
-      !isOpen && setGone(true);
     }
   });
 
   const handleDonateClick = (evt) => {
     window.open('https://www.paypal.me/shadowban');
-    setDonateClicked(true);
+    setDonateModal({ type: SET_DONATE_CLICKED, donateClicked: true });
     closeModal(evt);
   };
 
   const handleOpenClick = (evt) => {
-    setGone(false);
     openModal(evt);
   };
 
@@ -58,7 +61,7 @@ const DonateModal = () => {
           </button>
       }
       {
-        !isGone ? <Modal className="
+        isOpen ? <Modal className="
           sm:w-11/12 md:w-2/3
           h-modal
           w-full
@@ -69,7 +72,7 @@ const DonateModal = () => {
             flex flex-col justify-around
           ">
             <BBText>
-              { t('donateModal.content') }
+              { t('donateModal.content', { PUBLIC_URL: process.env.PUBLIC_URL }) }
             </BBText>
             <div className="flex flex-row justify-end mt-6">
               <button className="mr-4" onClick={handleDonateClick}>
