@@ -25,8 +25,10 @@ const ScreenNameInput = () => {
 
   const handleKeyUp = (evt) => {
     evt.preventDefault();
-    dispatch({ type: SET_SCREEN_NAME, screenName: inputElement.current.value });
-    dispatch({ type: VALIDATE_SCREEN_NAME, screenName: inputElement.current.value });
+    const screenName = inputElement.current.value.replace('@', '');
+    inputElement.current.value = screenName;
+    dispatch({ type: SET_SCREEN_NAME, screenName: screenName });
+    dispatch({ type: VALIDATE_SCREEN_NAME, screenName: screenName });
   };
 
   React.useEffect(() => {
@@ -47,7 +49,7 @@ const ScreenNameInput = () => {
         maxLength={15}
         pattern={twitterHandleRX.source}
         autoComplete="username"
-        onKeyUp={handleKeyUp}
+        onChange={handleKeyUp}
         className={`h-12 ml-12 border-b-2 font-medium focus:outline-none ${inputColorClasses}`}
       />
       <label htmlFor="screenName" className={labelClasses}>{t('screenNameDefault')}</label>

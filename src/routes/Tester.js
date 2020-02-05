@@ -42,8 +42,10 @@ const Tester = (props) => {
   const [{ valid }, dispatch] = useStore('tester');
   const fetcher = fetchTestResults.bind(null, dispatch);
 
+  const sanitizedScreenName = screenName ? screenName.replace('@', '') : '';
+
   useSWR(
-    screenName && valid ? `${process.env.REACT_APP_TEST_URL}/${screenName}` : null,
+    sanitizedScreenName && valid ? `${process.env.REACT_APP_TEST_URL}/${sanitizedScreenName}` : null,
     {
       fetcher,
       revalidateOnFocus: false,
@@ -52,16 +54,16 @@ const Tester = (props) => {
   );
 
   React.useEffect(() => {
-    if (screenName) {
-      document.title = `Twitter Shadowban Test ~ ${screenName}`;
-      dispatch({ type: SET_SCREEN_NAME, screenName });
-      dispatch({ type: VALIDATE_SCREEN_NAME, screenName });
+    if (sanitizedScreenName) {
+      document.title = `Twitter Shadowban Test ~ ${sanitizedScreenName}`;
+      dispatch({ type: SET_SCREEN_NAME, screenName: sanitizedScreenName });
+      dispatch({ type: VALIDATE_SCREEN_NAME, screenName: sanitizedScreenName });
     } else {
       document.title = 'Twitter Shadowban Test';
       dispatch({ type: SET_SCREEN_NAME, screenName: '' });
       dispatch({ type: RESET_CURRENT_RESULTS });
     }
-  }, [screenName, dispatch]);
+  }, [sanitizedScreenName, dispatch]);
 
   return (
     <Suspense fallback={<Loading />}>
