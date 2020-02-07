@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.3.1] - 2020-02-05
+### Bugs
+  Fixed: missing @ wherever screenNames appear in translations [34ef229]                                      
+  Fixed: cross-origin fetching of manifest.json missing cookie[f71f9a8]                                            
+  Fixed: 'undefined' result when Reply Deboost test fails due to Ghost Ban [8bb1c8a]
+
 ## [0.3.0] - 2020-01-30
 ### Features
   - Added: Additional details for results, e.g. "found this answer to that tweet" [e1196f9,b23823a,9a9f1d9,b79bceb]
