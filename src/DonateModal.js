@@ -11,11 +11,11 @@ import BBText from './BBText';
 
 createStore('donateModal', initialState, reducer);
 
-const DonateModal = () => {
-  const [{ donateClicked }, setDonateModal] = useStore('donateModal');
+const DonateModal = ({ ignoreTested }) => {
+  const [{ donateClicked, tested, seenCTA }, modalDispatch] = useStore('donateModal');
   const { t } = useTranslation('common');
 
-  const { isOpen, openModal, closeModal, Modal } = useModal({
+  const { isOpen, openModal, closeModal, Modal, targetRef } = useModal({
     background: 'rgba(0, 0, 0, 0.5)'
   });
 
@@ -30,14 +30,23 @@ const DonateModal = () => {
 
   const handleDonateClick = (evt) => {
     window.open('https://www.paypal.me/shadowban');
-    setDonateModal({ type: SET_DONATE_CLICKED, donateClicked: true });
+    modalDispatch({ type: SET_DONATE_CLICKED, donateClicked: true });
     closeModal(evt);
   };
 
   const handleOpenClick = (evt) => {
-    setDonateModal({ type: SET_SEEN_CTA })
     openModal(evt);
   };
+
+  React.useEffect(() => {
+    if (!seenCTA && (tested === 7 || tested % 28 === 0)) {
+      openModal();
+      modalDispatch({ type: SET_SEEN_CTA, seenCTA: true })
+    }
+    if (seenCTA && (tested === 8 || tested % 28 === 1)) {
+      modalDispatch({ type: SET_SEEN_CTA, seenCTA: false })
+    }
+  }, [tested, openModal, seenCTA, modalDispatch])
 
   return (
     <>
@@ -57,7 +66,7 @@ const DonateModal = () => {
             />
           </div>
         :
-          <button className="uppercase" onClick={handleOpenClick}>
+          <button ref={targetRef} className="uppercase" onClick={handleOpenClick}>
             support us
           </button>
       }

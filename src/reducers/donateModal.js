@@ -3,7 +3,7 @@ import { actions } from '../actions/donateModal';
 export const initialState = {
   donateClicked: false,
   tested: parseInt(localStorage.getItem('tested')) || 0,
-  seenCTA: localStorage.getItem('donate-cta') || false
+  seenCTA: JSON.parse(localStorage.getItem('donate-cta')) || false
 };
 
 export const reducer = (state, action) => {

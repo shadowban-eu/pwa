@@ -20,11 +20,11 @@ export const actions = {
     ...state,
     donateClicked: true
   }),
-  [SET_SEEN_CTA]: (state) => {
-    localStorage.setItem('donate-cta', true);
+  [SET_SEEN_CTA]: (state, action) => {
+    localStorage.setItem('donate-cta', action.seenCTA);
     return ({
       ...state,
-      seenCTA: true
+      seenCTA: action.seenCTA
     });
   }
 };
