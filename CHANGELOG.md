@@ -1,6 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.4.0] - 2020-02-07
+### Bugs
+  Fixed: missing detail message for ENOREPLIES [e889670]
+
+### Features
+  Added: Accepting Crypto donations [0c84c65]
+
 ## [0.3.1] - 2020-02-05
 ### Bugs
   Fixed: missing @ wherever screenNames appear in translations [34ef229]                                      

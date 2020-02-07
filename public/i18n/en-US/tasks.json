@@ -8,7 +8,8 @@
     "details": {
       "ban": "We had to click [i]{{stage}}[/i] to find [url=https://twitter.com/{{screenName}}/status/{{tweet}}]{{screenName}}'s reply[/url] to this [url=https://twitter.com/i/status/{{in_reply_to}}]tweet[/url].",
       "noBan": "We found [url=https://twitter.com/{{screenName}}/status/{{tweet}}]@{{screenName}}'s reply[/url] to this [url=https://twitter.com/i/status/{{in_reply_to}}]tweet[/url].",
-      "EISGHOSTED": "Tweets from accounts with a Ghost Ban do not show up in threads, at all. Reply Deboosting therefore does not apply."
+      "EISGHOSTED": "Tweets from accounts with a Ghost Ban do not show up in threads, at all. Reply Deboosting therefore does not apply.",
+      "ENOREPLIES": "We need at least one reply tweet to test whether @{{screenName}}'s replies are deboosted."
     }
   },
   "searchSuggestion": {
