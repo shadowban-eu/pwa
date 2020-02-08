@@ -24,10 +24,14 @@ const DonateModal = ({ ignoreTested }) => {
 
   const modalProps = useSpring({
     from: {
-      transform: isOpen ? 'scale(0)' : 'scale(1)'
+      transform: isOpen ? 'translateY(-200px)' : 'translateY(0px)',
+      opacity: isOpen ? 0 : 1
     },
     to: async next => {
-      await next({ transform: isOpen ? 'scale(1)' : 'scale(0)' });
+      await next({
+        transform: isOpen ? 'translateY(0px)' : 'translateY(-200px)',
+        opacity: isOpen ? 1 : 0
+      });
     }
   });
 
