@@ -1,20 +1,26 @@
 #!/usr/bin/env bash
 
 if [ $# -ne 2 ]; then
-  echo "Please invoke this with two parameters REMOTE_PORT, LOCAL_PORT"
-  echo "e.g. \`./adb-reverse 3000 8080\` will serve your local port 3000 as localhost:8080 on the device."
-  exit 1;
+  echo "Using default ports:"
+  echo "Remote: 3000"
+  echo "Local: 3000"
+  echo "Override with ./adb-reverse.sh REMOTE_PORT LOCAL_PORT"
+  echo "Note: API mocks only work when using same ports for local and remote!"
+  REMOTE_PORT=3000
+  LOCAL_PORT=3000
+else
+  REMOTE_PORT=$1
+  LOCAL_PORT=$2
 fi
 
-REMOTE_PORT=$1
-LOCAL_PORT=$2
-
-echo "Creating reverse connection localhost:$REMOTE_PORT:localhost:$LOCAL_PORT"
+echo -e "\nCreating reverse connection localhost:$REMOTE_PORT:localhost:$LOCAL_PORT"
 adb reverse tcp:$REMOTE_PORT tcp:$LOCAL_PORT
 adb reverse --list
 
-echo "Press any key to exit and close the reverse connection"
-read
+read -p "Press any key to exit and close the reverse connection"
 echo "Closing reverse connection localhost:$REMOTE_PORT:localhost:$LOCAL_PORT"
 adb reverse --remove tcp:$REMOTE_PORT
-adb reverse --list
+REVERSE_LIST=`adb reverse --list`
+if [ "$REVERSE_LIST" ]; then
+  echo $REVERSE_LIST
+fi
