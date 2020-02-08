@@ -11,6 +11,8 @@ import {
   SET_FETCH_ERROR
 } from '../actions/resurrect';
 
+import { INCREMENT_TESTED } from '../actions/donateModal';
+
 import Loading from '../Loading';
 import DonateModal from '../DonateModal';
 import Title from './Resurrect/Title';
@@ -19,9 +21,9 @@ import FAQ from './Resurrect/FAQ';
 
 createStore('resurrect', initialState, reducer);
 
-const fetchResurrectResult = async (dispatch, ...args) => {
-  dispatch({ type: RESET_RESULT });
-  dispatch({ type: RUN_TEST });
+const fetchResurrectResult = async (resurrectDispatch, modalDispatch, ...args) => {
+  resurrectDispatch({ type: RESET_RESULT });
+  resurrectDispatch({ type: RUN_TEST });
   let res;
   try {
     res = await fetch(...args);
@@ -30,15 +32,16 @@ const fetchResurrectResult = async (dispatch, ...args) => {
       console.log('Throwing not ok response')
       throw result;
     }
-    dispatch({ type: SET_RESULT, result });
+    resurrectDispatch({ type: SET_RESULT, result });
+    modalDispatch({ type: INCREMENT_TESTED });
   } catch (err) {
     if (!err.errors) {
-      return dispatch({
+      return resurrectDispatch({
         type: SET_FETCH_ERROR,
         fetchError: { code: 'EFETCHFAILED' }
       });
     }
-    dispatch({
+    resurrectDispatch({
       type: SET_FETCH_ERROR,
       fetchError: err.errors[0]
     });
@@ -46,8 +49,9 @@ const fetchResurrectResult = async (dispatch, ...args) => {
 };
 
 const Resurrect = ({ probeId }) => {
-  const [,dispatch] = useStore('resurrect');
-  const fetcher = fetchResurrectResult.bind(null, dispatch);
+  const [, resurrectDispatch] = useStore('resurrect');
+  const [, modalDispatch] = useStore('donateModal');
+  const fetcher = fetchResurrectResult.bind(null, resurrectDispatch, modalDispatch);
 
   useSWR(
     probeId ? `${process.env.REACT_APP_RESURRECT_URL}/${probeId}` : null,
@@ -61,13 +65,13 @@ const Resurrect = ({ probeId }) => {
   React.useEffect(() => {
     if (probeId) {
       document.title = `Twitter Shadowban Resurrect ~ ${probeId}`;
-      dispatch({ type: SET_PROBE_ID, probeId });
+      resurrectDispatch({ type: SET_PROBE_ID, probeId });
     } else {
       document.title = 'Twitter Shadowban Resurrect';
-      dispatch({ type: SET_PROBE_ID, probeId: '' });
-      dispatch({ type: RESET_RESULT });
+      resurrectDispatch({ type: SET_PROBE_ID, probeId: '' });
+      resurrectDispatch({ type: RESET_RESULT });
     }
-  }, [probeId, dispatch]);
+  }, [probeId, resurrectDispatch]);
 
   return (
     <Suspense fallback={<Loading />}>
