@@ -28,7 +28,7 @@ const ResultDetails = ({ testKey, resultType }) => {
       detailsText = details.ban
         ? t(`${testKey}.details.ban`, details)
         : t(`${testKey}.details.noBan`, details)
-    } else {
+    } else if (details.error !== 'EUNKNOWN') {
       detailsText = t(`${testKey}.details.${details.error}`, details);
     }
   }
