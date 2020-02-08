@@ -37,16 +37,12 @@ const DonateModal = ({ ignoreTested }) => {
     closeModal(evt);
   };
 
-  const handleCryptoClick = () => {
-    setShowCrypto(true);
-  };
+  const handleCryptoClick = () => setShowCrypto(true);
 
-  const handleOpenClick = (evt) => {
-    openModal(evt);
-  };
+  const handleOpenClick = (evt) => openModal(evt);
 
   React.useEffect(() => {
-    if (!seenCTA && (tested === 7 || tested % 28 === 0)) {
+    if (!seenCTA && tested !== 0 && (tested === 7 || tested % 28 === 0)) {
       openModal();
       modalDispatch({ type: SET_SEEN_CTA, seenCTA: true })
     }
