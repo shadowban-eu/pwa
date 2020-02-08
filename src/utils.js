@@ -10,11 +10,12 @@ export const convertLegacyAPIResponse = (result) => {
     return result;
   }
 
-  // HOTFIX 0.3.1
-  if (tests.ghost === null) {
-    tests.ghost = {
-      error: 'EUNKNOWN'
-    };
+  for (const testKey of Object.keys(tests)) {
+    if (tests[testKey] === null) {
+      tests[testKey] = {
+        error: 'EUNKNOWN'
+      };
+    }
   }
 
   return {
