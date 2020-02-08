@@ -6,9 +6,9 @@
     "protected": false
   },
   "tests": {
-    "typeahead": false,
+    "typeahead": null,
     "ghost": null,
-    "search": false,
+    "search": null,
     "more_replies": null
   },
   "timestamp": 1580391708.3547952
