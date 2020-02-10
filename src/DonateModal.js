@@ -90,18 +90,13 @@ const DonateModal = ({ ignoreTested }) => {
             <BBText>
               { t('donateModal.content', { PUBLIC_URL: process.env.PUBLIC_URL }) }
             </BBText>
+            <div className="flex flex-row justify-start mt-6">
+              <button className="mr-4" onClick={handlePaypalClick}>
+                <SVG className="inline mr-4" src="/icons/donate/paypal.svg" width={32} height={32} />
+                <span className="text-l">PayPal</span>
+              </button>
+            </div>
             <Accordion>
-              <AccordionItem open={true}>
-                <div>
-                  <SVG className="inline mr-4" src="/icons/donate/paypal.svg" width={32} height={32} />
-                  <span className="text-l">PayPal</span>
-                </div>
-                <div className="p-4">
-                  <button className="mr-4" onClick={handlePaypalClick}>
-                    Donate via PayPal
-                  </button>
-                </div>
-              </AccordionItem>
               <AccordionItem>
                 <div>
                   <SVG className="inline mr-4" src="/icons/donate/crypto.svg" width={32} height={32} />

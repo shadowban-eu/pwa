@@ -1,12 +1,8 @@
 import React, { useState } from 'react';
 import { useSpring, animated } from 'react-spring';
 
-const AccordionItem = ({
-  children,
-  id = `accordion-${Math.round(Math.random() * 1000)}`,
-  open
-}) => {
-  const [isOpen, setOpen] = useState(open);
+const AccordionItem = ({ children, id = `accordion-${Math.round(Math.random() * 1000)}` }) => {
+  const [isOpen, setOpen] = useState(false);
   const contentProps = useSpring({
     to: {
       maxHeight: isOpen ? '100' : '0vh'
