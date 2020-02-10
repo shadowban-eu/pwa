@@ -4,7 +4,6 @@ import useModal from 'use-react-modal';
 import { useSpring, animated } from 'react-spring';
 import SVG from 'react-inlinesvg';
 import { createStore, useStore } from 'react-hookstore';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 import { initialState, reducer } from './reducers/donateModal';
 import { SET_DONATE_CLICKED, SET_SEEN_CTA } from './actions/donateModal';
@@ -92,6 +91,17 @@ const DonateModal = ({ ignoreTested }) => {
               { t('donateModal.content', { PUBLIC_URL: process.env.PUBLIC_URL }) }
             </BBText>
             <Accordion>
+              <AccordionItem open={true}>
+                <div>
+                  <SVG className="inline mr-4" src="/icons/donate/paypal.svg" width={32} height={32} />
+                  <span className="text-l">PayPal</span>
+                </div>
+                <div className="p-4">
+                  <button className="mr-4" onClick={handlePaypalClick}>
+                    Donate via PayPal
+                  </button>
+                </div>
+              </AccordionItem>
               <AccordionItem>
                 <div>
                   <SVG className="inline mr-4" src="/icons/donate/crypto.svg" width={32} height={32} />
@@ -109,9 +119,6 @@ const DonateModal = ({ ignoreTested }) => {
             </Accordion>
             <h6 className="text-xl">Thank You! :)</h6>
             <div className="flex flex-row justify-end mt-6">
-              <button className="mr-4" onClick={handlePaypalClick}>
-                <SVG src="/icons/donate/paypal.svg" width={32} height={32} />
-              </button>
               <button onClick={closeModal}>
                 { t('donateModal.dismissButton') }
               </button>

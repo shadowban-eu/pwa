@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import { useSpring, animated } from 'react-spring';
 
-const AccordionItem = ({ children, id = `accordion-${Math.round(Math.random() * 1000)}` }) => {
-  const [open, setOpen] = useState(false);
+const AccordionItem = ({
+  children,
+  id = `accordion-${Math.round(Math.random() * 1000)}`,
+  open
+}) => {
+  const [isOpen, setOpen] = useState(open);
   const contentProps = useSpring({
     to: {
-      maxHeight: open ? '100' : '0vh'
+      maxHeight: isOpen ? '100' : '0vh'
     }
   });
 
@@ -24,11 +28,11 @@ const AccordionItem = ({ children, id = `accordion-${Math.round(Math.random() * 
         id={id}
         type="checkbox"
         name={id}
-        onChange={() => setOpen(!open)}
+        onChange={() => setOpen(!isOpen)}
       />
       <label
         className={
-          `flex block p-5 leading-normal cursor-pointer ${open ? '' : 'border-b'}`
+          `flex block p-5 leading-normal cursor-pointer ${isOpen ? '' : 'border-b'}`
         }
         htmlFor={id}
       >

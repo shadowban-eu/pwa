@@ -47,7 +47,7 @@ const Cryptos = () => {
       <p className="p-2">Click to copy the address to your clipboard!</p>
       <div className="flex flex-wrap">
       {
-        coins.map(coin => <Coin coin={coin} />)
+        coins.map(coin => <Coin coin={coin} key={coin.name} />)
       }
       </div>
       <p className="p-4">If you are missing an option, please let us know by tweeting <SafeLink href="https://twitter.com/shadowbaneu">@shadowbaneu</SafeLink>!</p>
