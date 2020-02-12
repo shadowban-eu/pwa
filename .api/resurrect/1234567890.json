@@ -1,0 +1,36 @@
+{
+  "tweets": {
+    "subject": {
+      "tweetId": "1183908355372273665",
+      "userId": "3435483345",
+      "createdAt": "2019-10-15T00:52:02.000Z",
+      "lang": "de",
+      "fullText": "Die Lügenpresse verkauft ja dieses Video als \"Slaughter in Syria\" in Wahrheit ist Material vom Knob Greek Festival, wo mit Maschinengewehren aus allerlei Autowracks und Benzin geschossen wird.\n\nMan sollte denen KEIN WORT mehr glauben!\n\nhttps://t.co/EXrVcmdRbk",
+      "possiblySensitive": true,
+      "favoriteCount": 170,
+      "replyCount": 14,
+      "retweetCount": 139,
+      "hasMedia": false,
+      "isQuoting": false
+    },
+    "testedWith": {
+      "tweetId": "1183909147072520193",
+      "userId": "782575454695911425",
+      "createdAt": "2019-10-15T00:55:11.000Z",
+      "lang": "de",
+      "fullText": "@fackfellowat Diese Praktikanten",
+      "favoriteCount": 4,
+      "replyCount": 0,
+      "retweetCount": 0,
+      "hasMedia": false,
+      "isQuoting": false,
+      "parentId": "1183908355372273665",
+      "parentAuthorId": "3435483345",
+      "parentAuthorScreenName": "fackfellowat"
+    }
+  },
+  "terminated": true,
+  "resurrected": true,
+  "deleted": false,
+  "resurrectCandidate": true
+}

@@ -30,11 +30,13 @@ export const actions = {
     loading: true,
     fetchError: null
   }),
-  [SET_CURRENT_RESULTS]: (state, action) => ({
-    ...state,
-    loading: false,
-    currentResult: convertLegacyAPIResponse(action.result)
-  }),
+  [SET_CURRENT_RESULTS]: (state, action) => {
+    return ({
+      ...state,
+      loading: false,
+      currentResult: convertLegacyAPIResponse(action.result)
+    });
+  },
   [RESET_CURRENT_RESULTS]: (state, action, initialState) => ({
     ...state,
     loading: false,

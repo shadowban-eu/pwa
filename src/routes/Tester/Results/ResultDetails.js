@@ -8,10 +8,10 @@ const ResultDetails = ({ testKey, resultType }) => {
   const { t } = useTranslation('tasks');
   const [{ currentResult }] = useStore('tester');
 
-  let details;
-  if (currentResult.profile && currentResult.tests) {
+  let detailsText;
+  if (currentResult.profile && currentResult.tests && currentResult.tests[testKey]) {
     const { screen_name: screenName } = currentResult.profile;
-    details = currentResult.tests[testKey];
+    const details = currentResult.tests[testKey];
 
     if (details.stage === 0) {
       details.stage = 'Show more replies';
@@ -20,16 +20,15 @@ const ResultDetails = ({ testKey, resultType }) => {
     }
 
     details.screenName = screenName;
-  }
 
-  let detailsText;
-  if (details && resultType !== 'none') {
-    if (resultType !== 'error') {
-      detailsText = details.ban
-        ? t(`${testKey}.details.ban`, details)
-        : t(`${testKey}.details.noBan`, details)
-    } else {
-      detailsText = t(`${testKey}.details.${details.error}`, details);
+    if (resultType !== 'none') {
+      if (resultType !== 'error') {
+        detailsText = details.ban
+          ? t(`${testKey}.details.ban`, details)
+          : t(`${testKey}.details.noBan`, details)
+      } else if (details.error !== 'EUNKNOWN') {
+        detailsText = t(`${testKey}.details.${details.error}`, details);
+      }
     }
   }
 

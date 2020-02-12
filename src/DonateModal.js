@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import useModal from 'use-react-modal';
 import { useSpring, animated } from 'react-spring';
@@ -8,26 +8,30 @@ import { createStore, useStore } from 'react-hookstore';
 import { initialState, reducer } from './reducers/donateModal';
 import { SET_DONATE_CLICKED, SET_SEEN_CTA } from './actions/donateModal';
 import BBText from './BBText';
-import SafeLink from './SafeLink';
+import Accordion from './Accordion';
+import AccordionItem from './AccordionItem';
+import Cryptos from './DonateModal/Cryptos';
 
 createStore('donateModal', initialState, reducer);
 
 const DonateModal = ({ ignoreTested }) => {
   const [{ donateClicked, tested, seenCTA }, modalDispatch] = useStore('donateModal');
-  const [showCrypto, setShowCrypto] = useState(false);
   const { t } = useTranslation('common');
 
   const { isOpen, openModal, closeModal, Modal, targetRef } = useModal({
-    background: 'rgba(0, 0, 0, 0.5)',
-    onClose: () => setShowCrypto(false)
+    background: 'rgba(0, 0, 0, 0.5)'
   });
 
   const modalProps = useSpring({
     from: {
-      transform: isOpen ? 'scale(0)' : 'scale(1)'
+      transform: isOpen ? 'translateY(-200px)' : 'translateY(0px)',
+      opacity: isOpen ? 0 : 1
     },
     to: async next => {
-      await next({ transform: isOpen ? 'scale(1)' : 'scale(0)' });
+      await next({
+        transform: isOpen ? 'translateY(0px)' : 'translateY(-200px)',
+        opacity: isOpen ? 1 : 0
+      });
     }
   });
 
@@ -36,8 +40,6 @@ const DonateModal = ({ ignoreTested }) => {
     modalDispatch({ type: SET_DONATE_CLICKED, donateClicked: true });
     closeModal(evt);
   };
-
-  const handleCryptoClick = () => setShowCrypto(true);
 
   const handleOpenClick = (evt) => openModal(evt);
 
@@ -85,31 +87,33 @@ const DonateModal = ({ ignoreTested }) => {
             flex flex-col justify-around
           ">
             <h4 className="text-accent-purple text-3xl">Support Us</h4>
-            { showCrypto ? <span>
-                <p className="p-2">Bitcoin: 1HoCj4kaA5UNiKqi74GagVXVDQmLL8mYmV</p>
-                <p className="p-2">Bitcoin Cash: qqf7nxwssjgc63cyn65meeyc88k20kpjnqgqpsap3k</p>
-                <p className="p-2">Dash: Xq9WbsoreLw63RTxBUvgwc9kSzwyJN16Do</p>
-                <p className="p-2">Dogecoin: DMDiUdN3B69cjj6JoTkSEb7HWQd9t2UVwP</p>
-                <p className="p-2">Ethereum: 0x815438c6b414cE21543Ac5ef72d6B9FC8fFA7d07</p>
-                <p className="p-2">Ethereum classic: 0x815438c6b414cE21543Ac5ef72d6B9FC8fFA7d07</p>
-                <p className="p-2">Litecoin: LPPhJiJ4HkAPcWYmnY1EYitQZYKsxjbsRt</p>
-                <p className="p-2">Verge: DBYizKm1CAKrvA7oaVWa2Nrus3HYsnKcYT</p>
-                <p className="p-2">Zcash: t1WfHnjNYJjnUU2y4PfgZpFjc2311xaCd45</p>
-                <p className="p-2">Ripple: rDJTVwTLyAV9ihVLbWSkG8XrcsNyShnVtm</p>
-                <p className="p-4">If you are missing an option, please let us know by tweeting <SafeLink href="https://twitter.com/shadowbaneu">@shadowbaneu</SafeLink>!</p>
-              </span>
-              : <BBText>
-                { t('donateModal.content', { PUBLIC_URL: process.env.PUBLIC_URL }) }
-              </BBText>
-            }
+            <BBText>
+              { t('donateModal.content', { PUBLIC_URL: process.env.PUBLIC_URL }) }
+            </BBText>
+            <div className="flex flex-row justify-start mt-6">
+              <button className="mr-4" onClick={handlePaypalClick}>
+                <SVG className="inline mr-4" src="/icons/donate/paypal.svg" width={32} height={32} />
+                <span className="text-l">PayPal</span>
+              </button>
+            </div>
+            <Accordion>
+              <AccordionItem>
+                <div>
+                  <SVG className="inline mr-4" src="/icons/donate/crypto.svg" width={32} height={32} />
+                  <span className="text-l">Crypto Currencies</span>
+                </div>
+                <Cryptos />
+              </AccordionItem>
+              <AccordionItem>
+                <div>
+                  <SVG className="inline mr-4" src="/icons/donate/gpay.svg" width={32} height={32} />
+                  <span className="text-l">GPay</span>
+                </div>
+                <div className="p-4">You can donate to us by sending to shadowban.eu@gmail.com</div>
+              </AccordionItem>
+            </Accordion>
             <h6 className="text-xl">Thank You! :)</h6>
             <div className="flex flex-row justify-end mt-6">
-              <button className="mr-4" onClick={handlePaypalClick}>
-                { t('donateModal.paypalButton')}
-              </button>
-              <button className="mr-4" onClick={handleCryptoClick}>
-                { t('donateModal.cryptoButton')}
-              </button>
               <button onClick={closeModal}>
                 { t('donateModal.dismissButton') }
               </button>

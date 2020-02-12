@@ -1,18 +1,36 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [0.4.0] - 2020-02-07
+## [0.4.1] - 2020-02-12
 ### Bugs
-  Fixed: missing detail message for ENOREPLIES [e889670]
+  - Fixed: EUNKNOWN result displaying and API response conversion [20a0d53..8fcbdc5]
 
 ### Features
-  Added: Accepting Crypto donations [0c84c65]
+  - Changed: DonateModal animation and layout [0705d95, 042f2b8, 2a56aac..6daa760]
+  - Added: GPay donation option [4af9bcd]
+
+### Meta/Development
+  - Changed: Serving API mocks from webpack-dev-server, instead of http-server [003de2a]
+    
+    This allows for testing on Android devices when using the also added `./bin/adb-reverse.sh` script.
+
+      1. Set `REACT_APP_TEST_URL=http://localhost:3000/.api` and `REACT_APP_RESURRECT_URL=http://localhost:3000/.api/resurrect` in your .env.development.local file
+      2. Run `yarn start` or `npm start` to start the webpack-dev-server.
+
+    Available data is still in the `/.api` folder, but with the extension `.json`!
+
+## [0.4.0] - 2020-02-07
+### Bugs
+  - Fixed: missing detail message for ENOREPLIES [e889670]
+
+### Features
+  - Added: Accepting Crypto donations [0c84c65]
 
 ## [0.3.1] - 2020-02-05
 ### Bugs
-  Fixed: missing @ wherever screenNames appear in translations [34ef229]                                      
-  Fixed: cross-origin fetching of manifest.json missing cookie[f71f9a8]                                            
-  Fixed: 'undefined' result when Reply Deboost test fails due to Ghost Ban [8bb1c8a]
+  - Fixed: missing @ wherever screenNames appear in translations [34ef229]                                      
+  - Fixed: cross-origin fetching of manifest.json missing cookie[f71f9a8]                                            
+  - Fixed: 'undefined' result when Reply Deboost test fails due to Ghost Ban [8bb1c8a]
 
 ## [0.3.0] - 2020-01-30
 ### Features
@@ -38,24 +56,3 @@ All notable changes to this project will be documented in this file.
 ### Bugs
   - Fixed: probeId input regex choking on ?s= parameter
   - Fixed: Title stuck on fetching state when request errors out
-
-
-
-54dd531 Add: proper messages for ENOREPLIES and EUNKNOWN
-ff6c124 Add: result details for reply deboosting
-64c7281 Meta: sort out Tester API response mocks
-9b2a06b Fix: missing suspended state
-9308921 Fix: legacy conversion throwing on empty test results
-3878c19 Fix: not using SSL for naughty backend URLs
-4f0bf4f Remove: image from limitVisibility FAQ
-1308663 Change: Resurrect FAQ text
-ebb2dc8 Change: Streamable size
-e990eea Add: Tester FAQ
-5095f00 Fix: long AccordionItem contents oversizing entire document body
-636d747 Refactor: extract Accordion + AccordionItem
-28843c1 Add: h1-h6 BBText tags
-0bb4964 Fix: too short and cramed Resurrect Controls input
-
-cc4c53a Change: thinner font for HeaderMenu
-a403f28 Change: more x-padding for ResultDetails to line up with its header's text
-83a0503 Change: base font-weight to 500 (.font-medium
