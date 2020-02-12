@@ -29,6 +29,9 @@ module.exports = {
       },
       minHeight: {
         results: '328px'
+      },
+      rotate: {
+        bcash: '-25deg'
       }
     }
   },
