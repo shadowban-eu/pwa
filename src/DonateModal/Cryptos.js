@@ -25,6 +25,7 @@ const Coin = ({ coin }) => {
   return (
     <CopyToClipboard text={coin.hash} key={coin.name} onCopy={onCopy}>
       <div className="p-2 inline cursor-pointer">
+        <div className="inline-block w-coin h-coin mr-2 align-middle">
         {
           copied === null ?
             <SVG className={`inline mr-2 ${coin.className ? coin.className : ''}`} src={coin.icon} width={24} height={24} />
@@ -35,6 +36,7 @@ const Coin = ({ coin }) => {
               width={24} height={24}
             />
         }
+        </div>
         <span className="hover:underline">{coin.name}</span>
       </div>
     </CopyToClipboard>

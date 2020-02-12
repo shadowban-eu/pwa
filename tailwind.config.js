@@ -25,10 +25,14 @@ module.exports = {
       },
       height: {
         modal: '90%',
-        streamable: 'calc(100vh / 2)'
+        streamable: 'calc(100vh / 2)',
+        coin: '24px'
       },
       minHeight: {
         results: '328px'
+      },
+      width: {
+        coin: '24px'
       },
       rotate: {
         bcash: '-25deg'
