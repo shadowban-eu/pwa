@@ -1,6 +1,6 @@
 {
   "name": "@shadowban-eu/frontend",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "private": true,
   "dependencies": {
     "@babel/core": "7.7.4",
