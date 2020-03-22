@@ -1,5 +1,5 @@
-@tailwind base;
-@tailwind components;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
 
 /* add customizations before importing tailwind's utilities! */
 a {
@@ -16,12 +16,12 @@ button {
 
 button:hover {
   @apply text-accent-purple;
-  box-shadow: 0 3px 3px 0 rgba(0,0,0,.14),
-              0 1px 7px 0 rgba(0,0,0,.12),
-              0 3px 1px -1px rgba(0,0,0,.2);
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12),
+    0 3px 1px -1px rgba(0, 0, 0, 0.2);
 }
 
-button:active, button:focus {
+button:active,
+button:focus {
   @apply outline-none;
 }
 
@@ -58,30 +58,30 @@ body {
 .label-input {
   @apply flex justify-center font-medium;
 }
-.prefix-label-input>label,
-.label-input>label {
+.prefix-label-input > label,
+.label-input > label {
   position: absolute;
   top: 0;
   font-size: 1rem;
   cursor: text;
-  transition: transform .2s ease-out,color .2s ease-out;
+  transition: transform 0.2s ease-out, color 0.2s ease-out;
   transform-origin: 0 100%;
   text-align: initial;
   transform: translateY(12px);
 }
-.prefix-label-input>label {
+.prefix-label-input > label {
   left: 55px;
 }
 
-.prefix-label-input>input {
-  width: calc(100% - 3rem)
+.prefix-label-input > input {
+  width: calc(100% - 3rem);
 }
 
 .prefix-label-input input:focus ~ label,
 .prefix-label-input > label.active,
 .label-input input:focus ~ label,
 .label-input > label.active {
-  transform: translateY(-14px) scale(.8);
+  transform: translateY(-14px) scale(0.8);
   transform-origin: 0 0;
 }
 
@@ -92,14 +92,14 @@ body {
 /* Label formatting when closed */
 .tab label {
   @apply border-l-0;
-  transition: border .3s;
-  -webkit-transition: border .3s;
-  -o-transition: border .3s;
+  transition: border 0.3s;
+  -webkit-transition: border 0.3s;
+  -o-transition: border 0.3s;
 }
 /* Icon */
 
 .tab label:not(.result-profile) .accordion-indicator {
-  transition: transform .3s;
+  transition: transform 0.3s;
   transform: rotateZ(0);
 }
 .tab input:checked ~ label .accordion-indicator {
@@ -129,11 +129,12 @@ body {
 }
 
 /* Resurrect FAQ */
-.text-faq-q { /* Question */
+.text-faq-q {
+  /* Question */
   @apply mb-4 text-xl;
 }
-.text-faq-a { /* Answer */
-
+.text-faq-a {
+  /* Answer */
 }
 
-@tailwind utilities;
+@import "tailwindcss/utilities";
