@@ -29,7 +29,8 @@ module.exports = {
         coin: '24px'
       },
       minHeight: {
-        results: '328px'
+        results: '328px',
+        header: '3rem'
       },
       width: {
         coin: '24px'
