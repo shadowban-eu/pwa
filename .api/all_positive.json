@@ -3,12 +3,7 @@
     "has_tweets": true,
     "exists": true,
     "screen_name": "all_positive",
-    "protected": false,
-    "sensitives": {
-      "counted": 1119,
-      "possibly_sensitive": 12,
-      "possibly_sensitive_editable": 151
-    }
+    "protected": false
   },
   "tests": {
     "typeahead": false,
