@@ -80,7 +80,7 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "npm run build:tailwind && node scripts/build.js",
+    "build": "node scripts/build.js",
     "deploy:production": "ansible-playbook ansible/deploy_production.yml",
     "build:dev": "BUILD_ENV=development node scripts/build.js",
     "deploy:dev": "ansible-playbook ansible/deploy_naughty.yml",
