@@ -39,6 +39,6 @@
   },
   "scienceInfo": {
     "title": "Scientific research on shadow banning",
-    "text": "In May, a [url=\"https://arxiv.org/abs/2012.05101\"]scientific publication about Twitter's shadowbanning practice[/url], in which our tester is cited, will be presented on the IEEE INFOCOM computer science conference. The paper concludes that in contrast to Twitter's claims, shadow banning is unlikely to result from bugs. Instead, interaction topology is a good indicator of the presence of groups of shadowbanned users. The authors of the paper are also operating their own shadowban tester at [url=\"https://whosban.eu.org\"]whosban.eu.org[/url], which also performs tests on some neighboring nodes. We highly recommend to check out their tester as well as the paper."
+    "text": "In May, a [url=\"https://arxiv.org/abs/2012.05101\"]scientific publication about Twitter's shadowbanning practice[/url], in which our tester is cited, will be presented at the IEEE INFOCOM computer science conference. The paper concludes that in contrast to Twitter's claims, shadow banning is unlikely to result from bugs. Instead, interaction topology is a good indicator of the presence of groups of shadowbanned users. The authors of the paper are also operating their own shadowban tester at [url=\"https://whosban.eu.org\"]whosban.eu.org[/url], which also performs tests on some neighboring nodes. We highly recommend to check out their tester as well as the paper."
   }
 }
