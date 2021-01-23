@@ -52,7 +52,7 @@ const Cryptos = () => {
         coins.map(coin => <Coin coin={coin} key={coin.name} />)
       }
       </div>
-      <p className="p-4">If you are missing an option, please let us know by tweeting <SafeLink href="https://twitter.com/shadowbaneu">@shadowbaneu</SafeLink>!</p>
+      <p className="p-4">If you are missing an option, please let us know by tweeting <SafeLink href="https://twitter.com/shadowban_eu">@shadowban_eu</SafeLink>!</p>
     </div>
   );
 }

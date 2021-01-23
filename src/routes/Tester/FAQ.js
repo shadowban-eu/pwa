@@ -97,6 +97,12 @@ const FAQ = () => {
           <BBText>{t('testerFunctions.text')}</BBText>
         </div>
       </AccordionItem>
+      <AccordionItem id="science">
+        <BBText>{t('scienceInfo.title')}</BBText>
+        <div className="px-8 pb-6 border-b">
+          <BBText>{t('scienceInfo.text')}</BBText>
+        </div>
+      </AccordionItem>
     </Accordion>
   );
 };
