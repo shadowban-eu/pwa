@@ -43,5 +43,6 @@ module.exports = {
   variants: {
     fontSize: ['responsive']
   },
-  plugins: []
+  plugins: [],
+  purge: ['./src/**/*.html', './src/**/*.js']
 };
