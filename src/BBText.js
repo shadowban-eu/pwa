@@ -1,12 +1,13 @@
 import React from 'react';
-import BBCode from '@bbob/react/es/Component'
-import reactPreset from '@bbob/preset-react/es'
+import BBCode from '@bbob/react/es/Component';
+import reactPreset from '@bbob/preset-react/es';
 
 import SpringyImage from './SpringyImage';
 import SafeLink from './SafeLink';
 import Streamable from './Streamable';
 
-const getClassName = (attrs) => attrs && attrs.className ? attrs.className : '';
+const getClassName = (attrs) =>
+  attrs && attrs.className ? attrs.className : '';
 
 const hClasses = {
   h1: 'text-6xl',
@@ -17,8 +18,8 @@ const hClasses = {
   h6: 'text-xl'
 };
 
-const preset = reactPreset.extend(presetTags => {
-  const tags = ({
+const preset = reactPreset.extend((presetTags) => {
+  const tags = {
     ...presetTags,
     p: (node) => ({
       tag: 'p',
@@ -30,7 +31,7 @@ const preset = reactPreset.extend(presetTags => {
     b: (...args) => ({
       ...presetTags.b(...args),
       attrs: {
-        style: {fontWeight: 500 }
+        style: { fontWeight: 500 }
       },
       content: args[0].content
     }),
@@ -39,69 +40,66 @@ const preset = reactPreset.extend(presetTags => {
       const isInternal = !!node.attrs.internal;
       delete node.attrs.internal;
       const presetResult = presetTags.url(node, ctx);
-      return ({
+      return {
         ...presetResult,
         tag: isInternal ? 'a' : SafeLink
-      });
+      };
     },
-    purple: node => ({
+    purple: (node) => ({
       tag: 'span',
       attrs: {
         className: 'text-accent-purple'
       },
       content: node.content
     }),
-    flex: node => {
+    flex: (node) => {
       const wrap = node.attrs.wrap ? 'flex-wrap' : '';
       const direction = node.attrs.col ? 'flex-column' : 'flex-row';
       const justify = node.attrs.justify ? `justify-${node.attrs.justify}` : '';
-      return ({
+      return {
         tag: 'div',
         attrs: {
           className: `flex ${direction} ${wrap} ${justify}`.trim()
         },
         content: node.content
-      });
+      };
     },
-    ul: node => ({
+    ul: (node) => ({
       tag: 'ul',
       attrs: {
         className: 'pl-10 list-disc'
       },
       content: node.content
     }),
-    li: node => ({
+    li: (node) => ({
       tag: 'li',
       content: node.content
     }),
     img: (...args) => {
       const presetResult = presetTags.img(...args);
-      return ({
+      return {
         ...presetResult,
         tag: args[0].attrs.inline ? 'img' : SpringyImage,
         attrs: {
           ...presetResult.attrs,
-          className: `h-full shadow-md ${
-            getClassName(args[0].attrs)
-          } ${
+          className: `h-full shadow-md ${getClassName(args[0].attrs)} ${
             args[0].attrs.inline ? 'inline' : ''
-          } ${
-            args[0].attrs.center ? '' : 'mx-auto'
-          }`,
+          } ${args[0].attrs.center ? '' : 'mx-auto'}`,
           alt: args[0].attrs.alt || '',
           width: args[0].attrs.width,
           height: args[0].attrs.height
         }
-      });;
+      };
     },
-    streamable: node => ({
+    streamable: (node) => ({
       tag: Streamable,
       attrs: {
         src: node.attrs.src,
-        className: getClassName(node.attrs) || 'relative mx-auto h-streamable shadow-md'
+        className:
+          getClassName(node.attrs) || 'relative mx-auto h-streamable shadow-md'
       }
     }),
-    quote: node => ({
+    quote: (node) => ({
       tag: 'blockquote',
       attrs: {
         cite: node.attrs.cite || '',
@@ -109,11 +107,11 @@ const preset = reactPreset.extend(presetTags => {
       },
       content: node.content
     })
-  });
+  };
 
   Object.keys(hClasses).forEach((hClassKey) => {
-    tags[hClassKey] = node => ({
-      tag: hClassKey,
+    tags[hClassKey] = (node) => ({
+      tag: 'p',
       attrs: {
         className: `${hClasses[hClassKey]} ${getClassName(node.attrs)}`
       },
@@ -125,11 +123,7 @@ const preset = reactPreset.extend(presetTags => {
 });
 
 const BBText = ({ children }) => (
-  <BBCode
-    plugins={[preset()]}
-  >
-    {children}
-  </BBCode>
+  <BBCode plugins={[preset()]}>{children}</BBCode>
 );
 
 export default BBText;
