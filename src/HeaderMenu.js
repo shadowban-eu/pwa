@@ -3,7 +3,7 @@ import { Link } from '@reach/router';
 
 import SafeLink from './SafeLink';
 
-const HeaderMenuLink = props => {
+const HeaderMenuLink = (props) => {
   const { className } = props;
   const defaultClassName = `${
     className ? className : ''
@@ -13,7 +13,7 @@ const HeaderMenuLink = props => {
   return (
     <Link
       {...props}
-      getProps={locationMatch => {
+      getProps={(locationMatch) => {
         let isCurrent;
         const actualHref = locationMatch.location.pathname;
 
@@ -53,21 +53,27 @@ const HeaderMenu = () => {
         </HeaderMenuLink>
       </h2>
       <div className="self-center">
-        <ul>
-          <HeaderMenuLink to={`${process.env.PUBLIC_URL}/`}>
-            Tester
-          </HeaderMenuLink>
-          <HeaderMenuLink to={`${process.env.PUBLIC_URL}/resurrect`}>
-            Resurrect
-          </HeaderMenuLink>
-          <SafeLink
-            href="https://blog.shadowban.eu/"
-            icon
-            iconClassName="inline w-2 h-2 ml-1 align-top stroke-current"
-            className="pl-2 text-black font-normal"
-          >
-            Blog
-          </SafeLink>
+        <ul className="flex">
+          <li>
+            <HeaderMenuLink to={`${process.env.PUBLIC_URL}/`}>
+              Tester
+            </HeaderMenuLink>
+          </li>
+          <li>
+            <HeaderMenuLink to={`${process.env.PUBLIC_URL}/resurrect`}>
+              Resurrect
+            </HeaderMenuLink>
+          </li>
+          <li>
+            <SafeLink
+              href="https://blog.shadowban.eu/"
+              icon
+              iconClassName="inline w-2 h-2 ml-1 align-top stroke-current"
+              className="pl-2 text-black font-normal"
+            >
+              Blog
+            </SafeLink>
+          </li>
         </ul>
       </div>
     </div>
