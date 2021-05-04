@@ -45,15 +45,8 @@
 <style
    type="text/css"
    id="style1674">
-	.st0{fill:#F4B924;stroke:#FFFFFF;stroke-width:3.1299;stroke-miterlimit:10;}
+	.zcash-icon{fill:#F4B924;stroke:#FFFFFF;stroke-width:3.1299;stroke-miterlimit:10;}
 </style>
-
-
-
-
-
-
-
 <g
    id="g2245"
    transform="matrix(0.13104013,0,0,0.13104013,-25.480865,54.766557)"><path
@@ -64,7 +57,7 @@
      inkscape:connector-curvature="0"
      id="path1678"
      d="m 316.55085,-193.83729 c -56.2,0 -102,-45.7 -102,-102 0,-56.3 45.7,-101.9 102,-101.9 56.3,0 102,45.7 102,102 0,56.3 -45.7,101.9 -102,101.9 z"
-     class="st0" /><polygon
+     class="zcash-icon" /><polygon
      transform="translate(174.05085,-617.23729)"
      id="polygon1690"
      points="99,359.5 99,378.1 132.3,378.1 132.3,398.5 152.7,398.5 152.7,378.1 186.1,378.1 186.1,353.4 134.4,353.4 186.1,283.3 186.1,264.7 152.7,264.7 152.7,244.3 132.3,244.3 132.3,264.7 99,264.7 99,289.4 150.6,289.4 " /></g>

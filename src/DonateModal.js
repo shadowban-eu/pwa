@@ -15,7 +15,9 @@ import Cryptos from './DonateModal/Cryptos';
 createStore('donateModal', initialState, reducer);
 
 const DonateModal = ({ ignoreTested }) => {
-  const [{ donateClicked, tested, seenCTA }, modalDispatch] = useStore('donateModal');
+  const [{ donateClicked, tested, seenCTA }, modalDispatch] = useStore(
+    'donateModal'
+  );
   const { t } = useTranslation('common');
 
   const { isOpen, openModal, closeModal, Modal, targetRef } = useModal({
@@ -27,7 +29,7 @@ const DonateModal = ({ ignoreTested }) => {
       transform: isOpen ? 'translateY(-200px)' : 'translateY(0px)',
       opacity: isOpen ? 0 : 1
     },
-    to: async next => {
+    to: async (next) => {
       await next({
         transform: isOpen ? 'translateY(0px)' : 'translateY(-200px)',
         opacity: isOpen ? 1 : 0
@@ -46,82 +48,102 @@ const DonateModal = ({ ignoreTested }) => {
   React.useEffect(() => {
     if (!seenCTA && tested !== 0 && (tested === 7 || tested % 28 === 0)) {
       openModal();
-      modalDispatch({ type: SET_SEEN_CTA, seenCTA: true })
+      modalDispatch({ type: SET_SEEN_CTA, seenCTA: true });
     }
     if (seenCTA && (tested === 8 || tested % 28 === 1)) {
-      modalDispatch({ type: SET_SEEN_CTA, seenCTA: false })
+      modalDispatch({ type: SET_SEEN_CTA, seenCTA: false });
     }
-  }, [tested, openModal, seenCTA, modalDispatch])
+  }, [tested, openModal, seenCTA, modalDispatch]);
 
   return (
     <>
-      {
-        donateClicked ?
-          <div className="flex justify-center">
-            <SVG
-              className="w-8 mr-2"
-              src="https://twemoji.maxcdn.com/svg/2764.svg"
-            />
-            <div className="font-lobster text-accent-purple text-3xl">
-              { t('donateModal.thankYou') }
-            </div>
-            <SVG
-              className="w-8 ml-2"
-              src="https://twemoji.maxcdn.com/svg/2764.svg"
-            />
+      {donateClicked ? (
+        <div className="flex justify-center">
+          <SVG
+            className="w-8 mr-2"
+            src="https://twemoji.maxcdn.com/svg/2764.svg"
+          />
+          <div className="font-lobster text-accent-purple text-3xl">
+            {t('donateModal.thankYou')}
           </div>
-        :
-          <button ref={targetRef} className="uppercase" onClick={handleOpenClick}>
-            support us
-          </button>
-      }
-      {
-        isOpen ? <Modal className="
+          <SVG
+            className="w-8 ml-2"
+            src="https://twemoji.maxcdn.com/svg/2764.svg"
+          />
+        </div>
+      ) : (
+        <button ref={targetRef} className="uppercase" onClick={handleOpenClick}>
+          support us
+        </button>
+      )}
+      {isOpen ? (
+        <Modal
+          className="
           sm:w-11/12 md:w-2/3
           h-modal
           w-full
           overflow-auto
-        ">
-          <animated.div style={modalProps} className="
+        "
+        >
+          <animated.div
+            style={modalProps}
+            className="
             card
             flex flex-col justify-around
-          ">
+          "
+          >
             <h4 className="text-accent-purple text-3xl">Support Us</h4>
             <BBText>
-              { t('donateModal.content', { PUBLIC_URL: process.env.PUBLIC_URL }) }
+              {t('donateModal.content', { PUBLIC_URL: process.env.PUBLIC_URL })}
             </BBText>
             <div className="flex flex-row justify-start mt-6">
               <button className="mr-4" onClick={handlePaypalClick}>
-                <SVG className="inline mr-4" src="/icons/donate/paypal.svg" width={32} height={32} />
+                <SVG
+                  className="inline mr-4"
+                  src="/icons/donate/paypal.svg"
+                  width={32}
+                  height={32}
+                />
                 <span className="text-l">PayPal</span>
               </button>
             </div>
             <Accordion>
               <AccordionItem>
                 <div>
-                  <SVG className="inline mr-4" src="/icons/donate/crypto.svg" width={32} height={32} />
+                  <SVG
+                    className="inline mr-4"
+                    src="/icons/donate/crypto.svg"
+                    width={32}
+                    height={32}
+                  />
                   <span className="text-l">Crypto Currencies</span>
                 </div>
                 <Cryptos />
               </AccordionItem>
               <AccordionItem>
                 <div>
-                  <SVG className="inline mr-4" src="/icons/donate/gpay.svg" width={32} height={32} />
+                  <SVG
+                    className="inline mr-4"
+                    src="/icons/donate/gpay.svg"
+                    width={32}
+                    height={32}
+                  />
                   <span className="text-l">GPay</span>
                 </div>
-                <div className="p-4">You can donate to us by sending to shadowban.eu@gmail.com</div>
+                <div className="p-4">
+                  You can donate to us by sending to shadowban.eu@gmail.com
+                </div>
               </AccordionItem>
             </Accordion>
             <h6 className="text-xl">Thank You! :)</h6>
             <div className="flex flex-row justify-end mt-6">
               <button onClick={closeModal}>
-                { t('donateModal.dismissButton') }
+                {t('donateModal.dismissButton')}
               </button>
             </div>
           </animated.div>
         </Modal>
-        : null
-      }
+      ) : null}
     </>
   );
 };
