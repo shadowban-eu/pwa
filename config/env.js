@@ -7,15 +7,15 @@ const child_process = require('child_process');
 delete require.cache[require.resolve('./paths')];
 
 const gitInfo = () => {
-  const gitCmds = `git log -n1 --abbrev-commit --oneline | cut -d' ' -f1 && git branch --show-current`;
+  const gitCmds = `git log -n1 --abbrev-commit --oneline | cut -d' ' -f1 && git rev-parse --abbrev-ref HEAD`;
   const spawnResult = child_process.spawnSync(gitCmds, [], {
     shell: true,
     windowsHide: true
   });
   if (spawnResult.status !== 0) {
     return {
-      branch: '-',
       commit: '-',
+      branch: '-',
       err: spawnResult.stderr.toString()
     };
   }
