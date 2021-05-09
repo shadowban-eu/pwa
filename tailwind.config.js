@@ -3,9 +3,9 @@ module.exports = {
     extend: {
       colors: {
         shadowblue: 'rgb(230, 236, 240)',
-        twitterblue: 'rgb(20, 129, 195)',
+        twitterblue: 'rgb(17 110 167)',
         accent: {
-          purple: 'rgb(175, 52, 175)',
+          purple: 'rgb(172 51 172)',
           success: 'rgb(8, 136, 16)',
           warn: 'orange',
           error: 'rgb(197, 61, 61)'

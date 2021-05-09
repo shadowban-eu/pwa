@@ -1,0 +1,8 @@
+{
+  "ENOTAREPLY": "Please use a reply to the missing tweet you want to test!",
+  "ENOTEXIST": "No tweet with that ID exists.",
+  "EFETCHFAILED": "Failed to contact the server. Please try again later!",
+  "ENOREPLIES": "@{{screenName}} has not made any reply tweets.",
+  "EISGHOSTED": "Reply Deboosting does not apply, because @{{screenName}} has a Ghost Ban.",
+  "EUNKNOWN": "Something unexpected went wrong."
+}
